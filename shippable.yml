@@ -1,0 +1,12 @@
+#shippable config file
+#made and maintained by Team Martini
+
+#language settings
+language: java
+#jdktag
+jdk:
+	-oraclejdk8
+
+#env
+#put env variales under this tag
+env:	
