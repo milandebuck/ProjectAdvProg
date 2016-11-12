@@ -5,6 +5,4 @@
 language: java
 #jdktag
 jdk:
-	-oraclejdk8
-
-
+	- oraclejdk8
