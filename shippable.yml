@@ -7,6 +7,4 @@ language: java
 jdk:
 	-oraclejdk8
 
-#env
-#put env variales under this tag
-env:	
+
