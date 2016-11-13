@@ -1,6 +1,6 @@
 # ProjectAdvProg2016-2017 Team Martini
 ### Description
-descriptien goes here
+description goes here
 
 ### Collaborators
     -Milan De Buck
