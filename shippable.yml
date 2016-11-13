@@ -12,4 +12,4 @@ services:
 
 build:
   ci:
-    - mongo projectDB --eval 'db.createUser("user1", "Azerty123");'
+    - mongo projectDB --eval 'db.createUser({user:"user1",pwd:"Azerty123",roles:[]});'
