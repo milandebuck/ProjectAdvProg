@@ -6,3 +6,10 @@ language: java
 #jdktag
 jdk:
 	- oraclejdk8
+
+services:
+  - mongodb
+
+build:
+  ci:
+    - mongo projectDB --eval 'db.addUser("user1", "Azerty123");'
