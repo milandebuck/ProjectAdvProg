@@ -4,19 +4,10 @@
 #services
 services:
   - mongodb$
-#python versions
-python:
-  - 2.6
-  - 2.7
-#install modules
-install:
-  - pip install pymongo
-  - python setup.py install
 #scripts to execute efore mongodb starts
 before_script:
   - sleep 15
   - mongo translator_db --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
-  #- python importDataScript.py
   - cd 'Java Backend/src/main/java/hello/'
 #language settings
 language: java
@@ -30,3 +21,12 @@ deploy:
   provider: heroku
   api_key: 049c3870-b65b-417b-8b86-c99261030ca3
   app: teammartini
+
+#not working?
+#install modules
+#install:
+  #- pip install pymongo
+  #- python setup.py install
+
+#before_script:
+  #- python importDataScript.py
