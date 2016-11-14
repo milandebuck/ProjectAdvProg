@@ -5,10 +5,10 @@
 language: java
 #jdktag
 jdk:
-	- oraclejdk8
-
+  - oraclejdk8
+#services
 services:
   - mongodb
-
+#scripts to execute efore mongodb starts
 before_script:
   - mongo projectDB --eval 'db.createUser({user:"user1",pwd:"Azerty123",roles:[]});'
