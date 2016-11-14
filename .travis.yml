@@ -1,4 +1,4 @@
-#shippable config file
+#stravis config file
 #made and maintained by Team Martini
 
 #language settings
@@ -11,4 +11,5 @@ services:
   - mongodb
 #scripts to execute efore mongodb starts
 before_script:
-  - mongo projectDB --eval 'db.createUser({user:"user1",pwd:"Azerty123",roles:[]});'
+  - sleep 15
+  - mongo projectDB --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
