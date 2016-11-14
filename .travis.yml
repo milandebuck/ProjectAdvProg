@@ -4,6 +4,8 @@
 #services
 services:
   - mongodb$
+install:
+  -pip install pymongo
 #scripts to execute efore mongodb starts
 before_script:
   - sleep 15
