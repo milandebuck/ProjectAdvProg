@@ -10,6 +10,5 @@ jdk:
 services:
   - mongodb
 
-build:
-  ci:
-    - mongo projectDB --eval 'db.createUser({user:"user1",pwd:"Azerty123",roles:[]});'
+before_script:
+  - mongo projectDB --eval 'db.createUser({user:"user1",pwd:"Azerty123",roles:[]});'
