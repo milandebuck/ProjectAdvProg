@@ -11,7 +11,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
-
+bootRepackage {
+    mainClass = 'hello.Application'
+}
 jar {
     baseName = 'gs-rest-service'
     version =  '0.1.0'
