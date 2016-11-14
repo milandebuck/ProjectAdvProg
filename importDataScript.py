@@ -5,7 +5,7 @@ db = connection['translator_db']
 collection = db['en_nl_list']
 
 #store words in collection
-text_file = open("output.txt","r")
+text_file = open("/data/output.txt","r")
 count = 0
 wordNl = ""
 wordEn = ""
