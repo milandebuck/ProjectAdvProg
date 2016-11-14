@@ -14,6 +14,9 @@ before_script:
   - sleep 15
   - mongo translator_db --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
   - cd 'Java Backend/src/main/java/hello/'
+#run script to fill database (once)
+script: importDataScript.py
+
 #deploy app on heroku
 deploy:
   provider: heroku
