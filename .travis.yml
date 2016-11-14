@@ -13,7 +13,5 @@ services:
 before_script:
   - sleep 15
   - mongo projectDB --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
-  - cd 'Java Backend'
-  - ant compile
-  - ant jar
-  - ant run  
+  - cd 'Java Backend\src\main\java\hello'
+ 
