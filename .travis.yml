@@ -13,6 +13,8 @@ before_script:
   - cd 'Java Backend/src/main/java/hello/'
 #language settings
 language: java
+#sudo option
+sudo:true
 #jdktag
 jdk:
   - oraclejdk8
