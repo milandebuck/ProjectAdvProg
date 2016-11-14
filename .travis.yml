@@ -1,11 +1,6 @@
 #stravis config file
 #made and maintained by Team Martini
 
-#language settings
-language: java
-#jdktag
-jdk:
-  - oraclejdk8
 #services
 services:
   - mongodb
@@ -16,7 +11,11 @@ before_script:
   - cd 'Java Backend/src/main/java/hello/'
 #run script to fill database (once)
 script: python importDataScript.py
-
+#language settings
+language: java
+#jdktag
+jdk:
+  - oraclejdk8
 #deploy app on heroku
 deploy:
   provider: heroku
