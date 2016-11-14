@@ -15,6 +15,6 @@ for line in text_file.readlines():
 		wordNl = line
 	else:
 		wordEn = line
-		entry{"en": wordEn,
+		entry = {"en": wordEn,
 			  "nl": wordNl}
 		collection.insert(entry)
