@@ -14,7 +14,7 @@ before_script:
 #language settings
 language: java
 #sudo option
-sudo:true
+sudo: true
 #jdktag
 jdk:
   - oraclejdk8
