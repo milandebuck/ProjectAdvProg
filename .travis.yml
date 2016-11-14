@@ -8,9 +8,8 @@ services:
 before_script:
   - sleep 15
   - mongo translator_db --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
+  - python importDataScript.py
   - cd 'Java Backend/src/main/java/hello/'
-#run script to fill database (once)
-script: python importDataScript.py
 #language settings
 language: java
 #jdktag
