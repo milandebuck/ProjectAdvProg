@@ -14,4 +14,8 @@ before_script:
   - sleep 15
   - mongo projectDB --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
   - cd 'Java Backend/src/main/java/hello/'
- 
+#deploy app on heroku
+deploy:
+  provider: heroku
+  api_key: 049c3870-b65b-417b-8b86-c99261030ca3
+  app: teammartini
