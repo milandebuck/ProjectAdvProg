@@ -4,6 +4,10 @@
 #services
 services:
   - mongodb$
+install:
+  - git clone git://github.com/mongodb/mongo-python-driver.git pymongo
+  - cd pymongo/
+  - python setup.py install
 #scripts to execute efore mongodb starts
 before_script:
   - sleep 15
