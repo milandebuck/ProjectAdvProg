@@ -4,9 +4,14 @@
 #services
 services:
   - mongodb$
+#python versions
+python:
+  - 2.6
+  - 2.7
 #install modules
 install:
   - pip install pymongo
+  - python setup.py install
 #scripts to execute efore mongodb starts
 before_script:
   - sleep 15
@@ -16,7 +21,7 @@ before_script:
 #language settings
 language: java
 #sudo option
-#sudo: required
+sudo: true
 #jdktag
 jdk:
   - oraclejdk8
