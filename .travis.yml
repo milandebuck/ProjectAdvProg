@@ -13,8 +13,8 @@ before_script:
   - mongo ProjectDB --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
   - cd 'Java Backend/'
 install:
+  - apt-get install python-pip python-dev build-essential
   - pip install pymongo
-  - python setup.py install 
 #language settings
 language: java
 #jdktag
