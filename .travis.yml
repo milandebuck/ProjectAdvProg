@@ -18,7 +18,6 @@ jdk:
   - oraclejdk8
 script:
   - gradle build
-  - java -jar build/libs/app.jar
 #deploy app on heroku
 deploy:
   provider: heroku
