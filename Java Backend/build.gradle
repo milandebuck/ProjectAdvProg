@@ -4,7 +4,6 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
-        compile 'org.mongodb:mongodb-driver:3.3.0'
     }
 }
 
