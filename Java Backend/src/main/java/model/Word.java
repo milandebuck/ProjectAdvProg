@@ -1,5 +1,5 @@
 package main.java.model;
-
+/*
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * This is our mongodocument for words from nl to eng
  *
- */
+
 @Document(collection = "wordsnleng")
 public class Word {
 
@@ -63,3 +63,4 @@ public class Word {
     //TODO: ToString
 
 }
+*/
