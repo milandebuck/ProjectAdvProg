@@ -1,11 +1,11 @@
 #make connection, db, collection for en-nl
-from pymongo import Connection
-connection = Connection()
-db = connection['translator_db']
-collection = db['en_nl_list']
+from pymongo import MongoClient
+
+client = MongoClient()
+collection = client.TeamMartini.entries
 
 #store words in collection
-text_file = open("/data/output.txt","r")
+text_file = open("./data/output.txt","r")
 count = 0
 wordNl = ""
 wordEn = ""
