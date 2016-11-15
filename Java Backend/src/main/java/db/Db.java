@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Db{
-    public static void main(String[] args){
+    public static void FillDb(String[] args){
         //Make database
         /*MongoCredential credential = MongoCredential.createCredential(user1, ProjectDB, Azerty123);
         MongoClient mongoClient = new MongoClient("localhost", Arrays.asList(credential));
