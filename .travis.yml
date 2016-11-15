@@ -10,7 +10,7 @@ sudo: required
 before_script:
   - sleep 15
   #- mongo translator_db --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
-  - cd 'Java Backend/src/main/java/hello/'
+  - cd 'Java Backend/'
 #language settings
 language: java
 #jdktag
