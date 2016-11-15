@@ -3,11 +3,12 @@
 
 #services
 services:
-  - mongodb$
+  - mongodb
 #sudo option
 sudo: required
 #scripts to execute efore mongodb starts
 before_script:
+  - sleep 15
   - mongo ProjectDB --eval 'db.addUser({user:"user1",pwd:"Azerty123",roles:[]});'
 #language settings
 language: java
