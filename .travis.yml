@@ -6,11 +6,6 @@ services:
   - mongodb$
 #sudo option
 sudo: required
-#matrix
-matrix:
-  include:
-    - python: "2.7"
-    - pip install pymongo
 #scripts to execute efore mongodb starts
 before_script:
   - sleep 15
