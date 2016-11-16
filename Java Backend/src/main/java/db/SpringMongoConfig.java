@@ -1,4 +1,4 @@
-package main.java.db;
+package db;
 /**
 import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
