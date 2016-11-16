@@ -1,4 +1,4 @@
-package main.java.db;
+package db;
 /**
 import main.java.model.Word;
 import org.springframework.context.ApplicationContext;
