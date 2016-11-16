@@ -13,9 +13,9 @@ word2 = ""
 for line in text_file.readlines():
 	count += 1
 	if (count % 2) == 1:
-		word1 = line
+		word1 = line[:-1]
 	else:
-		word2 = line
+		word2 = line[:-1]
 		entry = {"word": word2,
 			  "translation": word1,
 			  "languages" : "EnNl"}
