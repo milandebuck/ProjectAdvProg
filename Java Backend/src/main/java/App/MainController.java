@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.atomic.AtomicLong;
+import model.Exercise;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 public class MainController {
@@ -20,10 +23,23 @@ public class MainController {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
     }
-
-    @GetMapping("/gettest")
-    public GetWordsResponse getWordsResponse(@RequestParam(value="lang", defaultValue="error") String lang, @RequestParam(value="amt", defaultValue="error") String amt) {
-        return new GetWordsResponse(lang, Integer.parseInt(amt));
+    
+    /**
+     *
+     * @return 
+     */
+    @GetMapping("/exercise")
+    public Exercise exerciseForm() {
+        return new Exercise("duck", "English", "Dutch");
     }
-
+    
+    /**
+     *
+     * @param exercise
+     * @return
+     */
+    @PostMapping("/exercise")
+    public Boolean exerciseSubmit(@RequestBody Exercise exercise) {
+        return "eend".equals(exercise.getAnswer());
+    }
 }

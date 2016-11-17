@@ -43,3 +43,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 Contact GitHub API Training Shop Blog About
+/target/
+/Java Backend/.nb-gradle/
+
+# Jar file and tmp map
+Java Backend/build/libs
+Java Backend/build/tmp
