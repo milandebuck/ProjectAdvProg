@@ -49,6 +49,5 @@ public class Entry {
     public String ToString() {
         return this.id + ": word = " + word + ", translation = " + translation;
     }
-    //TODO: ToString
 
 }

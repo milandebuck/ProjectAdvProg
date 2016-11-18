@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Java Backend.iml" filepath="$PROJECT_DIR$/.idea/Java Backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java Backend.iml" filepath="$PROJECT_DIR$/.idea/modules/Java Backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java_Backend_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Java_Backend_main.iml" group="Java Backend" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Java_Backend_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Java_Backend_test.iml" group="Java Backend" />
     </modules>
   </component>
 </project>
