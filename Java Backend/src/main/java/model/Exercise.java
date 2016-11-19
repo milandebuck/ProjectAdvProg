@@ -1,52 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package model;
+package main.java.model;
+import model.Entry;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * A single exercise with room for an answer
- * @author Dieter
+ * Created by milan on 19.11.16.
+ * this class will be a full exercize with check logic
  */
 public class Exercise {
-    private String word;
-    private String nativeLanguage;
-    private String translationLanguage;
-    private String answer;
 
-    public Exercise(String word, String nativeLanguage, String translationLanguage) {
-        this.word = word;
-        this.nativeLanguage = nativeLanguage;
-        this.translationLanguage = translationLanguage;
+    public List<Entry> entries;
+
+    public Exercise(){
+
     }
 
-    public Exercise(String word, String nativeLanguage, String translationLanguage, String answer) {
-        this.word = word;
-        this.nativeLanguage = nativeLanguage;
-        this.translationLanguage = translationLanguage;
-        this.answer = answer;
+    public void fillRandom(int length){
+        int i = 0;
+        while(i != length){
+
+            i++;
+        }
     }
 
-    public String getWord() {
-        return word;
-    }
-
-    public String getNativeLanguage() {
-        return nativeLanguage;
-    }
-
-    public String getTranslationLanguage() {
-        return translationLanguage;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-    
-    
 }

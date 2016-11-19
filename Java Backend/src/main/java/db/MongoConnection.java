@@ -17,11 +17,13 @@ public class MongoConnection {
         try {
             credential = MongoCredential.createMongoCRCredential("user1", "TeamMartini", "Azerty123".toCharArray());
             mongoClient = new MongoClient(new ServerAddress("localhost", 27017), Arrays.asList(credential));
+            System.out.println("test");
         }
         catch (Exception ex) {
             System.out.print(ex.getMessage());
         }
-        DB db = mongoClient.getDB("ProjectDB");
+        DB db = mongoClient.getDB("TeamMartini");
         return db;
     }
 }
+

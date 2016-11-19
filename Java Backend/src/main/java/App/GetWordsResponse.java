@@ -1,5 +1,5 @@
 package App;
-
+/*
 import com.mongodb.DBCollection;
 import db.MongoConnection;
 import model.Entry;
@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Created by Robbe De Geyndt on 16/11/2016.
  */
+/*
 public class GetWordsResponse {
 
     private String language;
@@ -46,3 +47,4 @@ public class GetWordsResponse {
         return correct;
     }
 }
+*/
