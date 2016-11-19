@@ -1,11 +1,13 @@
 package App;
 
 import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import db.MongoConnection;
 import model.Entry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Robbe De Geyndt on 16/11/2016.
@@ -22,8 +24,14 @@ public class GetWordsResponse {
         this.amount = amount;
         this.words = new ArrayList<Entry>();
 
+        DBCollection collection = mongoConnection.Connect().getCollection("entries");
+
         for (int i = 0; i < amount; i++) {
-            words.add(new Entry());
+            Random rnd = new Random();
+            int j = rnd.nextInt((int)collection.count());
+            DBObject doc = collection.find().limit(-1).skip(j).next();
+            Entry word = mongoConnection.Connect().getConverter().read(Entry.class, doc);
+            words.add(word);
         }
     }
 
@@ -41,8 +49,8 @@ public class GetWordsResponse {
 
     public boolean checkAnswer(int passedId, String answer){
         Boolean correct = true;
-        DBCollection collection = MongoConnection.Connect().getCollection("entries");
-        collection.find();
+        //DBCollection collection = MongoConnection.Connect().getCollection("entries");
+        //collection.find();
         return correct;
     }
 }

@@ -18,5 +18,6 @@ for line in text_file.readlines():
 		word2 = line[:-1]
 		entry = {"word": word2,
 			  "translation": word1,
-			  "languages" : "EnNl"}
+			  "languages": ["English", "Dutch"],
+			  "_class": "model.Entry"}
 		collection.insert(entry)
