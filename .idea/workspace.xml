@@ -2,17 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="376cfbb1-2aca-44d1-81d1-fe6fa1dceacf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/db/DataAcces.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/GetWordsResponse.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/db/SpringMongoConfig.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/model/Exercise.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/GetWordsResponse.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/GetWordsResponse.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/MainController.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/MainController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/db/MongoConnection.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/db/MongoConnection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ProjectAdvProg.iml" afterPath="$PROJECT_DIR$/.idea/ProjectAdvProg.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build.gradle" afterPath="$PROJECT_DIR$/Java Backend/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/.idea/modules/Java Backend.iml" afterPath="$PROJECT_DIR$/Java Backend/.idea/modules/Java Backend.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/.idea/modules/Java_Backend_main.iml" afterPath="$PROJECT_DIR$/Java Backend/.idea/modules/Java_Backend_main.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/db/SpringMongoConfig.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/db/SpringMongoConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/model/Exercise.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/model/Exercise.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/importDataScript.py" afterPath="$PROJECT_DIR$/importDataScript.py" />
     </list>
     <ignored path="ProjectAdvProg.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,13 +41,9 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#801#802#0" expanded="true" />
-                <element signature="e#839#840#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="468">
+              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -51,16 +51,9 @@
       <file leaf-file-name="GetWordsResponse.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="68" />
-              <folding>
-                <marker date="1479567508827" expanded="false" signature="688:699" ph=" { " />
-                <marker date="1479567508827" expanded="false" signature="715:721" ph=" }" />
-                <marker date="1479567508827" expanded="false" signature="749:760" ph=" { " />
-                <marker date="1479567508827" expanded="false" signature="774:780" ph=" }" />
-                <marker date="1479567508827" expanded="false" signature="815:826" ph=" { " />
-                <marker date="1479567508827" expanded="false" signature="839:845" ph=" }" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,11 +83,9 @@
       <file leaf-file-name="MongoConnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="468">
+              <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -134,8 +125,8 @@
       <file leaf-file-name="SpringMongoConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/SpringMongoConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="540">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -813,12 +804,12 @@
       <workItem from="1479213822937" duration="7000" />
       <workItem from="1479213840747" duration="1572000" />
       <workItem from="1479303341086" duration="1213000" />
-      <workItem from="1479474756023" duration="16632000" />
+      <workItem from="1479474756023" duration="17084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19444000" />
+    <option name="totallyTimeSpent" value="19896000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
@@ -891,11 +882,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#839#840#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,8 +1057,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/SpringMongoConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1086,13 +1073,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#839#840#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="468">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1106,16 +1089,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="68" />
-          <folding>
-            <marker date="1479567508827" expanded="false" signature="688:699" ph=" { " />
-            <marker date="1479567508827" expanded="false" signature="715:721" ph=" }" />
-            <marker date="1479567508827" expanded="false" signature="749:760" ph=" { " />
-            <marker date="1479567508827" expanded="false" signature="774:780" ph=" }" />
-            <marker date="1479567508827" expanded="false" signature="815:826" ph=" { " />
-            <marker date="1479567508827" expanded="false" signature="839:845" ph=" }" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1131,11 +1107,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="468">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
