@@ -1,6 +1,6 @@
 package App;
 
-<<<<<<< HEAD
+
 import main.java.db.DataAcces;
 import model.Entry;
 import main.java.db.DataAcces;
@@ -14,14 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-=======
-import db.MongoConnection;
-import model.Entry;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
->>>>>>> f9893ac076f1e33f4a210e8729a1a70c720cacbc
 
 @RestController
 public class MainController {

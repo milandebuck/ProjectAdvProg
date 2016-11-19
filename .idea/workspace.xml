@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="376cfbb1-2aca-44d1-81d1-fe6fa1dceacf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/db/SpringMongoConfig.class" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/model/Exercise.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/GetWordsResponse.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/GetWordsResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/MainController.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/db/MongoConnection.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/db/MongoConnection.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/.idea/modules/Java Backend.iml" afterPath="$PROJECT_DIR$/Java Backend/.idea/modules/Java Backend.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/.idea/modules/Java_Backend_main.iml" afterPath="$PROJECT_DIR$/Java Backend/.idea/modules/Java_Backend_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/db/SpringMongoConfig.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/db/SpringMongoConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/model/Exercise.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/model/Exercise.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/importDataScript.py" afterPath="$PROJECT_DIR$/importDataScript.py" />
     </list>
     <ignored path="ProjectAdvProg.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,9 +29,13 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="308">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#803#804#0" expanded="true" />
+                <element signature="e#841#842#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,18 +50,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Exercise.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/model/Exercise.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="54" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="importDataScript.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/importDataScript.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -80,12 +60,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MongoConnection.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MongoConnection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="342">
+              <caret line="19" column="84" selection-start-line="19" selection-start-column="84" selection-end-line="19" selection-end-column="84" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,11 +75,9 @@
       <file leaf-file-name="DataAcces.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/DataAcces.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="54">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="6" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -169,11 +149,11 @@
         <option value="$PROJECT_DIR$/Java Backend/src/main/java/db/WordService.java" />
         <option value="$PROJECT_DIR$/Java Backend/src/main/java/db/DB.java" />
         <option value="$PROJECT_DIR$/Java Backend/build.gradle" />
-        <option value="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" />
         <option value="$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java" />
         <option value="$PROJECT_DIR$/Java Backend/src/main/java/db/DataAcces.java" />
-        <option value="$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java" />
         <option value="$PROJECT_DIR$/Java Backend/src/main/java/model/Exercise.java" />
+        <option value="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" />
+        <option value="$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java" />
       </list>
     </option>
   </component>
@@ -804,12 +784,12 @@
       <workItem from="1479213822937" duration="7000" />
       <workItem from="1479213840747" duration="1572000" />
       <workItem from="1479303341086" duration="1213000" />
-      <workItem from="1479474756023" duration="17084000" />
+      <workItem from="1479474756023" duration="18455000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19896000" />
+    <option name="totallyTimeSpent" value="21267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
@@ -882,7 +862,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1071,48 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/DataAcces.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Java Backend/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -1125,6 +1067,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="54" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#841#842#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/DataAcces.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="6" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/MongoConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="84" selection-start-line="19" selection-start-column="84" selection-end-line="19" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
