@@ -10,6 +10,7 @@ import java.util.Arrays;
 
 
 public class MongoConnection {
+
     @Bean
     public static DB Connect(){
         //Connect to mongo database and return entity

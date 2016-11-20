@@ -28,6 +28,7 @@ public class DataAcces{
 
             // Now connect to your databases
             database = mongoConnection.Connect();
+
             System.out.println("Connect to database successfully");
             DBCollection _entries=database.getCollection("entries");
             entries= JacksonDBCollection.wrap(_entries,Entry.class,String.class);
@@ -35,6 +36,7 @@ public class DataAcces{
         catch (Exception e){
             System.out.println(e.getMessage());
         }
+
     }
 
     public List<Entry> getEntries(){
