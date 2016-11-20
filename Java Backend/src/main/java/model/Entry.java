@@ -2,15 +2,22 @@ package model;
 /*
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.mongojack.DBRef
+import org.mongojack.ObjectId
+import com.fasterxml.jackson.annotate.JsonProperty
 
 
 /**
  * This is our mongodocument for translations
  */
 
+
+
 public class Entry {
 
+    //@JsonProperty("_id")
     private String id;
+
     private String word;
     private String translation;
     private String[] languages = new String[2];

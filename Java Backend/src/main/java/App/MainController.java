@@ -27,6 +27,7 @@ public class MainController {
         return db.getEntries();
     }
     
+    
     /**
      *
      * @return 

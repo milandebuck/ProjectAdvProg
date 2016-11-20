@@ -1,5 +1,5 @@
 package App;
-/*
+
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import db.MongoConnection;
@@ -12,7 +12,7 @@ import java.util.Random;
 /**
  * Created by Robbe De Geyndt on 16/11/2016.
  */
-/*
+
 public class GetWordsResponse {
 
     private String language;
@@ -31,8 +31,11 @@ public class GetWordsResponse {
             Random rnd = new Random();
             int j = rnd.nextInt((int)collection.count());
             DBObject doc = collection.find().limit(-1).skip(j).next();
+            /*
+            *getConverter causes builderrors
             Entry word = mongoConnection.Connect().getConverter().read(Entry.class, doc);
             words.add(word);
+            */
         }
     }
 
@@ -55,4 +58,4 @@ public class GetWordsResponse {
         return correct;
     }
 }
-*/
+
