@@ -15,6 +15,6 @@ public class LoginController {
         UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
         return "Login page";
     }
-    
+
 
 }

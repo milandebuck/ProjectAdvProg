@@ -2,14 +2,13 @@ package App.db;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *  Configuration of our mongodb
@@ -31,13 +30,15 @@ public class MongoConfig extends AbstractMongoConfiguration {
      **/
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient("127.0.0.1", 27017);
+        MongoCredential credential = MongoCredential.createCredential("user1", "TeamMartini", "Azerty123".toCharArray());
+        List<MongoCredential> listCred = new ArrayList<MongoCredential>();
+        listCred.add(credential);
+        return new MongoClient(new ServerAddress("127.0.0.1", 27017), listCred);
     }
 
     @Override
     protected String getMappingBasePackage() {
         return "model";
     }
-
 
 }
