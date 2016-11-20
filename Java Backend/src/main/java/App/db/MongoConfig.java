@@ -28,7 +28,6 @@ public class MongoConfig extends AbstractMongoConfiguration {
      *TODO Use credentials
      *MongoCredential credential = MongoCredential.createCredential(mongoUser, databaseName, mongoPass.toCharArray());
      *MongoClient mongoClient = new MongoClient(serverAddress,Arrays.asList(credential));
-     *Already have serveraddress
      **/
     @Override
     public Mongo mongo() throws Exception {
