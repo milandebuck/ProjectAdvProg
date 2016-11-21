@@ -33,7 +33,10 @@ public class MongoConfig extends AbstractMongoConfiguration {
         MongoCredential credential = MongoCredential.createCredential("user1", "TeamMartini", "Azerty123".toCharArray());
         List<MongoCredential> listCred = new ArrayList<MongoCredential>();
         listCred.add(credential);
+        //return new MongoClient(new ServerAddress("127.0.0.1", 27017));
+        //travis return
         return new MongoClient(new ServerAddress("127.0.0.1", 27017), listCred);
+
     }
 
     @Override

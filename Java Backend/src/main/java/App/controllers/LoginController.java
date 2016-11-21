@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginG(){
+    public String login(){
         UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
         return "Login page";
     }
