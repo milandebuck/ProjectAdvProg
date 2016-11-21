@@ -1,10 +1,7 @@
 package model;
-/*
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.mongojack.DBRef
-import org.mongojack.ObjectId
-import com.fasterxml.jackson.annotate.JsonProperty
 
 
 /**
@@ -12,10 +9,10 @@ import com.fasterxml.jackson.annotate.JsonProperty
  */
 
 
-
+@Document(collection = "entries")
 public class Entry {
 
-    //@JsonProperty("_id")
+    @Id
     private String id;
 
     private String word;
