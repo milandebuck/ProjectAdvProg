@@ -1,10 +1,8 @@
 package App;
 
 
-import main.java.db.DataAcces;
 import main.java.db.EntryRepository;
 import model.Entry;
-import main.java.db.DataAcces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @EnableMongoRepositories(basePackages="main.java.db")
 public class MainController {
-    private DataAcces db = new DataAcces();
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
@@ -31,10 +28,13 @@ public class MainController {
     private EntryRepository repository;
 
     @RequestMapping("/")
+    public String returnMsg() {
+
+        return "Dit is de API van TeamMartini voor ScrumProject AdvProg";
+    }
+
+    @RequestMapping("/Entries")
     public List<Entry> getEntries() {
-        String[] lang = {"eng","nl"};
-        repository.save(new Entry("test","test",lang));
-        repository.save(new Entry("test2","test2",lang));
         List<Entry>  entries = new ArrayList<Entry>();
         for (Entry entry : repository.findAll()) {
             entries.add(entry);
