@@ -1,7 +1,5 @@
 package App;
 
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import model.Entry;
 
 import java.util.ArrayList;
@@ -17,7 +15,6 @@ public class GetWordsResponse {
     private String language;
     private int amount;
     private List<Entry> words;
-    //private MongoConnection mongoConnection = new MongoConnection();
 
     public GetWordsResponse(String language, int amount) {
         this.language = language;
