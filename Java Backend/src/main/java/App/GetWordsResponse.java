@@ -8,32 +8,45 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Class for getting random wordlists from DB.
  * Created by Robbe De Geyndt on 16/11/2016.
  */
 
 public class GetWordsResponse {
 
     private EntryRepository repository;
-    private String language;
-    private int amount;
+    private String[] languages;
+    private int amount = 10;
     private List<Entry> words;
 
-    public GetWordsResponse(EntryRepository repository, String language, int amount) {
-        this.language = language;
-        this.amount = amount;
+    public GetWordsResponse(EntryRepository repository, String[] languages, String amount) {
+        this.languages = languages;
         this.words = new ArrayList<>();
 
+        try {
+            this.amount = Integer.parseInt(amount);
+        } catch (Exception e) {}
 
-        for (int i = 0; i < amount; i++) {
+        int querySize = repository.findByLanguages(languages).size();
+
+        for (int i = 0; i < this.amount; i++) {
             Random rnd = new Random();
-            int j = rnd.nextInt((int)repository.count());
-            Entry doc = (Entry)(repository.findAll().toArray()[j]);
-            words.add(doc);
+
+            if (querySize >= 0) {
+                int j = rnd.nextInt(repository.findAll().size());
+                Entry doc = (Entry)(repository.findAll().toArray()[j]);
+                words.add(doc);
+            }
+            else {
+                int j = rnd.nextInt(repository.findByLanguages(languages).size());
+                Entry doc = (Entry) (repository.findByLanguages(languages).toArray()[j]);
+                words.add(doc);
+            }
         }
     }
 
-    public String getLanguage() {
-        return language;
+    public String[] getLanguages() {
+        return languages;
     }
 
     public int getAmount() {

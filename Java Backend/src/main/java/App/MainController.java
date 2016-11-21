@@ -21,12 +21,20 @@ public class MainController {
     @Autowired
     private EntryRepository repository;
 
+    /**
+     * Returns message for diagnostics purposes.
+     * @return {string}
+     */
     @RequestMapping("/")
     public String returnMsg() {
 
         return "Dit is de API van TeamMartini voor ScrumProject AdvProg";
     }
 
+    /**
+     *  Returns List of all database entries.
+     * @return {List<Entry}
+     */
     @RequestMapping("/Entries")
     public List<Entry> getEntries() {
         List<Entry>  entries = new ArrayList<>();
@@ -40,12 +48,17 @@ public class MainController {
     
     /**
      * Returns List of set size with random words.
-     * @param {String} amount
+     * @param {string} amount
+     * @param {string} from - language
+     * @param {string} to - language
      * @return {List<Entry>}
      */
     @GetMapping("/exercise")
-    public List<Entry> exerciseForm(@RequestParam(value="amount") String amount) {
-        return new GetWordsResponse(repository, "xxx", Integer.parseInt(amount)).getWords();
+    public List<Entry> exerciseForm(
+            @RequestParam(value="amount", defaultValue="10") String amount,
+            @RequestParam(value="from", defaultValue="") String from,
+            @RequestParam(value="to", defaultValue="") String to) {
+        return new GetWordsResponse(repository, new String[] { from, to }, amount).getWords();
     }
     
     /**

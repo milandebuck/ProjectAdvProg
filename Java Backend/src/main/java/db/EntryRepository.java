@@ -17,5 +17,7 @@ public interface EntryRepository extends MongoRepository<Entry, String> {
     public Entry findByWord(String Word);
     @Bean
     public List<Entry> findByTranslation(String translation);
+    @Bean
+    public List<Entry> findByLanguages(String[] languages);
 
 }
