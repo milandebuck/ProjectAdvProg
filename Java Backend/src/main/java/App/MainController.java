@@ -29,7 +29,7 @@ public class MainController {
 
     @RequestMapping("/Entries")
     public List<Entry> getEntries() {
-        List<Entry>  entries = new ArrayList<Entry>();
+        List<Entry>  entries = new ArrayList<>();
         for (Entry entry : repository.findAll()) {
             entries.add(entry);
             System.out.println("entry found");
@@ -39,18 +39,19 @@ public class MainController {
 
     
     /**
-     *
-     * @return 
+     * Returns List of set size with random words.
+     * @param {String} amount
+     * @return {List<Entry>}
      */
-    //@GetMapping("/exercise")
-    //public List<Entry> exerciseForm(@RequestParam(value="amount") String amount) {
-    //   return new GetWordsResponse("xxx", Integer.parseInt(amount)).getWords();
-    //}
+    @GetMapping("/exercise")
+    public List<Entry> exerciseForm(@RequestParam(value="amount") String amount) {
+        return new GetWordsResponse(repository, "xxx", Integer.parseInt(amount)).getWords();
+    }
     
     /**
-     *
-     * @param entry
-     * @return
+     * Returns true if given {Entry} is correct.
+     * @param {Entry} entry
+     * @return {boolean}
      */
     @PostMapping("/exercise")
     public Boolean exerciseSubmit(@RequestBody Entry entry) throws ParseException {

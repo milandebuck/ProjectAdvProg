@@ -1,5 +1,6 @@
 package App;
 
+import db.EntryRepository;
 import model.Entry;
 
 import java.util.ArrayList;
@@ -12,26 +13,22 @@ import java.util.Random;
 
 public class GetWordsResponse {
 
+    private EntryRepository repository;
     private String language;
     private int amount;
     private List<Entry> words;
 
-    public GetWordsResponse(String language, int amount) {
+    public GetWordsResponse(EntryRepository repository, String language, int amount) {
         this.language = language;
         this.amount = amount;
-        this.words = new ArrayList<Entry>();
+        this.words = new ArrayList<>();
 
-        //DBCollection collection = mongoConnection.Connect().getCollection("entries");
 
         for (int i = 0; i < amount; i++) {
             Random rnd = new Random();
-            //int j = rnd.nextInt((int)collection.count());
-            //DBObject doc = collection.find().limit(-1).skip(j).next();
-            /*
-            *getConverter causes builderrors
-            Entry word = mongoConnection.Connect().getConverter().read(Entry.class, doc);
-            words.add(word);
-            */
+            int j = rnd.nextInt((int)repository.count());
+            Entry doc = (Entry)(repository.findAll().toArray()[j]);
+            words.add(doc);
         }
     }
 
@@ -45,13 +42,6 @@ public class GetWordsResponse {
 
     public List<Entry> getWords() {
         return words;
-    }
-
-    public boolean checkAnswer(int passedId, String answer){
-        Boolean correct = true;
-        //DBCollection collection = MongoConnection.Connect().getCollection("entries");
-        //collection.find();
-        return correct;
     }
 }
 
