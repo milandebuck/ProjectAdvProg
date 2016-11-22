@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- *  Custom User class, TODO still pondering whether/how to use it
+ *  Custom Spring User class, TODO still pondering whether/how to use it
  *
  **/
 public class UserUD implements UserDetails {

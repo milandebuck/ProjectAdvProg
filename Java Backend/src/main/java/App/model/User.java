@@ -1,5 +1,6 @@
 package App.model;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -13,9 +14,20 @@ public class User {
     private String username;
     private String password;
 
+    @Transient
+    private String passwordConfirm;
+
     public User(String username, String password){
         this.username = username;
         this.password = password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
     public String getId() {

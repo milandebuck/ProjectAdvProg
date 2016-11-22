@@ -16,5 +16,7 @@ public class LoginController {
         return "Login page";
     }
 
+    //Login post is provided by Spring.
+
 
 }
