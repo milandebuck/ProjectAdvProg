@@ -5,6 +5,10 @@ import model.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.expression.ParseException;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -69,5 +73,24 @@ public class MainController {
     @PostMapping("/exercise")
     public Boolean exerciseSubmit(@RequestBody Entry entry) throws ParseException {
         return repository.findByWord(entry.getWord()).getTranslation().equals(entry.getTranslation());
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(){
+        //UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
+        return "Login page";
+    }
+
+//Login post is provided by Spring.
+
+    @RequestMapping(value="/amIloggedin", method = RequestMethod.GET)
+    public String printUser() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        if (name != "anonymousUser") return name;
+        return "not logged in";
+
     }
 }
