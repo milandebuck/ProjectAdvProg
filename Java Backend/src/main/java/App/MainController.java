@@ -37,7 +37,7 @@ public class MainController {
      */
     @RequestMapping("/Entries")
     public List<Entry> getEntries() {
-        List<Entry>  entries = new ArrayList<>();
+        List<Entry>  entries = new ArrayList<Entry>();  
         for (Entry entry : repository.findAll()) {
             entries.add(entry);
             System.out.println("entry found");
@@ -53,7 +53,7 @@ public class MainController {
      * @param {string} to - language
      * @return {List<Entry>}
      */
-    @GetMapping("/exercise")
+    @GetMapping("/Exercise")
     public List<Entry> exerciseForm(
             @RequestParam(value="amount", defaultValue="10") String amount,
             @RequestParam(value="from", defaultValue="") String from,
@@ -66,7 +66,7 @@ public class MainController {
      * @param {Entry} entry
      * @return {boolean}
      */
-    @PostMapping("/exercise")
+    @PostMapping("/Exercise")
     public Boolean exerciseSubmit(@RequestBody Entry entry) throws ParseException {
         return repository.findByWord(entry.getWord()).getTranslation().equals(entry.getTranslation());
     }
