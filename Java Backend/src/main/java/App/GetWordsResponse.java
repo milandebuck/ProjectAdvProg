@@ -1,7 +1,6 @@
 package App;
 
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
+import db.EntryRepository;
 import model.Entry;
 
 import java.util.ArrayList;
@@ -9,37 +8,45 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Class for getting random wordlists from DB.
  * Created by Robbe De Geyndt on 16/11/2016.
  */
 
 public class GetWordsResponse {
 
-    private String language;
-    private int amount;
+    private EntryRepository repository;
+    private String[] languages;
+    private int amount = 10;
     private List<Entry> words;
-    //private MongoConnection mongoConnection = new MongoConnection();
 
-    public GetWordsResponse(String language, int amount) {
-        this.language = language;
-        this.amount = amount;
-        this.words = new ArrayList<Entry>();
+    public GetWordsResponse(EntryRepository repository, String[] languages, String amount) {
+        this.languages = languages;
+        this.words = new ArrayList<>();
 
-        //DBCollection collection = mongoConnection.Connect().getCollection("entries");
+        try {
+            this.amount = Integer.parseInt(amount);
+        } catch (Exception e) {}
 
-        for (int i = 0; i < amount; i++) {
+        int querySize = repository.findByLanguages(languages).size();
+
+        for (int i = 0; i < this.amount; i++) {
             Random rnd = new Random();
-            //int j = rnd.nextInt((int)collection.count());
-            //DBObject doc = collection.find().limit(-1).skip(j).next();
-            /*
-            *getConverter causes builderrors
-            Entry word = mongoConnection.Connect().getConverter().read(Entry.class, doc);
-            words.add(word);
-            */
+
+            if (querySize >= 0) {
+                int j = rnd.nextInt(repository.findAll().size());
+                Entry doc = (Entry)(repository.findAll().toArray()[j]);
+                words.add(doc);
+            }
+            else {
+                int j = rnd.nextInt(repository.findByLanguages(languages).size());
+                Entry doc = (Entry) (repository.findByLanguages(languages).toArray()[j]);
+                words.add(doc);
+            }
         }
     }
 
-    public String getLanguage() {
-        return language;
+    public String[] getLanguages() {
+        return languages;
     }
 
     public int getAmount() {
@@ -48,13 +55,6 @@ public class GetWordsResponse {
 
     public List<Entry> getWords() {
         return words;
-    }
-
-    public boolean checkAnswer(int passedId, String answer){
-        Boolean correct = true;
-        //DBCollection collection = MongoConnection.Connect().getCollection("entries");
-        //collection.find();
-        return correct;
     }
 }
 

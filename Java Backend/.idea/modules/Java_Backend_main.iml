@@ -10,7 +10,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.4.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-data-mongodb:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.data:spring-data-mongodb:1.9.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.mongodb:mongodb-driver:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.mongojack:mongojack:2.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-validator:5.2.4.Final" level="project" />
@@ -26,6 +29,11 @@
     <orderEntry type="library" name="Gradle: org.mongodb:mongo-java-driver:3.2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.21" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.21" level="project" />
+    <orderEntry type="library" name="Gradle: org.mongodb:mongodb-driver-core:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.mongodb:bson:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: de.undercouch:bson4jackson:2.7.0" level="project" />
+    <orderEntry type="library" name="Gradle: javax.persistence:persistence-api:1.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.4.2.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.4.2.RELEASE" level="project" />

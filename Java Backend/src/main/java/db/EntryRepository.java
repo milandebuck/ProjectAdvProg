@@ -1,15 +1,15 @@
-package main.java.db;
+package db;
 
 /**
  * Created by milan on 20.11.16.
  */
 
 
-import java.util.List;
 import model.Entry;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.List;
 
 public interface EntryRepository extends MongoRepository<Entry, String> {
 
@@ -17,5 +17,7 @@ public interface EntryRepository extends MongoRepository<Entry, String> {
     public Entry findByWord(String Word);
     @Bean
     public List<Entry> findByTranslation(String translation);
+    @Bean
+    public List<Entry> findByLanguages(String[] languages);
 
 }
