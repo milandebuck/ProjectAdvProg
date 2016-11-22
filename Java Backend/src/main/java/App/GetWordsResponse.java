@@ -56,5 +56,14 @@ public class GetWordsResponse {
     public List<Entry> getWords() {
         return words;
     }
+
+    public boolean checkResponse(EntryRepository repository, int id, String answer){
+        boolean correct = false;
+        Entry entry = repository.findById(id);
+        if(answer == entry.getTranslation()){
+            correct = true;
+        }
+        return correct;
+    }
 }
 
