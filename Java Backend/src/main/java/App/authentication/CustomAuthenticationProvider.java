@@ -15,8 +15,9 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 /**
- * We want to use our own authenticationprovider cause we'll be comparing our own set of our passwords in our database
- * with the ones clients trying to login provide us.
+ * We want to use our own authenticationprovider cause we'll be comparing our database of passwords
+ * with the input of the clients.
+ *
  */
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -33,13 +34,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String password = (String) authentication.getCredentials();
 
         User user = userService.loadUserByUsername(username);
-
-        if (user == null) {
-            throw new BadCredentialsException("Username not found.");
-        }
-
-        if (!encoder.matches(password, user.getPassword())) {
-            throw new BadCredentialsException("Wrong password.");
+        if (user == null || !encoder.matches(password, user.getPassword()) ) {
+            throw new BadCredentialsException("Bad username or password!");
         }
 
         Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
