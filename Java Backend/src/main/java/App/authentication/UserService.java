@@ -34,8 +34,11 @@ public class UserService implements UserDetailsService {
         //TODO still wondering whether to use a custom query for this
         //TODO IMPORTANT userMODEL = null when nothing is found, this will give a nullpointerxception!!!!
         //We're not using roles yet so roles is empty
-        User springUser = new User(userModel.getUsername(), userModel.getPassword(), new ArrayList<GrantedAuthority>());
-
-        return springUser;
+        User springUser;
+        if (userModel != null) {
+            springUser = new User(userModel.getUsername(), userModel.getPassword(), new ArrayList<GrantedAuthority>());
+            return springUser;
+        }
+        return null;
     }
 }
