@@ -12,9 +12,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Class for checking list of answers.
+ * Returns earned score, maximum score and correct solutions for wrong answers.
  * Created by Robbe De Geyndt on 26/11/2016.
  */
+
 public class CheckResponse {
+
     private EntryRepository repository;
     private Wrapper input;
     private List<Object> entries;
@@ -24,6 +28,7 @@ public class CheckResponse {
     private Wrapper result;
 
     public CheckResponse(EntryRepository repository, String object) {
+        this.repository = repository;
         this.result = new Wrapper();
         this.answer = new HashMap<String, Object>();
         this.faulty = new ArrayList<Entry>();
@@ -35,8 +40,8 @@ public class CheckResponse {
             input = mapper.readValue(object, Wrapper.class);
 
             //Check if valid
-            if (input.getValid() == false) {
-                result.setMsg("Incorrect input.");
+            if (!input.getValid()) {
+                result.setMsg("Incorrect input");
                 break invalid;
             }
             

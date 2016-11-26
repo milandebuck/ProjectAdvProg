@@ -24,6 +24,7 @@ public class GetWordsResponse {
     public GetWordsResponse() {}
 
     public GetWordsResponse(EntryRepository repository, String[] languages, String amount) {
+        this.repository = repository;
         this.languages = languages;
         this.words = new ArrayList<>();
         this.listOut = new Wrapper();
@@ -59,27 +60,6 @@ public class GetWordsResponse {
 
     }
 
-    public String[] getLanguages() {
-        return languages;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public List<Entry> getWords() {
-        return words;
-    }
-
     public Wrapper listOut() { return listOut; }
-
-    public boolean checkResponse(EntryRepository repository, String word, String answer){
-        boolean correct = false;
-        Entry entry = repository.findByWord(word);
-        if(answer == entry.getTranslation()){
-            correct = true;
-        }
-        return correct;
-    }
 }
 
