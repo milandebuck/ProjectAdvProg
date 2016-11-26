@@ -19,6 +19,8 @@ public class GetWordsResponse {
     private int amount = 10;
     private List<Entry> words;
 
+    public GetWordsResponse() {}
+
     public GetWordsResponse(EntryRepository repository, String[] languages, String amount) {
         this.languages = languages;
         this.words = new ArrayList<>();
@@ -57,9 +59,9 @@ public class GetWordsResponse {
         return words;
     }
 
-    public boolean checkResponse(EntryRepository repository, int id, String answer){
+    public boolean checkResponse(EntryRepository repository, String word, String answer){
         boolean correct = false;
-        Entry entry = repository.findById(id);
+        Entry entry = repository.findByWord(word);
         if(answer == entry.getTranslation()){
             correct = true;
         }
