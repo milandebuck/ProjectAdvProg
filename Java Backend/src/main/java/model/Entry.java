@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 
 
+@JsonSerialize
 @Document(collection = "entries")
 public class Entry {
 
