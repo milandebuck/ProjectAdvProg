@@ -1,5 +1,23 @@
 package App.logic;
 
+/*import App.Application;
+import config.MongoConfig;
+import db.EntryRepository;
+import junit.framework.TestCase;
+import model.Entry;
+import model.Wrapper;
+import org.json.JSONObject;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;*/
+
 /**
  * Test for word checker.
  * Created by Robbe De Geyndt on 26/11/2016.
@@ -27,8 +45,9 @@ public class CheckResponseTest extends TestCase {
     public void testRejectFaultyInput() {
         setup();
 
-        Wrapper wrapper1 = new Wrapper(entries1);
-        wrapper1.setValid(false);
+        Wrapper wrapper1 = new Wrapper();
+        wrapper1.setData(entries1);
+        wrapper1.setSucces(false);
 
         CheckResponse cr1 = new CheckResponse(repository, new JSONObject(wrapper1).toString());
 
@@ -39,11 +58,13 @@ public class CheckResponseTest extends TestCase {
     public void testCalculateScore() {
         setup();
 
-        Wrapper wrapper2 = new Wrapper(entries1);
+        Wrapper wrapper2 = new Wrapper();
+        wrapper2.setData(entries1);
+        wrapper2.setSucces(true);
 
         CheckResponse cr2 = new CheckResponse(repository, new JSONObject(wrapper2).toString());
 
-        Map<String,String> obj = (HashMap<String,String>)cr2.getResult().getObject();
+        Map<String,String> obj = (HashMap<String,String>)cr2.getResult().getData();
 
         assertEquals(2, obj.get("score"));
         assertEquals(4, obj.get("max"));
@@ -53,10 +74,14 @@ public class CheckResponseTest extends TestCase {
     public void testFeedback() {
         setup();
 
-        Wrapper wrapper3 = new Wrapper(entries1);
+        Wrapper wrapper3 = new Wrapper();
+        wrapper3.setData(entries1);
+        wrapper3.setSucces(true);
+
+
         CheckResponse cr3 = new CheckResponse(repository, new JSONObject(wrapper3).toString());
 
-        Map obj = (HashMap)cr3.getResult().getObject();
+        Map obj = (HashMap)cr3.getResult().getData();
 
         List<Entry> faulty = (List<Entry>)obj.get("faulty");
 
