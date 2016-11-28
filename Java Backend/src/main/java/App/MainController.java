@@ -1,6 +1,7 @@
 package App;
 
 import db.EntryRepository;
+import main.java.model.Wrapper;
 import model.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -40,13 +41,13 @@ public class MainController {
      * @return {List<Entry}
      */
     @RequestMapping("/Entries")
-    public List<Entry> getEntries() {
+    public Wrapper<List<Entry>> getEntries() {
         List<Entry>  entries = new ArrayList<Entry>();  
         for (Entry entry : repository.findAll()) {
             entries.add(entry);
             System.out.println("entry found");
         }
-        return entries;
+        return new Wrapper<List<model.Entry>>(true,"get data succeeded",entries);
     }
 
     

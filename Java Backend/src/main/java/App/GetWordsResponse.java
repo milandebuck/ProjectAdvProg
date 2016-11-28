@@ -21,7 +21,7 @@ public class GetWordsResponse {
 
     public GetWordsResponse(EntryRepository repository, String[] languages, String amount) {
         this.languages = languages;
-        this.words = new ArrayList<>();
+        this.words = new ArrayList<Entry>();
 
         try {
             this.amount = Integer.parseInt(amount);
