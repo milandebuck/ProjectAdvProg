@@ -1,6 +1,6 @@
 # ProjectAdvProg2016-2017 Team Martini
 ### Description
-App to pracctice translations
+App to practice translations
 
 ### how to use
 #### *UNIX
@@ -15,6 +15,16 @@ $ java -jar build/libs/app.jar
 $ cd Java Backend/
 $ gradlew build
 $ java -jar build/libs/app.jar
+```
+
+#### Angular frontend
+
+make sure you have ```sh npm ``` installed
+
+```sh
+$ cd AngularFrontend/
+$ npm install
+$ npm run start
 ```
 
 ### Collaborators
