@@ -1,1 +1,31 @@
-<h1>{{ title }}</h1>
+<style>
+    h1{
+        font-size: 3rem;
+        margin: 0;
+        padding:  0.3rem 0 0 0.5rem;
+        color: #FFC107;
+    }
+    .header, .footer{
+        font-size: 3rem;
+        width: 100%;
+        min-height: 3.2rem;
+        background-color: #607D8B;
+    }
+    .wrapper{
+        min-height: 20rem;
+        width:64rem;
+        margin: 0 auto;
+    }
+</style>
+<header class="header">
+    <h1>Logo</h1>
+    <nav>
+
+    </nav>
+</header>
+<div class="wrapper">
+    <router-outlet></router-outlet>
+</div>
+<footer class="footer">
+
+</footer>
