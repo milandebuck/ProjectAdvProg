@@ -1,0 +1,91 @@
+/*--- Common tools --- */
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+img {
+    display: block;
+    margin: 0.5rem;
+}
+/*--- Reset ---*/
+html, body, section, form, div, dl, head, p{
+    margin : 0;
+    padding : 0;
+}
+
+ul {
+    list-style: none;
+}
+
+fieldset{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+input, select{
+    text-align: center;
+    font-size: 100%
+}
+/*--- Common --- */
+h1{
+    display: block;
+    font-size: 3rem;
+    margin: 0;
+    padding:  0.3rem 0 0 0.5rem;
+    color: #FFC107;
+    float: left;
+}
+ul{
+    float: right;
+}
+li{
+    display: inline-block;
+    float: left;
+}
+nav{
+    width: 60%;
+    display: block;
+}
+.header, .footer{
+    font-size: 3rem;
+    width: 100%;
+    min-height: 3.2rem;
+    background-color: #607D8B;
+}
+.wrapper{
+    min-height: 20rem;
+    width:64rem;
+    margin: 0 auto;
+}
+
+/*--- Navigation bar ---*/
+.navbar{
+    display: block;
+    float: left;
+}
+.navbar li{
+    margin-left:1rem;
+}
+
+/*--- Login bar ---*/
+.login{
+    display: block;
+    float: left;
+    width: 25%;
+}
+.loginElement{
+    display: block;
+    float: left;
+}
+.login img{
+    width: 10rem;
+    height:10rem;
+}
+.login p{
+    font-size:1.2rem;
+}
