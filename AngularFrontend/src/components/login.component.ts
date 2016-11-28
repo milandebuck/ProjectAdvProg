@@ -2,7 +2,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+//services
 import { UserService } from './../services/user.service';
+
+//model
+import { User } from './../models/User';
 
 @Component({
     selector: 'login',
