@@ -49,3 +49,6 @@ Contact GitHub API Training Shop Blog About
 # Jar file and tmp map
 Java Backend/build/libs
 Java Backend/build/tmp
+
+# Ignore node dependencies
+AngularFrontend/node_modules
