@@ -37,5 +37,6 @@ dependencies {
     compile('org.mongojack:mongojack:2.6.1')
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.codehaus.groovy:groovy-all:2.4.7")
+    compile 'io.jsonwebtoken:jjwt:0.6.0'
 }
 

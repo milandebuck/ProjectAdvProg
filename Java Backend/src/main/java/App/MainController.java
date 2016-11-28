@@ -1,5 +1,9 @@
 package App;
 
+import App.authentication.JwtAuthenticationRequest;
+import App.authentication.JwtAuthenticationResponse;
+import App.authentication.JwtTokenUtil;
+import App.authentication.UserService;
 import App.logic.CheckResponse;
 import App.logic.GetWordsResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,8 +13,14 @@ import model.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.expression.ParseException;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,6 +32,16 @@ import java.util.concurrent.atomic.AtomicLong;
 @EnableMongoRepositories(basePackages="db")
 public class MainController {
     private final AtomicLong counter = new AtomicLong();
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private UserService userDetailsService;
+
 
     @Autowired
     private EntryRepository repository;
@@ -80,6 +100,26 @@ public class MainController {
     public String login(){
         //UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
         return "Login page";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
+        // Perform the security
+        final Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        authenticationRequest.getUsername(),
+                        authenticationRequest.getPassword()
+                )
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        // Reload password post-security so we can generate token
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        System.out.println("inloginont");
+
+        // Return the token
+        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
 //Login post is provided by Spring.

@@ -3,15 +3,16 @@ package App.authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import static com.mongodb.client.model.Filters.and;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * Created by micha on 11/19/2016.
@@ -22,16 +23,26 @@ import static com.mongodb.client.model.Filters.and;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private RESTAuthenticationEntryPoint authenticationEntryPoint;
-    @Autowired
-    private RESTAuthenticationFailureHandler authenticationFailureHandler;
-    @Autowired
-    private RESTAuthenticationSuccessHandler authenticationSuccessHandler;
+    private JwtAuthenticationEntryPoint unauthorizedHandler;
 
-    //Not sure whether to put this here TODO
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public JwtAuthenticationTokenFilter authenticationTokenFilterBean() throws Exception {
+        return new JwtAuthenticationTokenFilter();
+    }
+
+    @Autowired
+    private UserService userDetailsService;
+
+    @Autowired
+    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder
+                .userDetailsService(this.userDetailsService)
+                .passwordEncoder(passwordEncoder());
     }
 
     //Used to allow users to use the resourcefolder which should contain CSS, images...
@@ -39,31 +50,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**"); //
+                .antMatchers("/resources/**");
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /**
-         * At the moment you need to login for every page except the homepage and of course the login page
-         * Every other page will reroute to the loginpage
-         **/
-        http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+        // disable caching
+        http.headers().cacheControl();
+
+        http.csrf().disable() // disable csrf for our requests.
                 .authorizeRequests()
-                .antMatchers("/", "/amIloggedin").permitAll()
-                .anyRequest().authenticated()
-                .and().
-        exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and().
-        formLogin().successHandler(authenticationSuccessHandler).and().
-        formLogin().failureHandler(authenticationFailureHandler)
-                .and()
-                .logout()
-                .permitAll()
-                .and()
-                .csrf().disable();
+                .antMatchers("/", "/login").permitAll()
+                .anyRequest().authenticated();
+
+        //If user is not authenticated / has no authorization, use the exceptionHandling.
+        http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            //We want the api to be stateless, therefore we will not use sessions.
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and();
+        // Custom JWT based security filter
+        http
+                .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+
+
     }
+
+
 
 
 
