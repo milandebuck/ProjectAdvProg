@@ -53,3 +53,6 @@ Java Backend/build/tmp
 # Ignore node dependencies
 AngularFrontend/node_modules
 AngularFrontend/.idea
+
+.idea
+.idea/workspace.xml
