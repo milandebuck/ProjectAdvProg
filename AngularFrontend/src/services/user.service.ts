@@ -10,19 +10,20 @@ export class UserService {
         this.loggedIn = !!localStorage.getItem('auth_token');
     }
 
-    login(email, password) {
+    login(username, password) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         return this.http
-            .post('/login', JSON.stringify({email, password}), {headers})
+            .post('http://teammartini.heroku.com/login', JSON.stringify({username, password}), {headers})
             .map(res => res.json())
             .map((res) => {
-                if (res.success) {
-                    localStorage.setItem('auth_token', res.auth_token);
+                if (!res.status) {
+                    localStorage.setItem('auth_token', res.token);
                     this.loggedIn = true;
+                    return true
                 }
-                return res.success;
+                return false;
             });
     }
 

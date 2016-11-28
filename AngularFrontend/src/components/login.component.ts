@@ -19,7 +19,7 @@ export class LoginComponent {
     onSubmit(email, password) {
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
-                this.router.navigate(['']);
+                this.router.navigate(['Exercise']);
             }
         });
     }
