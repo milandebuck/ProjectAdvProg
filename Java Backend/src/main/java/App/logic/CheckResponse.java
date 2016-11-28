@@ -40,13 +40,13 @@ public class CheckResponse {
             input = mapper.readValue(object, Wrapper.class);
 
             //Check if valid
-            if (!input.getValid()) {
+            if (!input.getSucces()) {
                 result.setMsg("Incorrect input");
                 break invalid;
             }
             
             //Get given enties
-            entries = (List<Object>)input.getObject();
+            entries = (List<Object>)input.getData();
 
             //check entries
             for (Object value : entries) {
@@ -66,11 +66,11 @@ public class CheckResponse {
             answer.put("faulty", faulty);
 
             //put in wrapper
-            result.setName(answer.getClass().getSimpleName());
-            result.setObject(answer);
+            result.setData(answer);
+            result.setSucces(true);
 
         } catch (Exception e) {
-            result.setValid(false);
+            result.setSucces(false);
             result.setMsg(e.getMessage());
         }
     }

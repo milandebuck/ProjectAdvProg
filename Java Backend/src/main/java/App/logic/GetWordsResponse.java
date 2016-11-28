@@ -28,7 +28,6 @@ public class GetWordsResponse {
         this.languages = languages;
         this.words = new ArrayList<>();
         this.listOut = new Wrapper();
-        this.listOut.setName(words.getClass().getSimpleName());
 
         try {
             try {
@@ -51,10 +50,11 @@ public class GetWordsResponse {
                     Entry doc = (Entry) (repository.findByLanguages(languages).toArray()[j]);
                     words.add(doc);
                 }
-                listOut().setObject(words);
+                listOut().setData(words);
+                listOut().setSucces(true);
             }
         } catch (Exception e) {
-            listOut.setValid(false);
+            listOut.setSucces(false);
             listOut.setMsg(e.getMessage());
         }
 

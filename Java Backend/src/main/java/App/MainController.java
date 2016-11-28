@@ -8,7 +8,6 @@ import App.logic.CheckResponse;
 import App.logic.GetWordsResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import db.EntryRepository;
-import main.java.model.Wrapper;
 import model.Entry;
 import model.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
