@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule }   from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import {
     AppComponent,
@@ -22,6 +23,7 @@ import { LoggedInGuard } from './services/logged-in.guard';
     imports: [
         BrowserModule,
         HttpModule,
+        FormsModule,
         RouterModule.forRoot(routes)
     ],
     providers: [ UserService,LoggedInGuard ]
