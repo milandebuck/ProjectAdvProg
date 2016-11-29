@@ -2,12 +2,61 @@
 .contentWrapper{
     display: block;
     margin: auto;
-    width: 60%;
+    width: 30%;
 }
+
+/* Title */
 h2{
     display: block;
     color: #607D8B;
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
+}
+
+/*Input fields*/
+#username, #password{
+    color: #000;
+    border: none;
+    border-left: solid;
+    border-width: thick;
+    border-left-color: #FFC107;
+    background-color: #CFD8DC;
+    width: 100%;
+    height: 3rem;
+    margin-right: 150rem;
+    margin-bottom: 1rem;
+    padding: 0rem;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #000;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #000;
+    opacity:  1;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #000;
+    opacity:  1;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #000;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+
+.submitBtn{
+    border: none;
+    color: #fff;
+    margin-top: 1.25rem;
+    line-height: normal;
+    background-color: #FFC107;
+    width: 100%;
+    height:3rem;
 }
