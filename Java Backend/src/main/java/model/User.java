@@ -3,23 +3,51 @@ package model;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
 /**
  * Mongodocument for a user
  */
 
-@Document
+@Document(collection = "users")
 public class User {
 
     private String id;
+    @NotNull
     private String username;
+    @NotNull
     private String password;
-
     @Transient
     private String passwordConfirm;
+    private boolean teacher;
 
-    public User(String username, String password){
+
+    public boolean isTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(boolean teacher) {
+        this.teacher = teacher;
+    }
+
+
+    public User(){
+        this.username = "";
+        this.password = "";
+        this.teacher = false;
+    }
+
+    public User (String username, String password) {
         this.username = username;
         this.password = password;
+        this.teacher = false;
+    }
+
+    public User(String username, String password, boolean teacher){
+        this.username = username;
+        this.password = password;
+        this.teacher = teacher;
     }
 
     public String getPasswordConfirm() {

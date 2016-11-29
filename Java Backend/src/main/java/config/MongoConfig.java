@@ -4,6 +4,7 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -24,6 +25,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
     }
 
     @Override
+    @Bean
     public Mongo mongo() throws Exception {
         List<MongoCredential> credentials = new ArrayList<MongoCredential>();
         credentials.add(
