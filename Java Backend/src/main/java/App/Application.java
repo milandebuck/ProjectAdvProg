@@ -1,12 +1,15 @@
 package App;
 
+import config.MongoConfig;
 import db.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import sun.tools.jar.CommandLine;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -21,10 +24,12 @@ public class Application implements CommandLineRunner {
     //This code is just to test atm
     @Override
     public void run(String... args) throws Exception {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
 
         BCryptPasswordEncoder passwordencoder = new BCryptPasswordEncoder();
         model.User user1 = new model.User("supertest", passwordencoder.encode("Azerty123") );
-        userRepo.save(user1);
+        mongoOperations.save(user1, "users");
         //System.out.println((user.getPassword()));
 
 

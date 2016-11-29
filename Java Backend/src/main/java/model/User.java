@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Mongodocument for a user
  */
 
-@Document
+@Document(collection = "users")
 public class User {
 
     private String id;
