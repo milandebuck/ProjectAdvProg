@@ -21,8 +21,17 @@ public class GetWordsResponse {
     private List<Entry> words;
     private Wrapper listOut;
 
+    /**
+     * Empty constructor
+     */
     public GetWordsResponse() {}
 
+    /**
+     * Constructor for making random word list.
+     * @param repository Mongo repository for Entry objects.
+     * @param languages Array of languages: to & from.
+     * @param amount Size of list.
+     */
     public GetWordsResponse(EntryRepository repository, String[] languages, String amount) {
         this.repository = repository;
         this.languages = languages;
@@ -41,6 +50,7 @@ public class GetWordsResponse {
             for (int i = 0; i < this.amount; i++) {
                 Random rnd = new Random();
 
+                //If languages not specified, use all.
                 if (querySize >= 0) {
                     int j = rnd.nextInt(repository.findAll().size());
                     Entry doc = (Entry) (repository.findAll().toArray()[j]);
@@ -50,16 +60,24 @@ public class GetWordsResponse {
                     Entry doc = (Entry) (repository.findByLanguages(languages).toArray()[j]);
                     words.add(doc);
                 }
+
+                //put in wrapper
                 listOut().setData(words);
                 listOut().setSucces(true);
             }
         } catch (Exception e) {
+
+            //Give message of failure.
             listOut.setSucces(false);
             listOut.setMsg(e.getMessage());
         }
 
     }
 
+    /**
+     * Returns Wrapper object with response.
+     * @return Wrapper
+     */
     public Wrapper listOut() { return listOut; }
 }
 

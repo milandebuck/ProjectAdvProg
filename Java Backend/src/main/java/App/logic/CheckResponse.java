@@ -27,6 +27,11 @@ public class CheckResponse {
     private List<Entry> faulty;
     private Wrapper result;
 
+    /**
+     * Constructor, check if users answers are correct and gives back score.
+     * @param repository Mongo repository for entries
+     * @param object String containing request of user.
+     */
     public CheckResponse(EntryRepository repository, String object) {
         this.repository = repository;
         this.result = new Wrapper();
@@ -70,11 +75,16 @@ public class CheckResponse {
             result.setSucces(true);
 
         } catch (Exception e) {
+            //Give message on failure
             result.setSucces(false);
             result.setMsg(e.getMessage());
         }
     }
 
+    /**
+     * Returns Wrapper object with score & corrections for faulty answers.
+     * @return Wrapper
+     */
     public Wrapper getResult() {
         return result;
     }
