@@ -11,14 +11,16 @@ export class UserService {
     }
 
     login(username, password) {
+        console.log("attempting login");
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
         return this.http
-            .post('http://teammartini.heroku.com/login', JSON.stringify({username, password}), {headers})
+            .post('http://localhost:8080/login', JSON.stringify({username, password}), {headers})
             .map(res => res.json())
             .map((res) => {
                 if (!res.status) {
+                    console.log("login succesfull");
                     localStorage.setItem('auth_token', res.token);
                     this.loggedIn = true;
                     return true

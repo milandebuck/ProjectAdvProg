@@ -13,7 +13,7 @@ export class EntryService{
         headers.append('Content-Type', 'application/json');
         headers.append('authorization',localStorage.getItem('auth-token'));
         return this.http
-            .get('http://teammartini.heroku.com/Exercise', {headers})
+            .get('http://localhost:8080/Exercise', {headers})
             .map(this.extractData)
             .catch(this.handleError);
     }

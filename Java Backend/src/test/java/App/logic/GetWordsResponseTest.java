@@ -28,9 +28,9 @@ public class GetWordsResponseTest extends TestCase {
 
         GetWordsResponse gwr = new GetWordsResponse(repository, new String[] {"English", "Dutch"}, "5");
 
-        Wrapper response = gwr.listOut();
+        Wrapper<List<Entry>> response = gwr.listOut();
 
-        List<Entry> randomList = (List<Entry>)response.getData();
+        List<Entry> randomList = response.getData();
 
         assertTrue(response.getSucces());
         assertEquals(5,randomList.size());
