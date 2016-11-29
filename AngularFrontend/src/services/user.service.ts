@@ -11,6 +11,7 @@ export class UserService {
     }
 
     login(username, password) {
+        console.log("attempting login");
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
 
@@ -19,6 +20,7 @@ export class UserService {
             .map(res => res.json())
             .map((res) => {
                 if (!res.status) {
+                    console.log("login succesfull");
                     localStorage.setItem('auth_token', res.token);
                     this.loggedIn = true;
                     return true
