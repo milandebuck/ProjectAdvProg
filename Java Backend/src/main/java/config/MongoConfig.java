@@ -27,7 +27,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
     public Mongo mongo() throws Exception {
         List<MongoCredential> credentials = new ArrayList<MongoCredential>();
         credentials.add(
-                MongoCredential.createMongoCRCredential(
+                MongoCredential.createScramSha1Credential(
                         "TeamMartini",
                         "teammartini",
                         "Azerty123".toCharArray()
