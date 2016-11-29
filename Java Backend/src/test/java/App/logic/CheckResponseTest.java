@@ -27,7 +27,9 @@ public class CheckResponseTest extends TestCase {
     private EntryRepository repository;
     private List<Entry> entries1 = new ArrayList<Entry>();
 
-
+    /**
+     * Puts testdata in Array for testing.
+     */
     private void setup() {
         //Correct entries
         entries1.add(new Entry("(aero)plane", "het vliegtuig", new String[]{"English", "Dutch"}));
@@ -38,6 +40,9 @@ public class CheckResponseTest extends TestCase {
         entries1.add(new Entry("(bride)groom", "wrong answer", new String[]{"English", "Dutch"}));
     }
 
+    /**
+     * Check if API rejects faulty input.
+     */
     @Test
     public void testRejectFaultyInput() {
         setup();
@@ -51,6 +56,9 @@ public class CheckResponseTest extends TestCase {
         assertEquals("Incorrect input", cr1.getResult().getMsg());
     }
 
+    /**
+     * Test if score was correctly calculated.
+     */
     @Test
     public void testCalculateScore() {
         setup();
@@ -67,6 +75,9 @@ public class CheckResponseTest extends TestCase {
         assertEquals(4, obj.get("max"));
     }
 
+    /**
+     * Test if the corrections are returned.
+     */
     @Test
     public void testFeedback() {
         setup();
