@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="376cfbb1-2aca-44d1-81d1-fe6fa1dceacf" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/AngularFrontend/npm-debug.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/app.module.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/app.module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/app.module.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/app.module.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/app.routes.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/app.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/app.routes.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/app.routes.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/login.component.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/login.component.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/login.component.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/login.component.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/login.component.ts" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/login.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/templates/app.component.html" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/templates/app.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/index.html" afterPath="$PROJECT_DIR$/AngularFrontend/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/models/Entry.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/models/Entry.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/models/Entry.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/models/Entry.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/services/entry.service.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/services/entry.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/services/entry.service.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/services/entry.service.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js.map" />
     </list>
@@ -73,11 +63,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.component.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.component.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5224719">
-              <caret line="67" column="23" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+            <state vertical-scroll-proportion="-18.23077">
+              <caret line="56" column="30" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/login.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -108,6 +118,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="157" column="23" selection-start-line="157" selection-start-column="23" selection-end-line="157" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.28651685">
+              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -162,7 +182,10 @@
         <option value="$PROJECT_DIR$/AngularFrontend/src/services/user.service.ts" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/index.html" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/components/templates/app.component.html" />
+        <option value="$PROJECT_DIR$/AngularFrontend/src/components/login.component.ts" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css" />
+        <option value="$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html" />
+        <option value="$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css" />
       </list>
     </option>
   </component>
@@ -378,6 +401,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectAdvProg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectAdvProg" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularFrontend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="styles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -513,13 +562,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Java Backend/gradlew.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Java Backend/src/main/java/db/WordService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -682,13 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/login.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.592592">
@@ -753,13 +788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -864,10 +892,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/exercise.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.23077">
+          <caret line="56" column="30" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -880,18 +940,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/app.component.html">
+    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5224719">
-          <caret line="67" column="23" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.28651685">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
           <folding />
         </state>
       </provider>

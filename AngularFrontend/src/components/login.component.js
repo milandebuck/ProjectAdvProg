@@ -17,8 +17,10 @@ var LoginComponent = (function () {
         this.userService = userService;
         this.router = router;
     }
-    LoginComponent.prototype.onSubmit = function (email, password) {
+    LoginComponent.prototype.onSubmit = function (event, email, password) {
         var _this = this;
+        event.preventDefault();
+        console.log("submitting");
         this.userService.login(email, password).subscribe(function (result) {
             if (result) {
                 _this.router.navigate(['Exercise']);

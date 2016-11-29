@@ -18,6 +18,7 @@ var UserService = (function () {
     }
     UserService.prototype.login = function (username, password) {
         var _this = this;
+        console.log("attempting login");
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http
@@ -25,6 +26,7 @@ var UserService = (function () {
             .map(function (res) { return res.json(); })
             .map(function (res) {
             if (!res.status) {
+                console.log("login succesfull");
                 localStorage.setItem('auth_token', res.token);
                 _this.loggedIn = true;
                 return true;
