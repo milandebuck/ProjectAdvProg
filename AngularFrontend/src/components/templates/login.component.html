@@ -1,9 +1,9 @@
 
 <div>
     <h2>Login</h2>
-    <form role="form" (submit)="onSubmit($event,username.value,password.value)">
+    <div ngForm>
         <input type="text" #username class="form-control" id="username" placeholder="Username">
         <input type="password" #password class="form-control" id="password" placeholder="Password">
-        <button type="submit">Submit</button>
-    </form>
+        <button (click)="onSubmit($event,username.value,password.value)">Submit</button>
+    </div>
 </div>
