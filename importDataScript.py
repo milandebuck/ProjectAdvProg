@@ -21,19 +21,9 @@ for line in text_file.readlines():
 			  "_class": "model.Entry"}
 		collection.insert(entry)
 
-#store 3 users in collection
-#for i in range(0,3):
-#	user : {
-#		"username": "user" + i,
-#		"password": "Azerty123",
-#		"teacher": false
-#	}
-#	collection.insert(user)
-#store 2 teachers in collection
-#for j in range(0,2):
-#	teacher : {
-#		"username": "teacher" + i,
-#		"password": "Azerty123",
-#		"teacher": true
-#	}
-#	collection.insert(teacher)
+#store users in collection
+#user : {
+#	"username":,
+#	"password":,
+#}
+#collection.insert(user)

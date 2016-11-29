@@ -38,7 +38,7 @@ input, select, button{
 /*--- Common --- */
 h1{
     display: block;
-    font-size: 5rem;
+    font-size: 3rem;
     margin: 0;
     color: #FFC107;
     float: left;
@@ -53,7 +53,7 @@ nav{
 }
 .header, .footer{
     width: 100%;
-    min-height: 10rem;
+    min-height: 3.2rem;
     background-color: #607D8B;
 }
 .wrapper{
@@ -61,24 +61,22 @@ nav{
     margin: 0 auto;
 }
 .outerWrapper{
-    margin-top: -20px;
     min-height: 20rem;
 }
-/*--- Header ---*/
-/* Logo */
+/*--- Logo ---*/
 .logo{
-    line-height: 10rem;
-    font-size: 5rem;
+    line-height: 4.5rem;
+    font-size: 3rem;
     font-weight: lighter;
 }
 .logo a{
     color: #FFC107;
 }
 
-/* Navigation bar */
+/*--- Navigation bar ---*/
 .navbar{
     display: block;
-    font-size: 2rem;
+    font-size: 1.4rem;
     margin-left: 20rem;
     padding-bottom: 3px;
 }
@@ -86,16 +84,13 @@ nav{
     margin-left: auto;
 }
 .navbar li{
-    height: 10rem;
-    line-height: 10rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
     float: left;
-    margin-left: 2rem;
-    border-bottom: solid;
-    border-bottom-color: #607D8B;
+    margin-left:2rem;
 }
 .navbar li a {
-    display: block;
-    height: 10rem;
+    height: 4.5rem;
     width: 100%;
     color: #CFD8DC;
 }
@@ -104,46 +99,36 @@ nav{
     border-color: #FFC107;
 }
 
-/* Login bar */
+/*--- Login bar ---*/
 .login{
+    margin-right: 5rem;
     display: block;
     float: right;
-    width: 35%;
-    font-size: 2rem;
-    height: 6.1rem;
+    width: 25%;
+    font-size: 1.4rem;
+    height: 4.5rem;
 }
 .loginElement{
-    font-size: 2rem;
-    line-height: 10rem;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    line-height: 4.5rem;
     display: block;
     float: left;
 }
 .login img{
-    margin-top: 1.5rem;
-    width: 4rem;
-    height:4rem;
+    width: 2rem;
+    height:2rem;
 }
 .login p{
-    margin-left: 1rem;
     color: #CFD8DC;
 }
 .login button{
-    margin-left: 1rem;
-    margin-top: 3.5rem;
+    margin-top: 1.25rem;
     line-height: normal;
     background-color: #FFC107;
     width: 8rem;
-    height:3rem;
-    padding: 0rem;
+    height:2rem;
 }
 .login button a{
-    display: block;
     color: #fff;
-    width: 8rem;
-}
-
-/*--- Footer ---*/
-.footer{
-    min-height: 10rem;
-    margin-top: 27.73rem;
 }
