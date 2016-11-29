@@ -1,1 +1,22 @@
+2. Authentication
+2.1 Registration
+Route: /registration
 
+Formvariables:  - 'username': that's atleast 6 letters long and not longer than 32 letters. Also cant be empty
+                - 'password: cant be empty and must be longer than 8 letters and less than 32
+                - 'passwordConfirm': has to be the same as password
+            
+On success: - New user stored in db
+            - User automatically logs in and it returns a JWT.
+
+On fail: - Returns validationerrors.
+
+2.2 Login
+Route: /login
+
+Formvariables:  - 'username': Username that exists in the database.
+                - 'password': Password of the username.
+                
+On success: - User logs in and the client receives a JWT token to access the rest of the api
+
+On fail: - Returns badcredentials error.
