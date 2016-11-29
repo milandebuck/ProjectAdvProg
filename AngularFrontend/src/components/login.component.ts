@@ -9,6 +9,7 @@ import { UserService } from './../services/user.service';
 import { User } from './../models/User';
 
 @Component({
+    moduleId:module.id,
     selector: 'login',
     template: require('./templates/login.component.html'),
     styles: [ require('./styles/login.component.css') ]
@@ -16,7 +17,9 @@ import { User } from './../models/User';
 export class LoginComponent {
     constructor(private userService: UserService, private router: Router) {}
 
-    onSubmit(email, password) {
+    onSubmit(event,email, password) {
+        event.preventDefault();
+        console.log("submitting");
         this.userService.login(email, password).subscribe((result) => {
             if (result) {
                 this.router.navigate(['Exercise']);
