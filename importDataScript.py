@@ -1,9 +1,8 @@
 #make connection, db, collection for en-nl
 from pymongo import MongoClient
 
-client = MongoClient()
-client.drop_database('TeamMartini')
-collection = client.TeamMartini.entries
+client = MongoClient("mongodb://adminUser:Azerty123@ds113958.mlab.com:13958/teammartini")
+collection = client.teammartini.entries
 
 #store words in collection
 text_file = open("./data/output.txt","r")
@@ -21,3 +20,10 @@ for line in text_file.readlines():
 			  "languages": ["English", "Dutch"],
 			  "_class": "model.Entry"}
 		collection.insert(entry)
+
+#store users in collection
+#user : {
+#	"username":,
+#	"password":,
+#}
+#collection.insert(user)
