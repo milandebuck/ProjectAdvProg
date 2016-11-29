@@ -67,11 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/login", "/registration").permitAll()
                 .anyRequest().authenticated();
 
-        //If user is not authenticated / has no authorization, use the exceptionHandling.
         http.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-            //We want the api to be stateless, therefore we will not use sessions.
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and();
-        // Custom JWT based security filter
         http
                 .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 

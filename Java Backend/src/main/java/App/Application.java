@@ -24,13 +24,9 @@ public class Application implements CommandLineRunner {
     //This code is just to test atm
     @Override
     public void run(String... args) throws Exception {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
-
         BCryptPasswordEncoder passwordencoder = new BCryptPasswordEncoder();
-        model.User user1 = new model.User("supertest", passwordencoder.encode("Azerty123") );
-        mongoOperations.save(user1, "users");
-        //System.out.println((user.getPassword()));
+        model.User user1 = new model.User("supertest", passwordencoder.encode("Azerty123"), false );
+        userRepo.save(user1);
 
 
 
