@@ -1,22 +1,27 @@
-
-<header class="header clearfix">
-    <h1>Logo</h1>
-    <nav class="navbar">
-        <ul>
-            <li>Tests</li>
-            <li>Nav2</li>
-            <li>Nav3</li>
-        </ul>
-    </nav>
-    <div class="login">
-        <img class="loginElement" src="#" alt="User symbol"/>
-        <p class="loginElement">Hello "user"</p>
-        <button type="button" class="loginElement">Logout</button>
+<div class="outerWrapper">
+    <header class="header clearfix">
+        <div class="wrapper">
+            <h1 class="logo"><a href="/">Logo</a></h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Tests</a></li>
+                    <li><a href="#">Nav2</a></li>
+                    <li><a href="#">Nav3</a></li>
+                </ul>
+            </nav>
+            <div class="login">
+                <img class="loginElement" src="#" alt="User symbol"/>
+                <p class="loginElement">Hello "user"</p>
+                <button type="button" class="loginElement"><a href="#">Logout</a></button>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <router-outlet></router-outlet>
     </div>
-</header>
-<div class="wrapper">
-    <router-outlet></router-outlet>
-</div>
-<footer class="footer">
+    <footer class="footer">
+        <div class="wrapper">
 
-</footer>
+        </div>
+    </footer>
+</div>

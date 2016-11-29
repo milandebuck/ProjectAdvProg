@@ -21,7 +21,7 @@ var LoginComponent = (function () {
         var _this = this;
         this.userService.login(email, password).subscribe(function (result) {
             if (result) {
-                _this.router.navigate(['']);
+                _this.router.navigate(['Exercise']);
             }
         });
     };
@@ -31,10 +31,9 @@ var LoginComponent = (function () {
             template: require('./templates/login.component.html'),
             styles: [require('./styles/login.component.css')]
         }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, (typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
-    var _a;
 })();
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

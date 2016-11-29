@@ -9,31 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 // exercise.component.ts
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
+//service
+var entry_service_1 = require('./../services/entry.service');
 var ExerciseComponent = (function () {
-    function ExerciseComponent() {
-        var _this = this;
-        this.entries = [];
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        headers.append('', localStorage.getItem('auth-token'));
-        http_1.Http.get('/login', { headers: headers })
-            .map(function (res) { return res.json(); })
-            .map(function (res) {
-            if (res.success) {
-                localStorage.setItem('auth_token', res.auth_token);
-                _this.loggedIn = true;
-            }
-            return res.success;
-        });
+    function ExerciseComponent(entryService) {
+        this.entryService = entryService;
+        this.entries = this.entryService.getEntries(10);
     }
+    ;
     ExerciseComponent = __decorate([
         core_1.Component({
             selector: 'exercise',
             template: require('./templates/exercise.component.html'),
             styles: [require('./styles/exercise.component.css')]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [entry_service_1.EntryService])
     ], ExerciseComponent);
     return ExerciseComponent;
 })();

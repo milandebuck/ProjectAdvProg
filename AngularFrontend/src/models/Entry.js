@@ -1,6 +1,5 @@
 var Entry = (function () {
     function Entry() {
-        public;
     }
     return Entry;
 })();
