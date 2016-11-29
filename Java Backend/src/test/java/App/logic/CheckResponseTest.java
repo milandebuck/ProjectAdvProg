@@ -42,7 +42,7 @@ public class CheckResponseTest extends TestCase {
     public void testRejectFaultyInput() {
         setup();
 
-        Wrapper wrapper1 = new Wrapper();
+        Wrapper<List<Entry>> wrapper1 = new Wrapper<List<Entry>>();
         wrapper1.setData(entries1);
         wrapper1.setSucces(false);
 
@@ -55,7 +55,7 @@ public class CheckResponseTest extends TestCase {
     public void testCalculateScore() {
         setup();
 
-        Wrapper wrapper2 = new Wrapper();
+        Wrapper<List<Entry>> wrapper2 = new Wrapper<List<Entry>>();
         wrapper2.setData(entries1);
         wrapper2.setSucces(true);
 
@@ -71,7 +71,7 @@ public class CheckResponseTest extends TestCase {
     public void testFeedback() {
         setup();
 
-        Wrapper wrapper3 = new Wrapper();
+        Wrapper<List<Entry>> wrapper3 = new Wrapper<List<Entry>>();
         wrapper3.setData(entries1);
         wrapper3.setSucces(true);
 
