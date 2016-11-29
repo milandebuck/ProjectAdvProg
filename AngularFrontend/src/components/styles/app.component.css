@@ -53,7 +53,7 @@ nav{
 }
 .header, .footer{
     width: 100%;
-    min-height: 3.2rem;
+    min-height: 10rem;
     background-color: #607D8B;
 }
 .wrapper{
@@ -61,11 +61,13 @@ nav{
     margin: 0 auto;
 }
 .outerWrapper{
+    margin-top: -20px;
     min-height: 20rem;
 }
-/*--- Logo ---*/
+/*--- Header ---*/
+/* Logo */
 .logo{
-    line-height: 6.1rem;
+    line-height: 10rem;
     font-size: 5rem;
     font-weight: lighter;
 }
@@ -73,7 +75,7 @@ nav{
     color: #FFC107;
 }
 
-/*--- Navigation bar ---*/
+/* Navigation bar */
 .navbar{
     display: block;
     font-size: 2rem;
@@ -84,14 +86,16 @@ nav{
     margin-left: auto;
 }
 .navbar li{
-    height: 6.1rem;
-    line-height: 6.1rem;
+    height: 10rem;
+    line-height: 10rem;
     float: left;
     margin-left: 2rem;
+    border-bottom: solid;
+    border-bottom-color: #607D8B;
 }
 .navbar li a {
     display: block;
-    height: 6.1rem;
+    height: 10rem;
     width: 100%;
     color: #CFD8DC;
 }
@@ -100,7 +104,7 @@ nav{
     border-color: #FFC107;
 }
 
-/*--- Login bar ---*/
+/* Login bar */
 .login{
     display: block;
     float: right;
@@ -110,12 +114,12 @@ nav{
 }
 .loginElement{
     font-size: 2rem;
-    line-height: 6.1rem;
+    line-height: 10rem;
     display: block;
     float: left;
 }
 .login img{
-    margin-top: 1.05rem;
+    margin-top: 1.5rem;
     width: 4rem;
     height:4rem;
 }
@@ -125,7 +129,7 @@ nav{
 }
 .login button{
     margin-left: 1rem;
-    margin-top: 1.55rem;
+    margin-top: 3.5rem;
     line-height: normal;
     background-color: #FFC107;
     width: 8rem;
@@ -136,4 +140,10 @@ nav{
     display: block;
     color: #fff;
     width: 8rem;
+}
+
+/*--- Footer ---*/
+.footer{
+    min-height: 10rem;
+    margin-top: 27.73rem;
 }

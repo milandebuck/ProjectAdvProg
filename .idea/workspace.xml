@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="376cfbb1-2aca-44d1-81d1-fe6fa1dceacf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/MainController.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/CustomAuthenticationProvider.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/CustomAuthenticationProvider.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/JwtAuthenticationEntryPoint.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/JwtAuthenticationEntryPoint.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/JwtAuthenticationTokenFilter.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/JwtAuthenticationTokenFilter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/JwtTokenUtil.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/JwtTokenUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/WebSecurityConfig.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/authentication/WebSecurityConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/logic/CheckResponse.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/logic/CheckResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/build/classes/main/App/logic/GetWordsResponse.class" afterPath="$PROJECT_DIR$/Java Backend/build/classes/main/App/logic/GetWordsResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.ts" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/exercise.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/templates/exercise.component.html" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/templates/exercise.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html" afterPath="$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js" afterPath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js.map" afterPath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.ts" afterPath="$PROJECT_DIR$/AngularFrontend/src/services/user.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/Application.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/authentication/UserService.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/authentication/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/App/authentication/WebSecurityConfig.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/App/authentication/WebSecurityConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/main/java/db/UserRepository.java" afterPath="$PROJECT_DIR$/Java Backend/src/main/java/db/UserRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/test/java/App/LoginTest.java" afterPath="$PROJECT_DIR$/Java Backend/src/test/java/App/LoginTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/test/java/App/logic/CheckResponseTest.java" afterPath="$PROJECT_DIR$/Java Backend/src/test/java/App/logic/CheckResponseTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Java Backend/src/test/java/App/logic/GetWordsResponseTest.java" afterPath="$PROJECT_DIR$/Java Backend/src/test/java/App/logic/GetWordsResponseTest.java" />
     </list>
     <ignored path="ProjectAdvProg.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,8 +69,18 @@
       <file leaf-file-name="login.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.036956523">
-              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.09550562">
+              <caret line="4" column="91" selection-start-line="4" selection-start-column="91" selection-end-line="4" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exercise.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/exercise.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -101,7 +89,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularFrontend/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538">
+            <state vertical-scroll-proportion="0.0">
               <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
               <folding />
             </state>
@@ -118,21 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.d.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularFrontend/typings/globals/node/index.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="157" column="23" selection-start-line="157" selection-start-column="23" selection-end-line="157" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="login.component.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+            <state vertical-scroll-proportion="-18.23077">
+              <caret line="53" column="10" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -192,7 +170,6 @@
         <option value="$PROJECT_DIR$/Java Backend/src/main/java/App/GetWordsResponse.java" />
         <option value="$PROJECT_DIR$/AngularFrontend/package.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/AngularFrontend/src/components/templates/exercise.component.html" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/services/entry.service.ts" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/services/user.service.ts" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/components/templates/app.component.html" />
@@ -200,6 +177,7 @@
         <option value="$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/index.html" />
+        <option value="$PROJECT_DIR$/AngularFrontend/src/components/templates/exercise.component.html" />
         <option value="$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html" />
       </list>
     </option>
@@ -256,6 +234,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -449,7 +428,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -531,7 +509,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -768,13 +746,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/vendor.js.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/bootstrap.js">
@@ -795,13 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/exercise.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -834,13 +805,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/services/user.service.js.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/typings/globals/node/index.d.ts">
@@ -919,14 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/app.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -937,16 +900,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.461538">
+        <state vertical-scroll-proportion="0.0">
           <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/exercise.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/styles/login.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.23077">
+          <caret line="53" column="10" selection-start-line="53" selection-start-column="1" selection-end-line="53" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularFrontend/src/components/templates/login.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.036956523">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.09550562">
+          <caret line="4" column="91" selection-start-line="4" selection-start-column="91" selection-end-line="4" selection-end-column="91" />
           <folding />
         </state>
       </provider>
