@@ -7,7 +7,7 @@
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongo" ref="mongo" />
-        <constructor-arg name="databaseName" value="TeamMartini" />
+        <constructor-arg name="databaseName" value="teammartini" />
     </bean>
 
     <mongo:repositories base-package="main.java.db" />

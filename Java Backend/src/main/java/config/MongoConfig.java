@@ -20,7 +20,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "TeamMartini";
+        return "teammartini";
     }
 
     @Override
@@ -28,11 +28,11 @@ public class MongoConfig extends AbstractMongoConfiguration {
         List<MongoCredential> credentials = new ArrayList<MongoCredential>();
         credentials.add(
                 MongoCredential.createMongoCRCredential(
-                        "user1",
                         "TeamMartini",
+                        "teammartini",
                         "Azerty123".toCharArray()
                 ));
-        return new MongoClient(new ServerAddress("localhost", 27017),credentials);
+        return new MongoClient(new ServerAddress("ds113958.mlab.com", 13958),credentials);
     }
 
     @Override
