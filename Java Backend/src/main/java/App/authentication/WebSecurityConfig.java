@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new JwtAuthenticationTokenFilter();
     }
 
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private UserService userDetailsService;
 
@@ -60,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable() // disable csrf for our requests.
                 .authorizeRequests()
-                .antMatchers("/", "/login").permitAll()
+                .antMatchers("/", "/login", "/registration").permitAll()
                 .anyRequest().authenticated();
 
         //If user is not authenticated / has no authorization, use the exceptionHandling.
