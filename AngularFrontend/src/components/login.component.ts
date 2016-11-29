@@ -9,7 +9,6 @@ import { UserService } from './../services/user.service';
 import { User } from './../models/User';
 
 @Component({
-    moduleId:module.id,
     selector: 'login',
     template: require('./templates/login.component.html'),
     styles: [ require('./styles/login.component.css') ]

@@ -16,19 +16,22 @@ var UserService = (function () {
         this.loggedIn = false;
         this.loggedIn = !!localStorage.getItem('auth_token');
     }
-    UserService.prototype.login = function (email, password) {
+    UserService.prototype.login = function (username, password) {
         var _this = this;
+        console.log("attempting login");
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http
-            .post('/login', JSON.stringify({ email: email, password: password }), { headers: headers })
+            .post('http://localhost:8080/login', JSON.stringify({ username: username, password: password }), { headers: headers })
             .map(function (res) { return res.json(); })
             .map(function (res) {
-            if (res.success) {
-                localStorage.setItem('auth_token', res.auth_token);
+            if (!res.status) {
+                console.log("login succesfull");
+                localStorage.setItem('auth_token', res.token);
                 _this.loggedIn = true;
+                return true;
             }
-            return res.success;
+            return false;
         });
     };
     UserService.prototype.logout = function () {
@@ -40,10 +43,9 @@ var UserService = (function () {
     };
     UserService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof http_1.Http !== 'undefined' && http_1.Http) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [http_1.Http])
     ], UserService);
     return UserService;
-    var _a;
 })();
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

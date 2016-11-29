@@ -13,25 +13,29 @@ var http_1 = require('@angular/http');
 var EntryService = (function () {
     function EntryService(http) {
         this.http = http;
-        this.headers = new http_1.Headers();
     }
-    EntryService.prototype.append = ;
-    ;
-    EntryService.prototype.append = ;
-    EntryService.prototype.getItem = ;
     ;
     EntryService.prototype.getEntries = function (count) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('authorization', localStorage.getItem('auth-token'));
+        return this.http
+            .get('http://localhost:8080/Exercise', { headers: headers })
+            .map(this.extractData)
+            .catch(this.handleError);
     };
     EntryService.prototype.extractData = function (res) {
         var body = res.json();
         return body.data || {};
     };
+    EntryService.prototype.handleError = function (error) {
+        return error.msg;
+    };
     EntryService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof http_1.Http !== 'undefined' && http_1.Http) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [http_1.Http])
     ], EntryService);
     return EntryService;
-    var _a;
 })();
 exports.EntryService = EntryService;
 //# sourceMappingURL=entry.service.js.map

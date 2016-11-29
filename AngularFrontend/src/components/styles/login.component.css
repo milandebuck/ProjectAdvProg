@@ -1,0 +1,13 @@
+/*--- Login content ---*/
+.contentWrapper{
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+h2{
+    display: block;
+    color: #607D8B;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}

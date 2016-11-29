@@ -6,9 +6,11 @@ import App.authentication.JwtTokenUtil;
 import App.authentication.UserService;
 import App.logic.CheckResponse;
 import App.logic.GetWordsResponse;
+import App.registration.UserValidator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import db.EntryRepository;
 import model.Entry;
+import model.User;
 import model.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -20,8 +22,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -41,6 +47,8 @@ public class MainController {
     @Autowired
     private UserService userDetailsService;
 
+    @Autowired
+    private UserValidator userValidator;
 
     @Autowired
     private EntryRepository repository;
@@ -115,22 +123,23 @@ public class MainController {
         // Reload password post-security so we can generate token
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
-        System.out.println("inloginont");
 
         // Return the token
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
 
-//Login post is provided by Spring.
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public String createUser(@Valid User user, BindingResult br, HttpServletResponse response) {
+        userValidator.validate(user, br);
+        if (br.hasErrors()) {
+            return br.toString();
+        }
 
-    @RequestMapping(value="/amIloggedin", method = RequestMethod.GET)
-    public String printUser() {
+        System.out.println(user.getUsername());
+        userDetailsService.save(user);
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-
-        if (name != "anonymousUser") return name;
-        return "not logged in";
-
+        return "success";
     }
+
+
 }
