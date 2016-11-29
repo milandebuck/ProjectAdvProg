@@ -68,7 +68,7 @@ public class MainController {
      * @return {List<Entry>}
      */
 
-    @CrossOrigin(origins = "http://localhost:9000")
+    @CrossOrigin
     @RequestMapping("/Entries")
     public Wrapper<List<Entry>> getEntries() {
         List<Entry>  entries = new ArrayList<Entry>();  
@@ -88,6 +88,7 @@ public class MainController {
      * @return {Wrapper}
      */
 
+    @CrossOrigin
     @GetMapping("/Exercise")
     public Wrapper exerciseForm(
             @RequestParam(value="amount", defaultValue="10") String amount,
@@ -101,19 +102,29 @@ public class MainController {
      * @param {Object} entry
      * @return {Wrapper}
      */
-    @CrossOrigin(origins = "http://localhost:9000")
+    @CrossOrigin
     @PostMapping("/Exercise")
     public Wrapper exerciseSubmit(@RequestBody String input) throws ParseException {
         return new CheckResponse(repository, input).getResult();
     }
 
+    /**
+     *   Shows the login page
+     **/
+    @CrossOrigin
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         //UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
         return "Login page";
     }
 
-    @CrossOrigin(origins = "http://localhost:9000")
+    /**
+     *   Loaded when user tries to login
+     *
+     *   if successful: return a jwt
+     *   if fail: return badcredentialserror
+     **/
+    @CrossOrigin
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
         // Perform the security
@@ -132,7 +143,11 @@ public class MainController {
         // Return the token
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
-    @CrossOrigin(origins = "http://localhost:9000")
+
+    /**
+     *
+     **/
+    @CrossOrigin
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String createUser(@Valid User user, BindingResult br, HttpServletResponse response) {
         userValidator.validate(user, br);

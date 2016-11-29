@@ -20,12 +20,18 @@ public class UserService implements UserDetailsService {
     public UserService() {
     }
 
+    /**
+     *   Save the user in the database with username, password and teacherboolean
+     **/
     public void save(User user) {
         user.setPassword(this.encoder.encode(user.getPassword()));
         user.setTeacher(false);
         this.userRepo.save(user);
     }
 
+    /**
+     *   Load the username, if it exists returns the username with password and isTeacher
+     **/
     public org.springframework.security.core.userdetails.User loadUserByUsername(String username) throws UsernameNotFoundException {
         User userModel = this.userRepo.findByUsername(username);
         if (userModel != null) {

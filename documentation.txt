@@ -1,3 +1,45 @@
+1. API calls
+1.1 Wrapper
+All API calls return an object of the Wrapper type.
+All POST calls require a Wrapper object to be send.
+This class contains three fields
+  - private Boolean succes;
+  - private String msg;
+  - private T data;
+
+Succes Boolean indicates whether or not the call was successful.
+Msg String contains information on why the call failed or succeeded.
+Data T contains an object with the requested information. The type and content of the object is determined by the API call.
+
+1.2 /Entries (GET/POST)
+Returns all entries from the database.
+
+@param no parameters
+@return List<Entry>
+A list of all the entries in the database.
+
+1.3 /Exercise (GET)
+Returns a subset of Entry classes determined by a given amount, from which language and too which language.
+
+@param String amount, default value = 10
+  Number of Entry classes returned.
+@param String from
+  The native language of the word in each Entry.
+@param String to
+  The translation language of the word in each Entry.
+  
+1.4 /Exercise (POST)
+Receives answers from an exercise as a JSON and returns a Hashmap with score, max and faulty.
+
+@param Wrapper 
+The field T data in the received Wrapper must contain a List<Entry>.
+
+@return Hashmap
+In the hashmap, there are 3 keys:
+  score: the amount of correct translations
+  max: the maximum amount of correct translations
+  faulty: List<Entry> the correct translations of those who were faulty
+
 2. Authentication
 2.1 Registration
 What: New client can registrate a new account.
@@ -24,3 +66,4 @@ Formvariables:  - 'username': Username that exists in the database.
 On success: - User logs in and the client receives a JWT token to access the rest of the api
 
 On fail: - Returns badcredentials error.
+

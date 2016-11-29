@@ -3,7 +3,7 @@ package App.authentication;
 import java.io.Serializable;
 
 /**
- * Created by micha on 11/26/2016.
+ * Our model for authenticationrequest
  */
 public class  JwtAuthenticationRequest implements Serializable {
 

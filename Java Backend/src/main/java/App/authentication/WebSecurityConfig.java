@@ -54,6 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**");
     }
 
+    /**
+     *   Configuration
+     **/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // disable caching

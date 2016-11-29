@@ -12,6 +12,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ *   We have to implement our own custom authenticationprovider so that spring security routes to this one instead.
+ **/
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
@@ -22,6 +25,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public CustomAuthenticationProvider() {
     }
 
+    /**
+     *   This method checks to see if the usercredentials are valid
+     *   If not throw BadCredentialsException
+     *   If yes return UsernamePasswordAuthenticationToken
+     **/
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = (String)authentication.getCredentials();

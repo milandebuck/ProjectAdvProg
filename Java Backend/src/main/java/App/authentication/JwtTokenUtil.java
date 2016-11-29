@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by micha on 11/26/2016.
+ * Our JWT utilites
+ * This class has methods for generating tokes and validating tokesn
  */
 @Component
 public class JwtTokenUtil implements Serializable {
@@ -159,7 +160,7 @@ public class JwtTokenUtil implements Serializable {
         final String username = getUsernameFromToken(token);
         final Date created = getCreatedDateFromToken(token);
         final Date expiration = getExpirationDateFromToken(token);
-        System.out.println("expdate"  + expiration);
+
         return (
                 username.equals(userDetails.getUsername())
                         && !isTokenExpired(token)
