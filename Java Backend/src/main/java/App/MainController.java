@@ -107,12 +107,21 @@ public class MainController {
         return new CheckResponse(repository, input).getResult();
     }
 
+    /**
+     *   Shows the login page
+     **/
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         //UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
         return "Login page";
     }
 
+    /**
+     *   Loaded when user tries to login
+     *
+     *   if successful: return a jwt
+     *   if fail: return badcredentialserror
+     **/
     @CrossOrigin(origins = "http://localhost:9000")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
@@ -132,6 +141,10 @@ public class MainController {
         // Return the token
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
     }
+
+    /**
+     *
+     **/
     @CrossOrigin(origins = "http://localhost:9000")
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String createUser(@Valid User user, BindingResult br, HttpServletResponse response) {
