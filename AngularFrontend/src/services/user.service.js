@@ -22,7 +22,7 @@ var UserService = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http
-            .post('http://localhost:8080/login', JSON.stringify({ username: username, password: password }), { headers: headers })
+            .post('http://teammartini.herokuapp.com/login', JSON.stringify({ username: username, password: password }), { headers: headers })
             .map(function (res) { return res.json(); })
             .map(function (res) {
             if (!res.status) {
