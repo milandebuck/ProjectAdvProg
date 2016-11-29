@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 
 import {
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ExerciseComponent
 } from './components';
 
 import { routes } from './app.routes';
@@ -19,7 +20,7 @@ import { LoggedInGuard } from './services/logged-in.guard';
 
 @NgModule({
     bootstrap: [ AppComponent ],
-    declarations: [ AppComponent,LoginComponent ],
+    declarations: [ AppComponent,LoginComponent,ExerciseComponent ],
     imports: [
         BrowserModule,
         HttpModule,
