@@ -29,6 +29,10 @@ public class UserService implements UserDetailsService {
         this.userRepo.save(user);
     }
 
+    public model.User findByUsername(String username){
+        return userRepo.findByUsername(username);
+    }
+
     /**
      *   Load the username, if it exists returns the username with password and isTeacher
      **/

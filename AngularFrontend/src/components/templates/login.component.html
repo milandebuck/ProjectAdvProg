@@ -1,8 +1,8 @@
 <div class="contentWrapper">
     <h2>Login</h2>
-    <form role="form" (submit)="onSubmit($event,username.value,password.value)">
-        <input type="text" #username class="form-control" id="username" placeholder="  Username">
-        <input type="password" #password class="form-control" id="password" placeholder="  Password">
-        <button type="submit" class="submitBtn">Login</button>
-    </form>
+    <div ngForm>
+        <input type="text" #username class="form-control" id="username" placeholder="Username">
+        <input type="password" #password class="form-control" id="password" placeholder="Password">
+        <button (click)="onSubmit($event,username.value,password.value)">Submit</button>
+    </div>
 </div>

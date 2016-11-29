@@ -14,9 +14,25 @@ var entry_service_1 = require('./../services/entry.service');
 var ExerciseComponent = (function () {
     function ExerciseComponent(entryService) {
         this.entryService = entryService;
-        this.entries = this.entryService.getEntries(10);
+        this.count = 0;
+        this.lenght = 10;
+        this.answers = [];
+        this.entries = this.entryService.getEntries(this.lenght);
     }
     ;
+    ExerciseComponent.prototype.next = function (answer) {
+        this.answers.push(answer);
+        if (this.count > this.lenght)
+            this.count++;
+        else {
+            this.correctExercise().subscribe(function (res) {
+                if (res) {
+                }
+            });
+        }
+    };
+    ExerciseComponent.prototype.correctExercise = function () {
+    };
     ExerciseComponent = __decorate([
         core_1.Component({
             selector: 'exercise',

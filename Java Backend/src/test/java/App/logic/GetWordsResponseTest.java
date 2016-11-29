@@ -23,6 +23,9 @@ public class GetWordsResponseTest extends TestCase {
     @Autowired
     private EntryRepository repository;
 
+    /**
+     * Test if list is generated correctly.
+     */
     @Test
     public  void testList(){
 
