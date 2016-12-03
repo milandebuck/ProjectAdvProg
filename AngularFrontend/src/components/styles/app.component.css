@@ -20,6 +20,7 @@ a{
     text-decoration: none;
 }
 ul {
+    display: block;
     list-style: none;
 }
 
@@ -38,7 +39,7 @@ input, select, button{
 /*--- Common --- */
 h1{
     display: block;
-    font-size: 3rem;
+    font-size: 5rem;
     margin: 0;
     color: #FFC107;
     float: left;
@@ -48,12 +49,11 @@ li{
     float: left;
 }
 nav{
-    width: 60%;
-    display: block;
+    width: 50%;
 }
 .header, .footer{
     width: 100%;
-    min-height: 3.2rem;
+    height: 12rem;
     background-color: #607D8B;
 }
 .wrapper{
@@ -65,7 +65,7 @@ nav{
 }
 /*--- Logo ---*/
 .logo{
-    line-height: 6.1rem;
+    line-height: 10rem;
     font-size: 5rem;
     font-weight: lighter;
 }
@@ -75,23 +75,26 @@ nav{
 
 /*--- Navigation bar ---*/
 .navbar{
-    display: block;
-    font-size: 1.4rem;
-    margin-left: 20rem;
-    padding-bottom: 3px;
+    margin: 0rem;
+    display: inline-block;
+    font-size: 3rem;
+    height: 10rem;
 }
+
 .navbar ul{
-    margin-left: auto;
+    margin: 0;
+    height: 10rem;
 }
 .navbar li{
-    height: 6.1rem;
-    line-height: 6.1rem;
+    height: 4rem;
+    line-height: 4rem;
     float: left;
     margin-left: 2rem;
+    margin-top: 3rem;
 }
 .navbar li a {
     display: block;
-    height: 6.1rem;
+    height: 4rem;
     width: 100%;
     color: #CFD8DC;
 }
@@ -99,25 +102,22 @@ nav{
     border-bottom: solid;
     border-color: #FFC107;
 }
-
 /*--- Login bar ---*/
 .login{
-    margin-right: 5rem;
-    display: block;
+    display: inline-block;
     float: right;
-    width: 25%;
-    font-size: 1.4rem;
-    height: 4.5rem;
+    width: 35%;
+    height: 10rem;
 }
 .loginElement{
     margin-left: 1rem;
     font-size: 2rem;
-    line-height: 6.1rem;
+    line-height: 10rem;
     display: block;
     float: left;
 }
 .login img{
-    margin-top: 1.05rem;
+    margin-top: 3rem;
     width: 4rem;
     height:4rem;
 }
@@ -126,11 +126,11 @@ nav{
 }
 .login button{
     margin-left: 1rem;
-    margin-top: 1.55rem;
+    margin-top: 3rem;
     line-height: normal;
     background-color: #FFC107;
-    width: 8rem;
-    height:2rem;
+    width: 10rem;
+    height:4rem;
 }
 .login button a{
     color: #fff;

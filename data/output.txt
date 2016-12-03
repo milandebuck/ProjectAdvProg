@@ -146,7 +146,7 @@ de as
 ash
 de asbak
 ashtray
-Azië
+AziÃ«
 Asia
 de asperge
 asparagus
@@ -164,7 +164,7 @@ augustus
 August
 de tante
 aunt
-Australië
+AustraliÃ«
 Australia
 Oostenrijk
 Austria
@@ -254,7 +254,7 @@ achterna
 behind
 Wit-Rusland
 Belarus
-België
+BelgiÃ«
 Belgium
 de buik
 belly
@@ -1476,7 +1476,7 @@ de strijkbout
 iron
 het eiland
 island
-Italië
+ItaliÃ«
 Italy
 de jeuk
 itch
@@ -2386,7 +2386,7 @@ de rolschaats
 roller skate
 de deegroller
 rolling pin
-Roemenië
+RoemeniÃ«
 Romania
 het dak
 roof
@@ -2588,7 +2588,7 @@ de gleuf
 slit
 de helling
 slope
-Slovenië
+SloveniÃ«
 Slovenia
 langzaam
 slow
@@ -3404,7 +3404,7 @@ twee
 two
 de uier
 udder
-Oekraïne
+OekraÃ¯ne
 Ukraine
 de zweer
 ulcer
@@ -3446,7 +3446,7 @@ het kalfsvlees
 veal
 de moestuin
 vegetable&nbsp;garden
-de vegetariër
+de vegetariÃ«r
 vegetarian
 de ader
 vein
@@ -3804,8 +3804,8 @@ branden
 to burn
 breken
 to break
-café
-café
+cafÃ©
+cafÃ©
 collega
 colleague
 combineren
@@ -4282,7 +4282,7 @@ sinds
 since
 situatie
 situation
-skiën
+skiÃ«n
 to ski
 slagen
 graduate
@@ -4508,9 +4508,9 @@ voorbij
 past
 voordeel
 advantage
-voorkómen
+voorkÃ³men
 prevent
-vóórkomen
+vÃ³Ã³rkomen
 to happen
 voornamelijk
 mainly
@@ -4535,7 +4535,7 @@ garbage bag
 waarmee
 with which
 waarvoor
-what … for
+what â€¦ for
 wakker
 awake
 weekend
