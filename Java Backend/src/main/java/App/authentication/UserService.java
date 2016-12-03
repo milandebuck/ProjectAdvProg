@@ -5,6 +5,7 @@ import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-
-import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 
 @Service
@@ -43,7 +42,13 @@ public class UserService implements UserDetailsService {
      *   Load the username, if it exists returns the username with password and isTeacher
      **/
     public org.springframework.security.core.userdetails.User loadUserByUsername(String username) throws UsernameNotFoundException {
-        User userModel = this.userRepo.findOne(new Query(where("username").is(username)), User.class, "users");
+
+        //Make query
+        Query getUser = new Query();
+        getUser.addCriteria(Criteria.where("username").is(username));
+
+
+        User userModel = this.userRepo.findOne(getUser, User.class, "users");
         if (userModel != null) {
             org.springframework.security.core.userdetails.User springUser = new org.springframework.security.core.userdetails.User(userModel.getUsername(), userModel.getPassword(), new ArrayList());
             return springUser;

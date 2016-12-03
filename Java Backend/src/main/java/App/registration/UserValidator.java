@@ -1,16 +1,24 @@
 package App.registration;
 
-import db.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import config.MongoConfig;
+import model.User;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+
 @Component
 public class UserValidator implements Validator {
-    @Autowired
-    private UserRepository repo;
+
+
+    //Configuration DB connection.
+    AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+    MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -21,12 +29,16 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         model.User user = (model.User) o;
 
+        //Make query
+        Query getUser = new Query();
+        getUser.addCriteria(Criteria.where("username").is(user.getUsername()));
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
         if (user.getUsername().length() < 6 || user.getUsername().length() > 32) {
             errors.rejectValue("username", "Size.userForm.username");
         }
 
-        if (repo.findByUsername(user.getUsername()) != null) {
+        if (mongoOperations.findOne(getUser, User.class, "users") != null) {
             errors.rejectValue("username", "Duplicate.userForm.username");
         }
 
