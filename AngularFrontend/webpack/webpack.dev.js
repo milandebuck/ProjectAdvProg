@@ -9,6 +9,7 @@ const rootDir = path.resolve(__dirname, '..');
 
 module.exports = {
     debug: true,
+    watch:true,
     devServer: {
         contentBase: path.resolve(rootDir, 'dist'),
         port: 9000

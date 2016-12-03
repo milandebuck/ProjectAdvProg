@@ -14,6 +14,7 @@ import { User } from './../models/User';
     styles: [ require('./styles/login.component.css') ]
 })
 export class LoginComponent {
+    LoggedIn = this.userService.isLoggedIn();
     constructor(private userService: UserService, private router: Router) {}
 
     onSubmit(event,email, password) {

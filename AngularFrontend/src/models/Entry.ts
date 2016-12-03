@@ -1,5 +1,4 @@
 export class Entry {
-    constructor(){
-    }
+    constructor(){}
 
 }

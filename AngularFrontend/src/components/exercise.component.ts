@@ -1,32 +1,34 @@
 // exercise.component.ts
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { Http, Headers, Response } from '@angular/http';
 
-
-//model
-import { Entry } from './../models/Entry';
-
-//service
-import  { EntryService } from  './../services/entry.service';
+import { EntryService } from './../services/entry.service';
 
 @Component({
     selector: 'exercise',
     template: require('./templates/exercise.component.html'),
-    styles: [ require('./styles/exercise.component.css') ]
+    styles: [ require('./styles/exercise.component.css') ],
 })
-export class ExerciseComponent {
-    constructor( private entryService : EntryService){};
-    entries=this.entryService.getEntries(this.lenght);
+export class ExerciseComponent implements OnInit{
+    entries;
+    private error;
+    constructor( private entryService:EntryService){
 
-    next(answer){
-        this.answers.push(answer);
-        if(this.count > this.lenght)this.count++;
-        else{
-            this.correctExercise().subscribe((res) => {
-               if(res){
+    };
+    private lenght = 10;
+    count = 0;
+    private answers = [];
+    ngOnInit(){
+        console.log('initializing..');
+        this.entries=this.getEntries(this.lenght);
+    }
 
-               }
-            });
-        }
+    getEntries(count){
+        this.entryService.getEntries()
+            .subscribe(
+                entries => this.entries=entries,
+                error => this.error = error
+            )
     }
 
     private correctExercise(){

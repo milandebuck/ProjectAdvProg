@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import './rxjs-operators';
+import { LoggedInGuard } from '../services/logged-in.guard'
 
 @Component({
     selector: 'app',
