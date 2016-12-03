@@ -1,13 +1,13 @@
 package config;
 
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,30 +15,27 @@ import java.util.List;
 /**
  * Created by milan on 21.11.16.
  */
+
 @Configuration
-@EnableMongoRepositories(basePackages = "main.java.db")
-public class MongoConfig extends AbstractMongoConfiguration {
+public class MongoConfig {
 
-    @Override
-    protected String getDatabaseName() {
-        return "teammartini";
-    }
-
-    @Override
     @Bean
-    public Mongo mongo() throws Exception {
+    public MongoDbFactory mongoDbFactory() throws Exception {
         List<MongoCredential> credentials = new ArrayList<MongoCredential>();
         credentials.add(
                 MongoCredential.createScramSha1Credential(
                         "TeamMartini",
                         "teammartini",
                         "Azerty123".toCharArray()
-                ));
-        return new MongoClient(new ServerAddress("ds113958.mlab.com", 13958),credentials);
+                )
+        );
+
+        return new SimpleMongoDbFactory(new MongoClient(new ServerAddress("ds113958.mlab.com", 13958), credentials), "teammartini");
     }
 
-    @Override
-    protected String getMappingBasePackage() {
-        return "main.java.db";
+    @Bean
+    public MongoTemplate mongoTemplate() throws Exception {
+        MongoTemplate mongoTemplate = new MongoTemplate((mongoDbFactory()));
+        return mongoTemplate;
     }
 }

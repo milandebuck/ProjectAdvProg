@@ -15,6 +15,21 @@ import  { EntryService } from  './../services/entry.service';
 })
 export class ExerciseComponent {
     constructor( private entryService : EntryService){};
+    entries=this.entryService.getEntries(this.lenght);
 
-    entries=this.entryService.getEntries(10);
+    next(answer){
+        this.answers.push(answer);
+        if(this.count > this.lenght)this.count++;
+        else{
+            this.correctExercise().subscribe((res) => {
+               if(res){
+
+               }
+            });
+        }
+    }
+
+    private correctExercise(){
+
+    }
 }

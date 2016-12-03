@@ -1,15 +1,14 @@
 package App.logic;
 
-import db.EntryRepository;
 import junit.framework.TestCase;
 import model.Entry;
 import model.Wrapper;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +20,9 @@ import java.util.Map;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {db.EntryRepository.class, config.MongoConfig.class, App.Application.class})
+@ContextConfiguration(classes = {config.MongoConfig.class, App.Application.class})
 public class CheckResponseTest extends TestCase {
-    @Autowired
-    private EntryRepository repository;
+
     private List<Entry> entries1 = new ArrayList<Entry>();
 
     /**
@@ -51,7 +49,7 @@ public class CheckResponseTest extends TestCase {
         wrapper1.setData(entries1);
         wrapper1.setSucces(false);
 
-        CheckResponse cr1 = new CheckResponse(repository, new JSONObject(wrapper1).toString());
+        CheckResponse cr1 = new CheckResponse(new JSONObject(wrapper1).toString());
 
         assertEquals("Incorrect input", cr1.getResult().getMsg());
     }
@@ -67,7 +65,7 @@ public class CheckResponseTest extends TestCase {
         wrapper2.setData(entries1);
         wrapper2.setSucces(true);
 
-        CheckResponse cr2 = new CheckResponse(repository, new JSONObject(wrapper2).toString());
+        CheckResponse cr2 = new CheckResponse(new JSONObject(wrapper2).toString());
 
         Map<String,String> obj = (HashMap<String,String>)cr2.getResult().getData();
 
@@ -87,7 +85,7 @@ public class CheckResponseTest extends TestCase {
         wrapper3.setSucces(true);
 
 
-        CheckResponse cr3 = new CheckResponse(repository, new JSONObject(wrapper3).toString());
+        CheckResponse cr3 = new CheckResponse(new JSONObject(wrapper3).toString());
 
         Map obj = (HashMap)cr3.getResult().getData();
 

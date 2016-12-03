@@ -1,15 +1,20 @@
 package App.logic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import db.EntryRepository;
+import config.MongoConfig;
 import model.Entry;
 import model.Wrapper;
 import org.json.JSONObject;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 /**
  * Class for checking list of answers.
@@ -19,7 +24,6 @@ import java.util.Map;
 
 public class CheckResponse {
 
-    private EntryRepository repository;
     private Wrapper input;
     private List<Object> entries;
     private Map<String,Object> answer;
@@ -29,11 +33,14 @@ public class CheckResponse {
 
     /**
      * Constructor, check if users answers are correct and gives back score.
-     * @param repository Mongo repository for entries
      * @param object String containing request of user.
      */
-    public CheckResponse(EntryRepository repository, String object) {
-        this.repository = repository;
+    public CheckResponse(String object) {
+
+        //Configuration DB connection.
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
+
         this.result = new Wrapper();
         this.answer = new HashMap<String, Object>();
         this.faulty = new ArrayList<Entry>();
@@ -56,7 +63,7 @@ public class CheckResponse {
             //check entries
             for (Object value : entries) {
                 Entry entry = mapper.readValue(new JSONObject((HashMap<String,String>)value).toString(), Entry.class);
-                Entry dbEntry = repository.findByWord(entry.getWord());
+                Entry dbEntry = mongoOperations.findOne(new Query(where("word").is(entry.getWord())), Entry.class, "entries");
                 if (dbEntry.getTranslation().equals(entry.getTranslation())) {
                     score++;
                 }
