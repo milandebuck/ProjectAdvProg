@@ -15,7 +15,6 @@ import model.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.expression.ParseException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,7 +34,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 
 @RestController
-@EnableMongoRepositories(basePackages="db")
 public class MainController {
     private final AtomicLong counter = new AtomicLong();
 
