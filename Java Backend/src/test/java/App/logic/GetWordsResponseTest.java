@@ -1,12 +1,10 @@
 package App.logic;
 
-import db.EntryRepository;
 import junit.framework.TestCase;
 import model.Entry;
 import model.Wrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,18 +16,15 @@ import java.util.List;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {db.EntryRepository.class, config.MongoConfig.class, App.Application.class})
+@ContextConfiguration(classes = {config.MongoConfig.class, App.Application.class})
 public class GetWordsResponseTest extends TestCase {
-    @Autowired
-    private EntryRepository repository;
-
     /**
      * Test if list is generated correctly.
      */
     @Test
     public  void testList(){
 
-        GetWordsResponse gwr = new GetWordsResponse(repository, new String[] {"English", "Dutch"}, "5");
+        GetWordsResponse gwr = new GetWordsResponse(new String[] {"English", "Dutch"}, "5");
 
         Wrapper<List<Entry>> response = gwr.listOut();
 

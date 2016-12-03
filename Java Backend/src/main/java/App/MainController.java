@@ -8,11 +8,13 @@ import App.logic.CheckResponse;
 import App.logic.GetWordsResponse;
 import App.registration.UserValidator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import db.EntryRepository;
+import config.MongoConfig;
 import model.Entry;
 import model.User;
 import model.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.expression.ParseException;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -50,9 +51,6 @@ public class MainController {
     @Autowired
     private UserValidator userValidator;
 
-    @Autowired
-    private EntryRepository repository;
-
     /**
      * Returns message for diagnostics purposes.
      * @return {string}
@@ -71,8 +69,13 @@ public class MainController {
     @CrossOrigin
     @RequestMapping("/Entries")
     public Wrapper<List<Entry>> getEntries() {
+        //DB-connection
+
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
+
         List<Entry>  entries = new ArrayList<Entry>();  
-        for (Entry entry : repository.findAll()) {
+        for (Entry entry : mongoOperations.findAll(Entry.class, "entries")) {
             entries.add(entry);
             System.out.println("entry found");
         }
@@ -94,7 +97,7 @@ public class MainController {
             @RequestParam(value="amount", defaultValue="10") String amount,
             @RequestParam(value="from", defaultValue="") String from,
             @RequestParam(value="to", defaultValue="") String to) throws JsonProcessingException {
-        return new GetWordsResponse(repository, new String[] { from, to }, amount).listOut();
+        return new GetWordsResponse(new String[] { from, to }, amount).listOut();
     }
     
     /**
@@ -105,7 +108,7 @@ public class MainController {
     @CrossOrigin
     @PostMapping("/Exercise")
     public Wrapper exerciseSubmit(@RequestBody String input) throws ParseException {
-        return new CheckResponse(repository, input).getResult();
+        return new CheckResponse(input).getResult();
     }
 
     /**

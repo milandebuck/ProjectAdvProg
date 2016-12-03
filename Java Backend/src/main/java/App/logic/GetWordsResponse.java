@@ -1,8 +1,12 @@
 package App.logic;
 
-import db.EntryRepository;
+import config.MongoConfig;
 import model.Entry;
 import model.Wrapper;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +19,6 @@ import java.util.Random;
 
 public class GetWordsResponse {
 
-    private EntryRepository repository;
     private String[] languages;
     private int amount = 10;
     private List<Entry> words;
@@ -28,12 +31,15 @@ public class GetWordsResponse {
 
     /**
      * Constructor for making random word list.
-     * @param repository Mongo repository for Entry objects.
      * @param languages Array of languages: to & from.
      * @param amount Size of list.
      */
-    public GetWordsResponse(EntryRepository repository, String[] languages, String amount) {
-        this.repository = repository;
+    public GetWordsResponse(String[] languages, String amount) {
+
+        //Configuration DB-connection.
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
+
         this.languages = languages;
         this.words = new ArrayList<>();
         this.listOut = new Wrapper();
@@ -45,19 +51,23 @@ public class GetWordsResponse {
                 listOut().setMsg(e.getMessage());
             }
 
-            int querySize = repository.findByLanguages(languages).size();
+            int querySize = mongoOperations.findAll(Entry.class).size();
 
             for (int i = 0; i < this.amount; i++) {
                 Random rnd = new Random();
 
                 //If languages not specified, use all.
                 if (querySize >= 0) {
-                    int j = rnd.nextInt(repository.findAll().size());
-                    Entry doc = (Entry) (repository.findAll().toArray()[j]);
+                    int j = rnd.nextInt(mongoOperations.findAll(Entry.class).size());
+                    Entry doc = (Entry) (mongoOperations.findAll(Entry.class).toArray()[j]);
                     words.add(doc);
                 } else {
-                    int j = rnd.nextInt(repository.findByLanguages(languages).size());
-                    Entry doc = (Entry) (repository.findByLanguages(languages).toArray()[j]);
+                    //Set criteria
+                    Query query = new Query();
+                    query.addCriteria(Criteria.where("languages").is(languages));
+
+                    int j = rnd.nextInt(mongoOperations.find(query, Entry.class, "entries").size());
+                    Entry doc = (Entry) (mongoOperations.find(query, Entry.class, "entries").toArray()[j]);
                     words.add(doc);
                 }
 
