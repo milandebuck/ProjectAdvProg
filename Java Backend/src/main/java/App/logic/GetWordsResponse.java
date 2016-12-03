@@ -51,23 +51,25 @@ public class GetWordsResponse {
                 listOut().setMsg(e.getMessage());
             }
 
-            int querySize = mongoOperations.findAll(Entry.class).size();
+            Query queryLanguages = new Query();
+            queryLanguages.addCriteria(Criteria.where("languages").is(languages));
+            long querySize = mongoOperations.count(queryLanguages, Entry.class, "entries");
 
             for (int i = 0; i < this.amount; i++) {
                 Random rnd = new Random();
 
                 //If languages not specified, use all.
-                if (querySize >= 0) {
-                    int j = rnd.nextInt(mongoOperations.findAll(Entry.class).size());
-                    Entry doc = (Entry) (mongoOperations.findAll(Entry.class).toArray()[j]);
+                if (querySize <= 0) {
+
+                    int j = rnd.nextInt((int)mongoOperations.count(new Query(), Entry.class, "entries"));
+                    Entry doc = (Entry) (mongoOperations.find(new Query().skip(j).limit(1), Entry.class, "entries").toArray()[0]);
+
                     words.add(doc);
                 } else {
-                    //Set criteria
-                    Query query = new Query();
-                    query.addCriteria(Criteria.where("languages").is(languages));
 
-                    int j = rnd.nextInt(mongoOperations.find(query, Entry.class, "entries").size());
-                    Entry doc = (Entry) (mongoOperations.find(query, Entry.class, "entries").toArray()[j]);
+                    int j = rnd.nextInt((int)querySize);
+                    Entry doc = (Entry) (mongoOperations.find(queryLanguages.skip(j).limit(1), Entry.class, "entries").toArray()[0]);
+
                     words.add(doc);
                 }
 
