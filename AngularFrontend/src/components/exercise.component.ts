@@ -35,6 +35,6 @@ export class ExerciseComponent {
     }
 
     private correctExercise(){
-        
+
     }
 }
