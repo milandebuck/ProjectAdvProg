@@ -5,7 +5,6 @@ client = MongoClient("mongodb://adminUser:Azerty123@ds113958.mlab.com:13958/team
 client.teammartini.entries.drop()
 client.teammartini.users.drop()
 collection = client.teammartini.entries
-collection.drop()
 
 #store words in collection
 text_file = open("./data/output.txt","r")
