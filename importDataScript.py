@@ -2,6 +2,8 @@
 from pymongo import MongoClient
 
 client = MongoClient("mongodb://adminUser:Azerty123@ds113958.mlab.com:13958/teammartini")
+client.teammartini.entries.drop()
+client.teammartini.users.drop()
 collection = client.teammartini.entries
 
 #store words in collection
@@ -23,17 +25,17 @@ for line in text_file.readlines():
 
 #store 3 users in collection
 #for i in range(0,3):
-#	user : {
-#		"username": "user" + i,
+#	user = {
+#		"username": "user" + str(i),
 #		"password": "Azerty123",
-#		"teacher": false
+#		"teacher": bool(0)
 #	}
 #	collection.insert(user)
 #store 2 teachers in collection
 #for j in range(0,2):
-#	teacher : {
-#		"username": "teacher" + i,
+#	teacher = {
+#		"username": "teacher" + str(i),
 #		"password": "Azerty123",
-#		"teacher": true
+#		"teacher": bool(1)
 #	}
 #	collection.insert(teacher)
