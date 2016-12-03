@@ -3,6 +3,7 @@ from pymongo import MongoClient
 
 client = MongoClient("mongodb://adminUser:Azerty123@ds113958.mlab.com:13958/teammartini")
 collection = client.teammartini.entries
+collection.drop()
 
 #store words in collection
 text_file = open("./data/output.txt","r")
