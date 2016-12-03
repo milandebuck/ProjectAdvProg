@@ -24,17 +24,17 @@ for line in text_file.readlines():
 		collection.insert(entry)
 
 #store 3 users in collection
-#for i in range(0,3):
+#for i in range(1,4):
 #	user = {
 #		"username": "user" + str(i),
 #		"password": "Azerty123",
 #		"teacher": bool(0)
 #	}
 #	collection.insert(user)
-#store 2 teachers in collection
-#for j in range(0,2):
+#store 3 teachers in collection
+#for j in range(1,4):
 #	teacher = {
-#		"username": "teacher" + str(i),
+#		"username": "teacher" + str(j),
 #		"password": "Azerty123",
 #		"teacher": bool(1)
 #	}
