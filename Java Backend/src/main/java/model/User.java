@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * Mongodocument for a user
@@ -21,6 +21,8 @@ public class User {
     @Transient
     private String passwordConfirm;
     private boolean teacher;
+    private List<WordList> wordLists;
+    private List<Result> results;
 
 
     public boolean isTeacher() {
@@ -81,6 +83,16 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<WordList> getWordLists() { return wordLists; }
+
+    public void setWordLists(List<WordList> wordLists) { this.wordLists = wordLists; }
+
+    public void addToWordLists(WordList wordList) { this.wordLists.add(wordList); }
+
+    public List<Result> getResults() { return results; }
+
+    public void setResults(List<Result> results) { this.results = results; }
 
     //TODO: ToString
 }

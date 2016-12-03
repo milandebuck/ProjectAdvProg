@@ -15,6 +15,7 @@ public class EntrySerializer extends JsonSerializer<Entry> {
 
     @Override
     public void serialize(Entry value, JsonGenerator gen, SerializerProvider serializers) throws IOException, JsonProcessingException {
+
         gen.writeStartObject();
         gen.writeStringField("word", value.getWord());
         gen.writeStringField("translation", value.getTranslation());

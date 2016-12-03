@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService {
     public void save(User user) {
         user.setPassword(this.encoder.encode(user.getPassword()));
         user.setTeacher(false);
-        this.userRepo.save(user);
+        this.userRepo.save(user, "users");
     }
 
     /**

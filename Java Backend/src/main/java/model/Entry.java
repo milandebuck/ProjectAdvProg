@@ -1,6 +1,8 @@
 package model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,8 +16,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "entries")
 public class Entry {
 
+
     @Id
-    private String id;
+    private ObjectId id;
 
     private String word;
     private String translation;
@@ -51,6 +54,9 @@ public class Entry {
     public String[] getLanguages(){
         return this.languages;
     }
+
+    @JsonDeserialize
+    public ObjectId getId() { return id; }
 
     public String ToString() {
         return this.id + ": word = " + word + ", translation = " + translation;

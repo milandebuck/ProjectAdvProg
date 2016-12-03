@@ -6,6 +6,7 @@ import App.authentication.JwtTokenUtil;
 import App.authentication.UserService;
 import App.logic.CheckResponse;
 import App.logic.GetWordsResponse;
+import App.logic.SaveWordList;
 import App.registration.UserValidator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import config.MongoConfig;
@@ -109,6 +110,14 @@ public class MainController {
         return new CheckResponse(input).getResult();
     }
 
+    @CrossOrigin
+    @PostMapping("/SaveList")
+    public Wrapper saveList(@RequestBody String input) throws ParseException {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+        return new SaveWordList(user, input).getConfirmation();
+    }
+
+
     /**
      *   Shows the login page
      **/
@@ -161,6 +170,4 @@ public class MainController {
 
         return "success";
     }
-
-
 }

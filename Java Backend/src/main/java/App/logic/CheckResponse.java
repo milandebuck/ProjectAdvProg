@@ -1,20 +1,17 @@
 package App.logic;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import config.MongoConfig;
 import model.Entry;
 import model.Wrapper;
-import org.json.JSONObject;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 /**
  * Class for checking list of answers.
@@ -24,12 +21,12 @@ import static org.springframework.data.mongodb.core.query.Criteria.where;
 
 public class CheckResponse {
 
-    private Wrapper input;
-    private List<Object> entries;
+    private List<Entry> entries;
     private Map<String,Object> answer;
     private int score;
     private List<Entry> faulty;
     private Wrapper result;
+    private List<Entry> dbEntries;
 
     /**
      * Constructor, check if users answers are correct and gives back score.
@@ -44,26 +41,19 @@ public class CheckResponse {
         this.result = new Wrapper();
         this.answer = new HashMap<String, Object>();
         this.faulty = new ArrayList<Entry>();
+        this.dbEntries = new ArrayList<Entry>();
 
-        invalid: try {
-
-            //Get input
-            ObjectMapper mapper = new ObjectMapper();
-            input = mapper.readValue(object, Wrapper.class);
-
-            //Check if valid
-            if (!input.getSucces()) {
-                result.setMsg("Incorrect input");
-                break invalid;
-            }
-            
-            //Get given enties
-            entries = (List<Object>)input.getData();
+        try {
+            entries = JsonToList.convert(object);
 
             //check entries
-            for (Object value : entries) {
-                Entry entry = mapper.readValue(new JSONObject((HashMap<String,String>)value).toString(), Entry.class);
-                Entry dbEntry = mongoOperations.findOne(new Query(where("word").is(entry.getWord())), Entry.class, "entries");
+            for (Entry entry : entries) {
+                Query getWord = new Query();
+                getWord.addCriteria(Criteria.where("word").is(entry.getWord()).and("languages").is(entry.getLanguages()));
+
+                Entry dbEntry = mongoOperations.findOne(getWord, Entry.class, "entries");
+                dbEntries.add(dbEntry);
+
                 if (dbEntry.getTranslation().equals(entry.getTranslation())) {
                     score++;
                 }
@@ -71,6 +61,8 @@ public class CheckResponse {
                     faulty.add(dbEntry);
                 }
             }
+
+
 
             //Make answer
             answer.put("score", score);

@@ -51,7 +51,7 @@ public class CheckResponseTest extends TestCase {
 
         CheckResponse cr1 = new CheckResponse(new JSONObject(wrapper1).toString());
 
-        assertEquals("Incorrect input", cr1.getResult().getMsg());
+        assertEquals("No valid input", cr1.getResult().getMsg());
     }
 
     /**
