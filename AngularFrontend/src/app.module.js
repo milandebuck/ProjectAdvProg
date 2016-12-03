@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17,6 +18,7 @@ var app_routes_1 = require('./app.routes');
 //services
 var user_service_1 = require('./services/user.service');
 var logged_in_guard_1 = require('./services/logged-in.guard');
+var entry_service_1 = require('./services/entry.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,13 +30,18 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,
                 forms_1.FormsModule,
-                router_1.RouterModule.forRoot(app_routes_1.routes)
+                router_1.RouterModule.forRoot(app_routes_1.routes),
+                http_1.JsonpModule
             ],
-            providers: [user_service_1.UserService, logged_in_guard_1.LoggedInGuard]
+            providers: [
+                user_service_1.UserService,
+                logged_in_guard_1.LoggedInGuard,
+                entry_service_1.EntryService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
     return AppModule;
-})();
+}());
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpModule,JsonpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule }   from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { routes } from './app.routes';
 
 import { UserService } from './services/user.service';
 import { LoggedInGuard } from './services/logged-in.guard';
+import { EntryService } from './services/entry.service';
 
 
 @NgModule({
@@ -25,8 +26,13 @@ import { LoggedInGuard } from './services/logged-in.guard';
         BrowserModule,
         HttpModule,
         FormsModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        JsonpModule
     ],
-    providers: [ UserService,LoggedInGuard ]
+    providers: [
+        UserService,
+        LoggedInGuard,
+        EntryService
+    ]
 })
 export class AppModule {}

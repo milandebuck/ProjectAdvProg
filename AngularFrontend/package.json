@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "tslint ./src/**/*.ts",
-    "start": "webpack-dev-server --config ./webpack/webpack.dev.js",
+    "start": "webpack-dev-server  --config ./webpack/webpack.dev.js --hot --progress",
     "test": "karma start ./karma/karma.conf.js",
     "test:headless": "karma start ./karma/karma.conf.js --browsers PhantomJS --autoWatch=true --singleRun=false",
     "test:single": "karma start ./karma/karma.conf.js --browsers PhantomJS"

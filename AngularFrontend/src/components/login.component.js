@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,6 +17,7 @@ var LoginComponent = (function () {
     function LoginComponent(userService, router) {
         this.userService = userService;
         this.router = router;
+        this.LoggedIn = this.userService.isLoggedIn();
     }
     LoginComponent.prototype.onSubmit = function (event, email, password) {
         var _this = this;
@@ -36,6 +38,6 @@ var LoginComponent = (function () {
         __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
-})();
+}());
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

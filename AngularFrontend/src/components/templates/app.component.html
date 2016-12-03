@@ -2,18 +2,21 @@
     <header class="header clearfix">
         <div class="wrapper">
             <h1 class="logo"><a href="/">Logo</a></h1>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="/">Tests</a></li>
-                    <li><a href="#">Nav2</a></li>
-                    <li><a href="#">Nav3</a></li>
-                </ul>
-            </nav>
-            <div class="login">
-                <img class="loginElement" src="#" alt="User symbol"/>
-                <p class="loginElement">Hello "user"</p>
-                <button type="button" class="loginElement"><a href="#">Logout</a></button>
+            <div *ngIf="loggedIn">
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="/">Tests</a></li>
+                        <li><a href="#">Nav2</a></li>
+                        <li><a href="#">Nav3</a></li>
+                    </ul>
+                </nav>
+                <div class="login">
+                    <img class="loginElement" src="#" alt="User symbol"/>
+                    <p class="loginElement">Hello "user"</p>
+                    <button type="button" class="loginElement"><a href="#">Logout</a></button>
+                </div>
             </div>
+
         </div>
     </header>
     <div class="wrapper">
