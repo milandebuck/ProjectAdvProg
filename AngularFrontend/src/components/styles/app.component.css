@@ -65,8 +65,8 @@ nav{
 }
 /*--- Logo ---*/
 .logo{
-    line-height: 4.5rem;
-    font-size: 3rem;
+    line-height: 6.1rem;
+    font-size: 5rem;
     font-weight: lighter;
 }
 .logo a{
@@ -84,13 +84,14 @@ nav{
     margin-left: auto;
 }
 .navbar li{
-    height: 4.5rem;
-    line-height: 4.5rem;
+    height: 6.1rem;
+    line-height: 6.1rem;
     float: left;
-    margin-left:2rem;
+    margin-left: 2rem;
 }
 .navbar li a {
-    height: 4.5rem;
+    display: block;
+    height: 6.1rem;
     width: 100%;
     color: #CFD8DC;
 }
@@ -110,20 +111,22 @@ nav{
 }
 .loginElement{
     margin-left: 1rem;
-    font-size: 1.2rem;
-    line-height: 4.5rem;
+    font-size: 2rem;
+    line-height: 6.1rem;
     display: block;
     float: left;
 }
 .login img{
-    width: 2rem;
-    height:2rem;
+    margin-top: 1.05rem;
+    width: 4rem;
+    height:4rem;
 }
 .login p{
     color: #CFD8DC;
 }
 .login button{
-    margin-top: 1.25rem;
+    margin-left: 1rem;
+    margin-top: 1.55rem;
     line-height: normal;
     background-color: #FFC107;
     width: 8rem;

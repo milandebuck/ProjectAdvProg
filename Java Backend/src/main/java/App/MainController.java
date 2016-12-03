@@ -115,7 +115,6 @@ public class MainController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         //UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
-        System.out.println("testing heroku");
         return "Login page";
     }
 

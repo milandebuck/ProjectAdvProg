@@ -14,12 +14,7 @@ import  { EntryService } from  './../services/entry.service';
     styles: [ require('./styles/exercise.component.css') ]
 })
 export class ExerciseComponent {
-    public count = 0;
-    public lenght = 10;
-    private answers = [];
-
     constructor( private entryService : EntryService){};
-
     entries=this.entryService.getEntries(this.lenght);
 
     next(answer){

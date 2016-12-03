@@ -1,16 +1,12 @@
 <div>
     <h2>Test your knowledge [NL - EN]</h2>
-    <ul *ng-switch = "count">
-
-        <li *ngFor="let entry of entries ; #i = index" *ng-switch-when="#i">
-
-            <label id="labelNL" for="inputNL">NL</label>
-            <input type="text" #orginal class="form-control" id="inputNL" placeholder="Vraag">
-            <label id="labelEN" for="inputEN">EN</label>
-            <input type="text" #answer class="form-control" id="inputEN" placeholder="Answer">
-            <p class="progress" id="progress"></p>
-            <button (click)="next(answer)">Next ></button>
-        </li>
-    </ul>
+    <form action="">
+        <label id="labelNL" for="inputNL">NL</label>
+        <input type="text" #orginal class="form-control" id="inputNL" placeholder="Vraag">
+        <label id="labelEN" for="inputEN">EN</label>
+        <input type="text" #password class="form-control" id="inputEN" placeholder="Answer">
+        <p class="progress" id="progress"></p>
+        <button type="submit" class="btn btn-default">Next ></button>
+    </form>
     <button type="button" class="reset">Stop test</button>
 </div>

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Repository;
  * Spring data creates this on the fly
  */
 
-@Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
-    User findByUsername(String username);
+    @Bean
+    public User findByUsername(String username);
 
 }
