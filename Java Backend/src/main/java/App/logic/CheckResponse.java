@@ -1,8 +1,11 @@
 package App.logic;
 
 import App.configuration.MongoConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Entry;
 import model.Wrapper;
+import org.bson.types.ObjectId;
+import org.json.JSONObject;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -44,7 +47,22 @@ public class CheckResponse {
         this.dbEntries = new ArrayList<Entry>();
 
         try {
-            entries = JsonToList.convert(object);
+
+            Wrapper input = new Wrapper();
+
+            //Json to Wrapper
+            ObjectMapper mapper = new ObjectMapper();
+            input = mapper.readValue(object, Wrapper.class);
+
+            //Check if valid
+            if (!input.getSucces()) {
+                throw new Exception("No valid input");
+            }
+
+            //Get get entries
+            entries = JsonToList.convert(JSONObject.valueToString(input.getData()));
+            List<ObjectId> newList = new ArrayList<ObjectId>();
+
 
             //check entries
             for (Entry entry : entries) {

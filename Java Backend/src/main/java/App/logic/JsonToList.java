@@ -2,7 +2,6 @@ package App.logic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Entry;
-import model.Wrapper;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -17,21 +16,12 @@ public class JsonToList {
 
     public static List<Entry> convert(String json) throws Exception {
 
-        Wrapper input = new Wrapper();
         List<Object> entries = new ArrayList<Object>();
         List<Entry> out = new ArrayList<Entry>();
 
         //Get input
         ObjectMapper mapper = new ObjectMapper();
-        input = mapper.readValue(json, Wrapper.class);
-
-        //Check if valid
-        if (!input.getSucces()) {
-            throw new Exception("No valid input");
-        }
-
-        //Get given enties
-        entries = (List<Object>)input.getData();
+        entries = mapper.readValue(json, ArrayList.class);
 
         //Add entries in list
         for (Object value : entries) {

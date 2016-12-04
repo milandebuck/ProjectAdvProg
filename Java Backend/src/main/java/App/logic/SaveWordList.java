@@ -1,11 +1,13 @@
 package App.logic;
 
 import App.configuration.MongoConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Entry;
 import model.User;
 import model.WordList;
 import model.Wrapper;
 import org.bson.types.ObjectId;
+import org.json.JSONObject;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -34,7 +36,22 @@ public class SaveWordList {
         MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
 
         try {
-            entries = JsonToList.convert(object);
+            Wrapper input = new Wrapper();
+
+            //Json to Wrapper
+            ObjectMapper mapper = new ObjectMapper();
+            input = mapper.readValue(object, Wrapper.class);
+
+            //Check if valid
+            if (!input.getSucces()) {
+                throw new Exception("No valid input");
+            }
+
+            //Get get names
+            String name = ((HashMap<String,String>)input.getData()).get("name");
+            String inputMap = JSONObject.valueToString(((HashMap<String,String>)input.getData()).get("list"));
+
+            entries = JsonToList.convert(inputMap);
             List<ObjectId> newList = new ArrayList<ObjectId>();
 
             Query checkUser = new Query();
@@ -58,8 +75,13 @@ public class SaveWordList {
                 Entry dbEntry = mongoOperations.findOne(checkEntry, Entry.class, "entries");
                 newList.add(dbEntry.getId());
             }
-            String date = new SimpleDateFormat("EEEE d MMMM yyyy - HH:mm").format(new Date());
-            WordList wl = new WordList(date, newList);
+
+            //if name is not specified use date.
+            if (name.equals(null)) {
+                name = new SimpleDateFormat("EEEE d MMMM yyyy - HH:mm").format(new Date());
+            }
+
+            WordList wl = new WordList(name, newList);
 
             user.addToWordLists(wl);
 
