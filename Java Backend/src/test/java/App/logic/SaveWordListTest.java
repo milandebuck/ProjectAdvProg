@@ -29,6 +29,7 @@ public class SaveWordListTest extends TestCase{
     private MongoOperations mongoOperations = Tools.getMongoOperations();
     private List<Entry> dbList;
     private List<Entry> testList;
+    private SaveWordList saveWordList;
 
     /**
      * generates list with geven name.
@@ -52,8 +53,7 @@ public class SaveWordListTest extends TestCase{
         wrapper.setData(data);
         wrapper.setSucces(true);
 
-        SaveWordList test = new SaveWordList("UnitTestUser", new JSONObject(wrapper).toString());
-        String x =  "test";
+        saveWordList = new SaveWordList("UnitTestUser", new JSONObject(wrapper).toString());
     }
 
     /**
@@ -62,6 +62,9 @@ public class SaveWordListTest extends TestCase{
     @Test
     public void testSaveList() {
         setup("----TEST 1----");
+
+        //Check if making list succeeded.
+        assertTrue(saveWordList.getConfirmation().getSucces());
 
         //Check if list is made & correct.
         Query getList = new Query();
@@ -90,6 +93,9 @@ public class SaveWordListTest extends TestCase{
     @Test
     public void testUserList() {
         setup("----TEST 2----");
+
+        //Check if making list succeeded.
+        assertTrue(saveWordList.getConfirmation().getSucces());
 
         //check if list appears in user document.
         Query getUser = new Query();
