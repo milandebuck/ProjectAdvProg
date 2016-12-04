@@ -50,7 +50,7 @@ public class CheckResponseTest extends TestCase {
         wrapper1.setData(entries1);
         wrapper1.setSucces(false);
 
-        CheckResponse cr1 = new CheckResponse(new JSONObject(wrapper1).toString());
+        CheckResponse cr1 = new CheckResponse("supertest", new JSONObject(wrapper1).toString());
 
         assertEquals("No valid input", cr1.getResult().getMsg());
     }
@@ -66,7 +66,7 @@ public class CheckResponseTest extends TestCase {
         wrapper2.setData(entries1);
         wrapper2.setSucces(true);
 
-        CheckResponse cr2 = new CheckResponse(new JSONObject(wrapper2).toString());
+        CheckResponse cr2 = new CheckResponse("supertest", new JSONObject(wrapper2).toString());
 
         Map<String,String> obj = (HashMap<String,String>)cr2.getResult().getData();
 
@@ -86,7 +86,7 @@ public class CheckResponseTest extends TestCase {
         wrapper3.setSucces(true);
 
 
-        CheckResponse cr3 = new CheckResponse(new JSONObject(wrapper3).toString());
+        CheckResponse cr3 = new CheckResponse("supertest", new JSONObject(wrapper3).toString());
 
         Map obj = (HashMap)cr3.getResult().getData();
 
