@@ -1,0 +1,3 @@
+[submodule "ProjAdvProg-Frontend"]
+	path = ProjAdvProg-Frontend
+	url = https://github.com/milandebuck/ProjAdvProg-Frontend.git
