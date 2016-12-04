@@ -1,6 +1,6 @@
 package model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonTypeId;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -18,6 +18,7 @@ public class Entry {
 
 
     @Id
+    @JsonTypeId
     private ObjectId id;
 
     private String word;
@@ -55,7 +56,7 @@ public class Entry {
         return this.languages;
     }
 
-    @JsonDeserialize
+
     public ObjectId getId() { return id; }
 
     public String ToString() {
