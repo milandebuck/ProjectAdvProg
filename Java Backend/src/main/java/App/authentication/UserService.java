@@ -1,7 +1,7 @@
 package App.authentication;
 
 import App.testingrepo.UserRepository;
-import config.MongoConfig;
+import App.configuration.MongoConfig;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

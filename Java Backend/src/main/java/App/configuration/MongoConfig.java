@@ -1,4 +1,4 @@
-package config;
+package App.configuration;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;

@@ -1,6 +1,6 @@
 package App.logic;
 
-import config.MongoConfig;
+import App.configuration.MongoConfig;
 import model.Entry;
 import model.Wrapper;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

@@ -9,7 +9,7 @@ import App.logic.GetWordsResponse;
 import App.logic.SaveWordList;
 import App.registration.UserValidator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import config.MongoConfig;
+import App.configuration.MongoConfig;
 import model.Entry;
 import model.User;
 import model.Wrapper;

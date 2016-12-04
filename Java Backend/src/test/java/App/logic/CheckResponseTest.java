@@ -1,5 +1,6 @@
 package App.logic;
 
+import App.configuration.MongoConfig;
 import junit.framework.TestCase;
 import model.Entry;
 import model.Wrapper;
@@ -20,7 +21,7 @@ import java.util.Map;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {config.MongoConfig.class, App.Application.class})
+@ContextConfiguration(classes = {MongoConfig.class, App.Application.class})
 public class CheckResponseTest extends TestCase {
 
     private List<Entry> entries1 = new ArrayList<Entry>();

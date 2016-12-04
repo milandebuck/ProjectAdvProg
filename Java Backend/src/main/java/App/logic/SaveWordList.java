@@ -1,6 +1,6 @@
 package App.logic;
 
-import config.MongoConfig;
+import App.configuration.MongoConfig;
 import model.Entry;
 import model.User;
 import model.WordList;

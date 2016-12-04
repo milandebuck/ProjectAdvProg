@@ -1,6 +1,6 @@
 package App.registration;
 
-import config.MongoConfig;
+import App.configuration.MongoConfig;
 import model.User;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;

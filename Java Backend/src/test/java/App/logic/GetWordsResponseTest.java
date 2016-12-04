@@ -1,5 +1,6 @@
 package App.logic;
 
+import App.configuration.MongoConfig;
 import junit.framework.TestCase;
 import model.Entry;
 import model.Wrapper;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {config.MongoConfig.class, App.Application.class})
+@ContextConfiguration(classes = {MongoConfig.class, App.Application.class})
 public class GetWordsResponseTest extends TestCase {
     /**
      * Test if list is generated correctly.
