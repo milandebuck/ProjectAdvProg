@@ -2,8 +2,7 @@ package App.logic;
 
 import App.configuration.MongoConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Entry;
-import model.Wrapper;
+import model.*;
 import org.bson.types.ObjectId;
 import org.json.JSONObject;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -24,23 +23,25 @@ import java.util.Map;
 
 public class CheckResponse {
 
+    //Configuration DB connection.
+    private AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
+    private MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
+
     private List<Entry> entries;
     private Map<String,Object> answer;
     private int score;
     private List<Entry> faulty;
     private Wrapper result;
     private List<Entry> dbEntries;
+    private String username;
 
     /**
      * Constructor, check if users answers are correct and gives back score.
      * @param object String containing request of user.
      */
-    public CheckResponse(String object) {
+    public CheckResponse(String username, String object) {
 
-        //Configuration DB connection.
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
-
+        this.username = username;
         this.result = new Wrapper();
         this.answer = new HashMap<String, Object>();
         this.faulty = new ArrayList<Entry>();
@@ -60,7 +61,7 @@ public class CheckResponse {
             }
 
             //Get get entries
-            entries = JsonToList.convert(JSONObject.valueToString(input.getData()));
+            entries = Tools.jsonToArrayList(JSONObject.valueToString(input.getData()));
             List<ObjectId> newList = new ArrayList<ObjectId>();
 
 
@@ -80,7 +81,8 @@ public class CheckResponse {
                 }
             }
 
-
+            //Write to database
+            saveToDB(score, entries.size());
 
             //Make answer
             answer.put("score", score);
@@ -95,6 +97,42 @@ public class CheckResponse {
             //Give message on failure
             result.setSucces(false);
             result.setMsg(e.getMessage());
+        }
+    }
+
+    public void saveToDB(int score, int max) {
+        List<ObjectId> lists = new ArrayList<ObjectId>();
+
+        Query getUser = new Query();
+        getUser.addCriteria(Criteria.where("username").is(username));
+
+        User user = mongoOperations.findOne(getUser, User.class, "users");
+
+        lists = user.getWordLists();
+
+        ObjectId listId = Tools.exerciseIsList(lists, dbEntries);
+
+        //if list exists save result.
+        if (!(listId == null)) {
+            user.addResult(new Result(score, max, listId));
+            mongoOperations.save(user,"users");
+        }
+
+        //if list doesn't exist create it and save result.
+        else {
+            List<ObjectId> ids = new ArrayList<ObjectId>();
+
+            for (Entry entry : dbEntries) {
+                ids.add(entry.getId());
+            }
+
+            WordList list = new WordList(ids);
+
+            mongoOperations.save(list, "entries");
+
+            user.addToWordLists(list.getId());
+            user.addResult(new Result(score, max, list.getId()));
+            mongoOperations.save(user, "users");
         }
     }
 

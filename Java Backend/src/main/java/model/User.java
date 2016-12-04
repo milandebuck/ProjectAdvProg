@@ -1,5 +1,6 @@
 package model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,7 +22,7 @@ public class User {
     @Transient
     private String passwordConfirm;
     private boolean teacher;
-    private List<WordList> wordLists;
+    private List<ObjectId> wordLists;
     private List<Result> results;
 
 
@@ -84,15 +85,17 @@ public class User {
         this.password = password;
     }
 
-    public List<WordList> getWordLists() { return wordLists; }
+    public List<ObjectId> getWordLists() { return wordLists; }
 
-    public void setWordLists(List<WordList> wordLists) { this.wordLists = wordLists; }
+    public void setWordLists(List<ObjectId> wordLists) { this.wordLists = wordLists; }
 
-    public void addToWordLists(WordList wordList) { this.wordLists.add(wordList); }
+    public void addToWordLists(ObjectId wordList) { this.wordLists.add(wordList); }
 
     public List<Result> getResults() { return results; }
 
     public void setResults(List<Result> results) { this.results = results; }
+
+    public void addResult(Result result) { this.results.add(result); }
 
     //TODO: ToString
 }

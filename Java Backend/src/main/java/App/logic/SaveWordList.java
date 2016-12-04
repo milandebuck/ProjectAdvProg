@@ -13,9 +13,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -51,7 +49,7 @@ public class SaveWordList {
             String name = ((HashMap<String,String>)input.getData()).get("name");
             String inputMap = JSONObject.valueToString(((HashMap<String,String>)input.getData()).get("list"));
 
-            entries = JsonToList.convert(inputMap);
+            entries = Tools.jsonToArrayList(inputMap);
             List<ObjectId> newList = new ArrayList<ObjectId>();
 
             Query checkUser = new Query();
@@ -76,17 +74,23 @@ public class SaveWordList {
                 newList.add(dbEntry.getId());
             }
 
-            //if name is not specified use date.
+            WordList wl;
+
+            //if no name is specified use default.
             if (name.equals(null)) {
-                name = new SimpleDateFormat("EEEE d MMMM yyyy - HH:mm").format(new Date());
+                wl = new WordList(newList);
+            }
+            else {
+                wl = new WordList(name, newList);
             }
 
-            WordList wl = new WordList(name, newList);
+            //save wordlist in entries.
+            mongoOperations.save(wl, "entries");
 
-            user.addToWordLists(wl);
+            //save changes to user
+            user.addToWordLists(wl.getId());
+            mongoOperations.save(user, "users");
 
-            mongoOperations.findAndRemove(checkUser, User.class, "users");
-            mongoOperations.insert(user, "users");
             result.setSucces(true);
 
             HashMap<String, String> data = new HashMap<>();
