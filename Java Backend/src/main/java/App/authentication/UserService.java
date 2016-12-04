@@ -1,5 +1,6 @@
 package App.authentication;
 
+import App.testingrepo.UserRepository;
 import config.MongoConfig;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class UserService implements UserDetailsService {
     private MongoOperations userRepo;
     @Autowired
     private PasswordEncoder encoder;
+
+    @Autowired
+    private UserRepository repo;
 
     public UserService() {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
@@ -46,7 +50,8 @@ public class UserService implements UserDetailsService {
         getUser.addCriteria(Criteria.where("username").is(username));
 
 
-        User userModel = this.userRepo.findOne(getUser, User.class, "users");
+        //User userModel = this.userRepo.findOne(getUser, User.class, "users");
+        User userModel = repo.findByUsername(username);
         if (userModel != null) {
             org.springframework.security.core.userdetails.User springUser = new org.springframework.security.core.userdetails.User(userModel.getUsername(), userModel.getPassword(), new ArrayList());
             return springUser;
