@@ -1,6 +1,5 @@
 package App.logic;
 
-import App.configuration.MongoConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Entry;
 import model.User;
@@ -8,7 +7,6 @@ import model.WordList;
 import model.Wrapper;
 import org.bson.types.ObjectId;
 import org.json.JSONObject;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -22,16 +20,13 @@ import java.util.List;
  */
 public class SaveWordList {
 
+    private MongoOperations mongoOperations = Tools.getMongoOperations();
     private Wrapper result;
     private List<Entry> entries;
 
     public SaveWordList(String username, String object) {
 
         result = new Wrapper();
-
-        //Configuration DB connection.
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
 
         try {
             Wrapper input = new Wrapper();

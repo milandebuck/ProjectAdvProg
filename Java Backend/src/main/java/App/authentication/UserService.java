@@ -1,10 +1,9 @@
 package App.authentication;
 
+import App.logic.Tools;
 import App.testingrepo.UserRepository;
-import App.configuration.MongoConfig;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -27,8 +26,7 @@ public class UserService implements UserDetailsService {
     private UserRepository repo;
 
     public UserService() {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-        userRepo = (MongoOperations)ctx.getBean("mongoTemplate");
+        userRepo = Tools.getMongoOperations();
     }
 
     /**

@@ -29,7 +29,7 @@ public class Result {
     public void setScore(int score) { this.score = score; }
 
     public int getMax() { return max; }
-    public void getMax(int max) { this.max = max; }
+    public void setMax(int max) { this.max = max; }
 
     public ObjectId getList() { return list; }
     public void setListName(ObjectId list) { this.list = list; }
