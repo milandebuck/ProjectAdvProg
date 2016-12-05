@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * Created by Domien on 22-11-2016.
  */
 
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {App.configuration.MongoConfig.class, App.Application.class})
 public class GetWordsResponseTest extends TestCase {

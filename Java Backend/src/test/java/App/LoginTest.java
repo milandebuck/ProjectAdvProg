@@ -1,5 +1,7 @@
 package App;
 
+import org.springframework.test.context.web.WebAppConfiguration;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -7,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 //@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 public class LoginTest {
 
     public void SuccessfullyLogin() {
