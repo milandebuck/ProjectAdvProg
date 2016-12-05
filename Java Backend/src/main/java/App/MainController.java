@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-
+@CrossOrigin
 @RestController
 public class MainController {
     private final AtomicLong counter = new AtomicLong();

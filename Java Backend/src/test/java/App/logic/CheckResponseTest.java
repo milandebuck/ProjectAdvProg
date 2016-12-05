@@ -23,9 +23,9 @@ import java.util.Map;
  * Created by Robbe De Geyndt on 26/11/2016.
  */
 
-@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {App.configuration.MongoConfig.class, App.Application.class, App.logic.Tools.class})
+@ContextConfiguration(classes = {App.configuration.MongoConfig.class, App.configuration.WebConfig.class, App.Application.class, App.logic.Tools.class})
+@WebAppConfiguration
 public class CheckResponseTest extends TestCase {
 
     private MongoOperations mongoOperations = Tools.getMongoOperations();

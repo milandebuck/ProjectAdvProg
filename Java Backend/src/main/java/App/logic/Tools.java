@@ -1,5 +1,6 @@
 package App.logic;
 
+import App.configuration.MongoConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Entry;
 import model.WordList;
@@ -7,7 +8,7 @@ import org.bson.types.ObjectId;
 import org.json.JSONObject;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
-import App.configuration.MongoConfig;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,7 @@ public class Tools {
 
     /**
      * Converts JSON String to a list of entries.
-     * @param json
+     * @param json user's request
      * @return list of entries
      * @throws Exception when parsing fails
      */
