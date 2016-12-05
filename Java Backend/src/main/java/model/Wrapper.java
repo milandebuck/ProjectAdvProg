@@ -3,6 +3,7 @@ package model;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
+ * Wrapper object, used to encapsulate data.
  * Created by milan on 22.11.16.
  */
 @JsonSerialize
@@ -11,13 +12,22 @@ public class Wrapper<T> {
     private String msg;
     private T data;
 
+    /**
+     * Empty constructor for Wrapper object.
+     */
+    public  Wrapper() {}
+
+
+    /**
+     * Constructor for Wrapper object.
+     * @param succes true when object is valid
+     * @param msg message for diagnostic purposes
+     * @param data encapsulated data
+     */
     public Wrapper(Boolean succes, String msg, T data) {
         this.data = data;
         this.msg = msg;
         this.succes = succes;
-    }
-
-    public Wrapper() {
     }
 
     public T getData() {

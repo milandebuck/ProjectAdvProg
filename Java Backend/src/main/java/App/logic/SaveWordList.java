@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Save WordLists to the database.
  * Created by Robbe De Geyndt on 3/12/2016.
  */
 public class SaveWordList {
@@ -24,6 +25,11 @@ public class SaveWordList {
     private Wrapper result;
     private List<Entry> entries;
 
+    /**
+     * Object saves list of entries (test) to database.
+     * @param username user's screen name
+     * @param object request of user
+     */
     public SaveWordList(String username, String object) {
 
         result = new Wrapper();
@@ -100,6 +106,10 @@ public class SaveWordList {
         }
     }
 
+    /**
+     * Returns wrapper with confirmation.
+     * @return Wrapper
+     */
     public Wrapper getConfirmation() {
         return result;
     }

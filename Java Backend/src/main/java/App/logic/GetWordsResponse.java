@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Class for getting random wordlists from DB.
+ * Class for getting list of random entries from the database.
  * Created by Robbe De Geyndt on 16/11/2016.
  */
 
@@ -30,8 +30,8 @@ public class GetWordsResponse {
 
     /**
      * Constructor for making random word list.
-     * @param languages Array of languages: to and from.
-     * @param amount Size of list.
+     * @param languages array of languages: to and from
+     * @param amount size of list.
      */
     public GetWordsResponse(String[] languages, String amount) {
 

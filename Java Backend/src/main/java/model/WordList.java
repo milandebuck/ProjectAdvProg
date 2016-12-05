@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * Object that contains a list of entries (test).
  * Created by Robbe De Geyndt on 3/12/2016.
  */
 @Document(collection = "entries")
@@ -22,15 +23,27 @@ public class WordList {
     private String name;
     private List<ObjectId> entryList;
 
+    /**
+     * Empty constructor of WordList object.
+     */
     public WordList() {
         this.entryList = new ArrayList<ObjectId>();
     }
 
+    /**
+     * Constructor of WordList object, with standard name.
+     * @param entryList list of entries for test
+     */
     public WordList(List<ObjectId> entryList) {
         this.name = new SimpleDateFormat("EEEE d MMMM yyyy - HH:mm").format(new Date());
         this.entryList = entryList;
     }
 
+    /**
+     * Constructor of WordList object.
+     * @param name name for test
+     * @param entryList list of entries for test
+     */
     public WordList(String name, List<ObjectId> entryList) {
         this.name = name;
         this.entryList = entryList;

@@ -6,6 +6,7 @@ import org.bson.types.ObjectId;
 import java.util.Date;
 
 /**
+ * Object that contains users score on a test.
  * Created by Robbe De Geyndt on 3/12/2016.
  */
 public class Result {
@@ -14,10 +15,19 @@ public class Result {
     private ObjectId list;
     private Date date;
 
+    /**
+     * Empty constructor for Result object.
+     */
     public Result() {
         this.date = new Date();
     }
 
+    /**
+     * Constructor for Result object
+     * @param score earned score
+     * @param max maximum score
+     * @param list reference to the list that was tested.
+     */
     public Result (int score, int max, ObjectId list) {
         this.date = new Date();
         this.score = score;

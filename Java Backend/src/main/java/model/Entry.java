@@ -10,8 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * This is our mongodocument for translations
  */
-
-
 @JsonSerialize
 @Document(collection = "entries")
 public class Entry {
@@ -25,11 +23,20 @@ public class Entry {
     private String translation;
     private String[] languages = new String[2];
 
+    /**
+     * Empty Construvtor for Entry object.
+     */
     public Entry() {
         this.word = "";
         this.translation = "";
     }
 
+    /**
+     * Constructor for Entry object.
+     * @param w word
+     * @param t translation
+     * @param l array of languages.
+     */
     public Entry(String w, String t,String[] l) {
         this.word = w;
         this.translation = t;

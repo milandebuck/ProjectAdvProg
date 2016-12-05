@@ -34,8 +34,8 @@ public class CheckResponse {
 
     /**
      * Constructor, check if users answers are correct and gives back score.
-     * @param username String containing username.
-     * @param object String containing request of user.
+     * @param username String containing username
+     * @param object String containing request of user
      */
     public CheckResponse(String username, String object) {
 
@@ -98,6 +98,11 @@ public class CheckResponse {
         }
     }
 
+    /**
+     * Save users earned score to the database.
+     * @param score earned score
+     * @param max maximum score
+     */
     public void saveToDB(int score, int max) {
         List<ObjectId> lists = new ArrayList<ObjectId>();
 

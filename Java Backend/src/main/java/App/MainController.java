@@ -164,7 +164,7 @@ public class MainController {
     }
 
     /**
-     * Register user.
+     * Register user
      * @param user
      * @param br
      * @param response

@@ -34,15 +34,25 @@ public class SaveWordListTest extends TestCase{
     private SaveWordList saveWordList;
 
     /**
-     * generates list with geven name.
-     * @param listname
+     * Generates list of entries with given name.
+     * @param listname name list that will be generated
      */
     private void setup(String listname) {
         dbList = new ArrayList<Entry>();
         testList = new ArrayList<Entry>();
 
-        for (int i = 0; i < 5; i++) {
-            Entry dbEntry = mongoOperations.findOne(new Query(), Entry.class, "entries");
+        List<String> entriesToTest = new ArrayList<String>();
+        entriesToTest.add("(aero)plane");
+        entriesToTest.add("(arch)angel");
+        entriesToTest.add("(blood) circulation");
+        entriesToTest.add("(bride)groom");
+        entriesToTest.add("(eye)lash");
+
+        for (int i = 0; i < entriesToTest.size(); i++) {
+            Query getEntries = new Query();
+            getEntries.addCriteria(Criteria.where("word").is(entriesToTest.get(i)));
+
+            Entry dbEntry = mongoOperations.findOne(getEntries, Entry.class, "entries");
             dbList.add(dbEntry);
             testList.add(new Entry(dbEntry.getWord(), dbEntry.getTranslation(), dbEntry.getLanguages()));
         }
@@ -92,6 +102,9 @@ public class SaveWordListTest extends TestCase{
         mongoOperations.remove(getList, WordList.class, "entries");
     }
 
+    /**
+     * Tests if lists are stored in User object.
+     */
     @Test
     public void testUserList() {
         setup("----TEST 2----");

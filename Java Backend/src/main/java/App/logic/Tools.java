@@ -13,15 +13,26 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Takes oncomin json containing list of entries and converts them to Entry-objects.
+ * Class with tools used by several other classes.
  * Created by Robbe De Geyndt on 3/12/2016.
  */
 public class Tools {
+
+    /**
+     * Creates MongoOperations object for database transactions.
+     * @return MongoOperations
+     */
     public static MongoOperations getMongoOperations() {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
         return (MongoOperations)ctx.getBean("mongoTemplate");
     }
 
+    /**
+     * Converts JSON String to a list of entries.
+     * @param json
+     * @return list of entries
+     * @throws Exception when parsing fails
+     */
     public static List<Entry> jsonToArrayList(String json) throws Exception {
 
         List<Object> entries = new ArrayList<Object>();
@@ -41,6 +52,12 @@ public class Tools {
         return out;
     }
 
+    /**
+     * Checks if given list of Entries already exists in wordlists of user.
+     * @param lists wordlists of user
+     * @param exercise new list of entries
+     * @return ObjectId of list or null
+     */
     public static ObjectId exerciseIsList(List<ObjectId> lists, List<Entry> exercise) {
         MongoOperations mongoOperations = getMongoOperations();
 

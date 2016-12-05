@@ -46,6 +46,9 @@ public class CheckResponseTest extends TestCase {
 
     }
 
+    /**
+     * Removes testdata from database.
+     */
     private void cleanDB() {
         //Get user
         Query getUser = new Query();
@@ -130,9 +133,8 @@ public class CheckResponseTest extends TestCase {
     /**
      * Test if everything is in the database.
      */
-
     @Test
-    public void dbTest() {
+    public void testDB() {
         setup();
 
         Wrapper wrapper4 = new Wrapper();
