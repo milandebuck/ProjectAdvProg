@@ -1,9 +1,7 @@
 package App.logic;
 
-import App.configuration.MongoConfig;
 import model.Entry;
 import model.Wrapper;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -19,6 +17,7 @@ import java.util.Random;
 
 public class GetWordsResponse {
 
+    private MongoOperations mongoOperations = Tools.getMongoOperations();
     private String[] languages;
     private int amount = 10;
     private List<Entry> words;
@@ -35,10 +34,6 @@ public class GetWordsResponse {
      * @param amount Size of list.
      */
     public GetWordsResponse(String[] languages, String amount) {
-
-        //Configuration DB-connection.
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
 
         this.languages = languages;
         this.words = new ArrayList<>();

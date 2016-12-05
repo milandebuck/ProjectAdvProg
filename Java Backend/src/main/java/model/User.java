@@ -90,12 +90,14 @@ public class User {
     public void setWordLists(List<ObjectId> wordLists) { this.wordLists = wordLists; }
 
     public void addToWordLists(ObjectId wordList) { this.wordLists.add(wordList); }
+    public void removeFromWordLists(ObjectId wordList) { this.wordLists.remove(wordList); }
 
     public List<Result> getResults() { return results; }
 
     public void setResults(List<Result> results) { this.results = results; }
 
     public void addResult(Result result) { this.results.add(result); }
+    public void removeResult(Result result) {this.results.remove(result); }
 
     //TODO: ToString
 }

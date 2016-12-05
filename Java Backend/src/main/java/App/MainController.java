@@ -7,14 +7,13 @@ import App.authentication.UserService;
 import App.logic.CheckResponse;
 import App.logic.GetWordsResponse;
 import App.logic.SaveWordList;
+import App.logic.Tools;
 import App.registration.UserValidator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import App.configuration.MongoConfig;
 import model.Entry;
 import model.User;
 import model.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.expression.ParseException;
 import org.springframework.http.ResponseEntity;
@@ -69,9 +68,7 @@ public class MainController {
     @RequestMapping("/Entries")
     public Wrapper<List<Entry>> getEntries() {
         //DB-connection
-
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-        MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
+        MongoOperations mongoOperations = Tools.getMongoOperations();
 
         List<Entry>  entries = new ArrayList<Entry>();  
         for (Entry entry : mongoOperations.findAll(Entry.class, "entries")) {

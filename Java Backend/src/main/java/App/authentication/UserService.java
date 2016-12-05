@@ -2,9 +2,9 @@ package App.authentication;
 
 import App.repository.UserRepository;
 import App.configuration.MongoConfig;
+import App.logic.Tools;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -27,6 +27,8 @@ public class UserService implements UserDetailsService {
 
     public UserService() {
 
+
+        //userRepo = Tools.getMongoOperations();
     }
 
     /**

@@ -1,11 +1,9 @@
 package App.logic;
 
-import App.configuration.MongoConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.*;
 import org.bson.types.ObjectId;
 import org.json.JSONObject;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -24,8 +22,7 @@ import java.util.Map;
 public class CheckResponse {
 
     //Configuration DB connection.
-    private AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-    private MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
+    private MongoOperations mongoOperations = Tools.getMongoOperations();
 
     private List<Entry> entries;
     private Map<String,Object> answer;
