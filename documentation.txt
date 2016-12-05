@@ -1,4 +1,4 @@
-Generated JavaDoc: http://teammartini.tk
+Generated JavaDoc: http://teammartini.xyz
 
 1. API calls
 1.1 Wrapper
