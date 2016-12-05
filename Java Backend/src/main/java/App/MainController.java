@@ -103,7 +103,7 @@ public class MainController {
      * @throws ParseException
      */
     @CrossOrigin
-    @PostMapping("/Exercise")
+    @RequestMapping(method = RequestMethod.POST, value = "/Exercise")
     public Wrapper exerciseSubmit(@RequestBody String input) throws ParseException {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
 
