@@ -30,7 +30,7 @@ public class GetWordsResponse {
 
     /**
      * Constructor for making random word list.
-     * @param languages Array of languages: to & from.
+     * @param languages Array of languages: to and from.
      * @param amount Size of list.
      */
     public GetWordsResponse(String[] languages, String amount) {

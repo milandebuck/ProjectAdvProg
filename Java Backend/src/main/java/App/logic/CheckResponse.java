@@ -34,6 +34,7 @@ public class CheckResponse {
 
     /**
      * Constructor, check if users answers are correct and gives back score.
+     * @param username String containing username.
      * @param object String containing request of user.
      */
     public CheckResponse(String username, String object) {
@@ -134,7 +135,7 @@ public class CheckResponse {
     }
 
     /**
-     * Returns Wrapper object with score & corrections for faulty answers.
+     * Returns Wrapper object with score and corrections for faulty answers.
      * @return Wrapper
      */
     public Wrapper getResult() {

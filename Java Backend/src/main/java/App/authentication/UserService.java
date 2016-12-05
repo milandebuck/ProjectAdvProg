@@ -25,7 +25,8 @@ public class UserService implements UserDetailsService {
     }
 
     /**
-     *   Save the user in the database with username, password and teacherboolean
+     *   Save the user in the database with username, password and teacherboolean.
+     *   @param user
      **/
     public void save(User user) {
         user.setPassword(this.encoder.encode(user.getPassword()));
@@ -35,6 +36,8 @@ public class UserService implements UserDetailsService {
 
     /**
      *   Load the username, if it exists returns the username with password and isTeacher
+     *   @param username
+     *   @return
      **/
     public org.springframework.security.core.userdetails.User loadUserByUsername(String username) throws UsernameNotFoundException {
 

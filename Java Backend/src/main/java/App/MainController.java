@@ -51,7 +51,7 @@ public class MainController {
 
     /**
      * Returns message for diagnostics purposes.
-     * @return {string}
+     * @return "Dit is de API van TeamMartini voor ScrumProject AdvProg"
      */
     @RequestMapping("/")
     public String returnMsg() {
@@ -60,8 +60,8 @@ public class MainController {
     }
 
     /**
-     *  Returns List of all database entries.
-     * @return {List<Entry>}
+     * Returns List of all database entries.
+     * @return list of entries
      */
 
     @CrossOrigin
@@ -81,10 +81,10 @@ public class MainController {
     
     /**
      * Returns List of set size with random words.
-     * @param {string} amount
-     * @param {string} from - language
-     * @param {string} to - language
-     * @return {Wrapper}
+     * @param amount amount of words
+     * @param from language to translate from
+     * @param to language to translate to
+     * @return list of entries
      */
 
     @CrossOrigin
@@ -97,9 +97,10 @@ public class MainController {
     }
     
     /**
-     * Returns true if given {Entry} is correct.
-     * @param {Object} entry
-     * @return {Wrapper}
+     * Returns score when list of entries is given.
+     * @param input list of entries
+     * @return score, maximum score, list of corrections.
+     * @throws ParseException
      */
     @CrossOrigin
     @PostMapping("/Exercise")
@@ -109,6 +110,12 @@ public class MainController {
         return new CheckResponse(user, input).getResult();
     }
 
+    /**
+     * Saves user made list.
+     * @param input user made list
+     * @return failed or success
+     * @throws ParseException
+     */
     @CrossOrigin
     @PostMapping("/SaveList")
     public Wrapper saveList(@RequestBody String input) throws ParseException {
@@ -118,7 +125,8 @@ public class MainController {
 
 
     /**
-     *   Shows the login page
+     * Shows the login page
+     * @return "Login page"
      **/
     @CrossOrigin
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -132,6 +140,8 @@ public class MainController {
      *
      *   if successful: return a jwt
      *   if fail: return badcredentialserror
+     *   @param authenticationRequest
+     *   @return
      **/
     @CrossOrigin
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -154,7 +164,11 @@ public class MainController {
     }
 
     /**
-     *
+     * Register user.
+     * @param user
+     * @param br
+     * @param response
+     * @return
      **/
     @CrossOrigin
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
