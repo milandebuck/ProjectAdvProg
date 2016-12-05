@@ -8,9 +8,8 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * Mongodocument for a user
+ * Mongodocument for a user.
  */
-
 @Document(collection = "users")
 public class User {
 
@@ -25,31 +24,43 @@ public class User {
     private List<ObjectId> wordLists;
     private List<Result> results;
 
-
-    public boolean isTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(boolean teacher) {
-        this.teacher = teacher;
-    }
-
-
+    /**
+     * Empty constructor for User object.
+     */
     public User(){
         this.username = "";
         this.password = "";
         this.teacher = false;
     }
 
+    /**
+     * Constructor for User object, standard not a teacher.
+     * @param username user's screen name
+     * @param password hash of password
+     */
     public User (String username, String password) {
         this.username = username;
         this.password = password;
         this.teacher = false;
     }
 
+    /**
+     * Constructor for User object.
+     * @param username user's screen name
+     * @param password hash of password
+     * @param teacher is true when user is a teacher
+     */
     public User(String username, String password, boolean teacher){
         this.username = username;
         this.password = password;
+        this.teacher = teacher;
+    }
+
+    public boolean isTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(boolean teacher) {
         this.teacher = teacher;
     }
 

@@ -24,7 +24,7 @@ public class Entry {
     private String[] languages = new String[2];
 
     /**
-     * Empty Construvtor for Entry object.
+     * Empty constructor for Entry object.
      */
     public Entry() {
         this.word = "";
