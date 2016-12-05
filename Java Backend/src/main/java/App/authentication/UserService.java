@@ -1,13 +1,8 @@
 package App.authentication;
 
 import App.repository.UserRepository;
-import App.configuration.MongoConfig;
-import App.logic.Tools;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,8 +22,6 @@ public class UserService implements UserDetailsService {
 
     public UserService() {
 
-
-        //userRepo = Tools.getMongoOperations();
     }
 
     /**

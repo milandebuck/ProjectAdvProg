@@ -1,8 +1,7 @@
 package App.registration;
 
-import App.configuration.MongoConfig;
+import App.logic.Tools;
 import model.User;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -17,8 +16,7 @@ public class UserValidator implements Validator {
 
 
     //Configuration DB connection.
-    AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-    MongoOperations mongoOperations = (MongoOperations)ctx.getBean("mongoTemplate");
+    MongoOperations mongoOperations = Tools.getMongoOperations();
 
     @Override
     public boolean supports(Class<?> aClass) {

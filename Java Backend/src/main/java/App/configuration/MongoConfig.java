@@ -18,6 +18,7 @@ import java.util.List;
  */
 
 @Configuration
+//@EnableWebMvc
 @EnableMongoRepositories (basePackages = "App.repository")
 public class MongoConfig {
 
