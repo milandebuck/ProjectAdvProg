@@ -1,6 +1,6 @@
 package App.authentication;
 
-import App.testingrepo.UserRepository;
+import App.repository.UserRepository;
 import App.configuration.MongoConfig;
 import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +19,14 @@ import java.util.ArrayList;
 @Service
 public class UserService implements UserDetailsService {
 
-    private MongoOperations userRepo;
     @Autowired
     private PasswordEncoder encoder;
 
     @Autowired
-    private UserRepository repo;
+    private UserRepository userRepo;
 
     public UserService() {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MongoConfig.class);
-        userRepo = (MongoOperations)ctx.getBean("mongoTemplate");
+
     }
 
     /**
@@ -37,7 +35,7 @@ public class UserService implements UserDetailsService {
     public void save(User user) {
         user.setPassword(this.encoder.encode(user.getPassword()));
         user.setTeacher(false);
-        this.userRepo.save(user, "users");
+        this.userRepo.save(user);
     }
 
     /**
@@ -45,13 +43,7 @@ public class UserService implements UserDetailsService {
      **/
     public org.springframework.security.core.userdetails.User loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        //Make query
-        Query getUser = new Query();
-        getUser.addCriteria(Criteria.where("username").is(username));
-
-
-        //User userModel = this.userRepo.findOne(getUser, User.class, "users");
-        User userModel = repo.findByUsername(username);
+        User userModel = userRepo.findByUsername(username);
         if (userModel != null) {
             org.springframework.security.core.userdetails.User springUser = new org.springframework.security.core.userdetails.User(userModel.getUsername(), userModel.getPassword(), new ArrayList());
             return springUser;

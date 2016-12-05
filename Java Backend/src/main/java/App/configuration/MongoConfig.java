@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @Configuration
-@EnableMongoRepositories (basePackages = "App.testingrepo")
+@EnableMongoRepositories (basePackages = "App.repository")
 public class MongoConfig {
 
     @Bean
