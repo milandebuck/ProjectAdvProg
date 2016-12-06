@@ -47,19 +47,9 @@ public class CheckResponse {
 
         try {
 
-            Wrapper input = new Wrapper();
-
-            //Json to Wrapper
-            ObjectMapper mapper = new ObjectMapper();
-            input = mapper.readValue(object, Wrapper.class);
-
-            //Check if valid
-            if (!input.getSucces()) {
-                throw new Exception("No valid input");
-            }
 
             //Get get entries
-            entries = Tools.jsonToArrayList(JSONObject.valueToString(input.getData()));
+            entries = Tools.jsonToArrayList(object);
             List<ObjectId> newList = new ArrayList<ObjectId>();
 
 
