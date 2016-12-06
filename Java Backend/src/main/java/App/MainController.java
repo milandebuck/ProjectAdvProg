@@ -105,6 +105,8 @@ public class MainController {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/Exercise")
     public Wrapper exerciseSubmit(@RequestBody String input, @RequestParam("token") String token) throws ParseException {
+        if (token == null) throw new IllegalArgumentException("token is null in exercisecontroller");
+
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
 
         return new CheckResponse(user, input).getResult();
