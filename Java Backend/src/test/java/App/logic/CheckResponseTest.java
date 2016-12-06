@@ -108,7 +108,7 @@ public class CheckResponseTest extends TestCase {
     public void testFeedback() {
         setup();
 
-        CheckResponse cr3 = new CheckResponse("UnitTestUser", new JSONObject(entries1).toString());
+        CheckResponse cr3 = new CheckResponse("UnitTestUser", JSONObject.valueToString(entries1));
 
         Map obj = (HashMap)cr3.getResult().getData();
 
@@ -128,7 +128,7 @@ public class CheckResponseTest extends TestCase {
     public void testDB() {
         setup();
 
-        CheckResponse cr4 = new CheckResponse("UnitTestUser", new JSONObject(entries1).toString());
+        CheckResponse cr4 = new CheckResponse("UnitTestUser", JSONObject.valueToString(entries1));
 
         //Get user
         Query getUser = new Query();
