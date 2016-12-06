@@ -41,7 +41,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // authToken.startsWith("Bearer ")
         // String authToken = header.substring(7);
         String authToken = request.getParameter("token");
-        if (authToken == null) throw new IllegalArgumentException("Token is null: in JwtAuthenticationTokenFilter");
+        //if (authToken == null) throw new IllegalArgumentException("Token is null: in JwtAuthenticationTokenFilter");
 
 
         String username = jwtTokenUtil.getUsernameFromToken(authToken);
