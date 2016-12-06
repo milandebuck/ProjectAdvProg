@@ -42,9 +42,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // String authToken = header.substring(7);
         String authToken = request.getParameter("token");
         //if (authToken == null) throw new IllegalArgumentException("Token is null: in JwtAuthenticationTokenFilter");
-        System.out.println(authToken);
-        System.out.println(request.toString());
-        System.out.println(chain.toString());
+        System.out.println("authToken: " + authToken);
+        System.out.println("request: " + request.toString());
+        System.out.println("chain: " + chain.toString());
 
         String username = jwtTokenUtil.getUsernameFromToken(authToken);
 
