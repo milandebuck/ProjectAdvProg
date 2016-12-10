@@ -9,11 +9,13 @@ import java.util.Date;
  * Object that contains users score on a test.
  * Created by Robbe De Geyndt on 3/12/2016.
  */
+
 public class Result {
     private int score;
     private int max;
     private ObjectId list;
     private Date date;
+    private String[] languages;
 
     /**
      * Empty constructor for Result object.
@@ -28,11 +30,12 @@ public class Result {
      * @param max maximum score
      * @param list reference to the list that was tested.
      */
-    public Result (int score, int max, ObjectId list) {
+    public Result (int score, int max, ObjectId list, String[] languages) {
         this.date = new Date();
         this.score = score;
         this.max = max;
         this.list = list;
+        this.languages = languages;
     }
 
     public int getScore() { return score; }
@@ -42,7 +45,11 @@ public class Result {
     public void setMax(int max) { this.max = max; }
 
     public ObjectId getList() { return list; }
-    public void setListName(ObjectId list) { this.list = list; }
+    public void setList(ObjectId list) { this.list = list; }
+
 
     public void resetDate() { date = new Date(); }
+
+    public String[] getLanguages() { return languages; }
+    public void setLanguages(String[] languages) { this.languages = languages; }
 }

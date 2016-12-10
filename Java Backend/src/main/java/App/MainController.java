@@ -4,10 +4,7 @@ import App.authentication.JwtAuthenticationRequest;
 import App.authentication.JwtAuthenticationResponse;
 import App.authentication.JwtTokenUtil;
 import App.authentication.UserService;
-import App.logic.CheckResponse;
-import App.logic.GetWordsResponse;
-import App.logic.SaveWordList;
-import App.logic.Tools;
+import App.logic.*;
 import App.registration.UserValidator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Entry;
@@ -120,9 +117,16 @@ public class MainController {
      */
     @CrossOrigin
     @PostMapping("/SaveList")
-    public Wrapper saveList(@RequestBody String input) throws ParseException {
+    public Wrapper saveList(@RequestBody String input, @RequestParam("token") String token) throws ParseException {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
         return new SaveWordList(user, input).getConfirmation();
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.GET, value = "/GetUser")
+    public String saveList(@RequestParam("token") String token) throws ParseException {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+        return new GetObject(user).userResults();
     }
 
 

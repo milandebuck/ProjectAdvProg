@@ -1,9 +1,7 @@
 package App.logic;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import model.*;
 import org.bson.types.ObjectId;
-import org.json.JSONObject;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -31,6 +29,7 @@ public class CheckResponse {
     private Wrapper result;
     private List<Entry> dbEntries;
     private String username;
+    private String[] languages;
 
     /**
      * Constructor, check if users answers are correct and gives back score.
@@ -47,7 +46,6 @@ public class CheckResponse {
 
         try {
 
-
             //Get get entries
             entries = Tools.jsonToArrayList(object);
             List<ObjectId> newList = new ArrayList<ObjectId>();
@@ -55,6 +53,14 @@ public class CheckResponse {
 
             //check entries
             for (Entry entry : entries) {
+
+                if (languages == null) {
+                    languages = entry.getLanguages();
+                }
+                else {
+                    if ((!languages[0].equals(entry.getLanguages()[0])) && (!languages[1].equals(entry.getLanguages()[1]))) throw new Exception("Languages don't match");
+                }
+
                 Query getWord = new Query();
                 getWord.addCriteria(Criteria.where("word").is(entry.getWord()).and("languages").is(entry.getLanguages()));
 
@@ -107,7 +113,7 @@ public class CheckResponse {
 
         //if list exists save result.
         if (!(listId == null)) {
-            user.addResult(new Result(score, max, listId));
+            user.addResult(new Result(score, max, listId, languages));
             mongoOperations.save(user,"users");
         }
 
@@ -124,7 +130,7 @@ public class CheckResponse {
             mongoOperations.save(list, "entries");
 
             user.addToWordLists(list.getId());
-            user.addResult(new Result(score, max, list.getId()));
+            user.addResult(new Result(score, max, list.getId(), languages));
             mongoOperations.save(user, "users");
         }
     }

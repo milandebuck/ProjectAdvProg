@@ -57,4 +57,5 @@ public class WordList {
 
     public List<ObjectId> getEntryList() { return entryList; }
     public void setEntryList(List<ObjectId> entryList) { this.entryList = entryList; }
+
 }
