@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
+ * Class for returning test results.
  * Created by Robbe De Geyndt on 10/12/2016.
  */
 public class GetResults {
@@ -25,7 +26,10 @@ public class GetResults {
     private String username;
     private Wrapper out;
 
-
+    /**
+     * Gettining test results and sorting them by languages.
+     * @param username name of user
+     */
     public GetResults(String username) {
 
         this.username = username;
@@ -83,6 +87,9 @@ public class GetResults {
 
     }
 
-
+    /**
+     * Returns wrapper with result.
+     * @return list of test results by languages
+     */
     public Wrapper userResults() { return out; }
 }

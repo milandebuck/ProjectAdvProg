@@ -60,9 +60,8 @@ public class MainController {
      * Returns List of all database entries.
      * @return list of entries
      */
-
     @CrossOrigin
-    @RequestMapping("/Entries")
+    @RequestMapping(method = RequestMethod.GET, value = "/Entries")
     public Wrapper<List<Entry>> getEntries() {
         //DB-connection
         MongoOperations mongoOperations = Tools.getMongoOperations();
@@ -83,9 +82,8 @@ public class MainController {
      * @param to language to translate to
      * @return list of entries
      */
-
     @CrossOrigin
-    @GetMapping("/Exercise")
+    @RequestMapping(method = RequestMethod.GET, value = "/Exercise")
     public Wrapper exerciseForm(
             @RequestParam(value="amount", defaultValue="10") String amount,
             @RequestParam(value="from", defaultValue="") String from,
@@ -96,6 +94,7 @@ public class MainController {
     /**
      * Returns score when list of entries is given.
      * @param input list of entries
+     * @param token authentication
      * @return score, maximum score, list of corrections.
      * @throws ParseException
      */
@@ -112,16 +111,23 @@ public class MainController {
     /**
      * Saves user made list.
      * @param input user made list
+     * @param token authentication
      * @return failed or success
      * @throws ParseException
      */
     @CrossOrigin
-    @PostMapping("/SaveList")
+    @RequestMapping(method = RequestMethod.POST, value = "/SaveList")
     public Wrapper saveList(@RequestBody String input, @RequestParam("token") String token) throws ParseException {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
         return new SaveWordList(user, input).getConfirmation();
     }
 
+    /**
+     * Returns list of test results of user, sorted on languages.
+     * @param token authentication
+     * @return list of test results
+     * @throws ParseException
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = "/GetUserResults")
     public Wrapper saveList(@RequestParam("token") String token) throws ParseException {
@@ -147,7 +153,8 @@ public class MainController {
      *   if successful: return a jwt
      *   if fail: return badcredentialserror
      *   @param authenticationRequest
-     *   @return
+     *   @return jwt
+     *   @throws AuthenticationException
      **/
     @CrossOrigin
     @RequestMapping(value = "/login", method = RequestMethod.POST)
