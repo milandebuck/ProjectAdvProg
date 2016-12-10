@@ -124,9 +124,9 @@ public class MainController {
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = "/GetUserResults")
-    public String saveList(@RequestParam("token") String token) throws ParseException {
+    public Wrapper saveList(@RequestParam("token") String token) throws ParseException {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-        return new GetObject(user).userResults();
+        return new GetResults(user).userResults();
     }
 
 
