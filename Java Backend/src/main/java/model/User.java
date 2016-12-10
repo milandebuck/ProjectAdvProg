@@ -16,7 +16,6 @@ public class User {
     private String id;
     @NotNull
     private String username;
-    @Transient
     @NotNull
     private String password;
     @Transient
