@@ -19,7 +19,7 @@ $ java -jar build/libs/app.jar
 
 #### Angular frontend
 
-make sure you have ```sh npm ``` installed
+make sure you have `npm` installed
 
 ```sh
 $ cd AngularFrontend/
@@ -28,8 +28,9 @@ $ npm run start
 ```
 
 ### Collaborators
-    -Milan De Buck
-    -Domien Herdewel
-    -Robbe De Geyndt
-    -Michael Chen
-    -Dieter Blanchaert
+    
+- Milan De Buck
+- Domien Herdewel
+- Robbe De Geyndt
+- Michael Chen
+- Dieter Blanchaert
