@@ -64,7 +64,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable() // disable csrf for our requests.
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/registration", "/Exercise", "/GetUser").permitAll()
+                .antMatchers("/", "/login", "/registration", "/Exercise").permitAll()
                 .anyRequest().authenticated();
 
         //If user is not authenticated / has no authorization, use the exceptionHandling.
