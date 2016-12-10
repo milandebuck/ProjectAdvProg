@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by Robbe De Geyndt on 10/12/2016.
@@ -41,7 +42,7 @@ public class GetResults {
 
             HashMap<String, ArrayList<Result>> data = new HashMap<>();
 
-            List<String[]> keys = new ArrayList<String[]>();
+            ConcurrentLinkedQueue<String[]> keys = new ConcurrentLinkedQueue<>();
 
             //setup keys
             for (Result result : userResults) {
@@ -77,7 +78,7 @@ public class GetResults {
 
         } catch (Exception e) {
             out.setSucces(false);
-            out.setMsg(e.getMessage());
+            out.setMsg(e.toString());
         }
 
     }
