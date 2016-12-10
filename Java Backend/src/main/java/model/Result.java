@@ -28,7 +28,8 @@ public class Result {
      * Constructor for Result object
      * @param score earned score
      * @param max maximum score
-     * @param list reference to the list that was tested.
+     * @param list reference to the list that was tested
+     * @param languages languages used in test
      */
     public Result (int score, int max, ObjectId list, String[] languages) {
         this.date = new Date();

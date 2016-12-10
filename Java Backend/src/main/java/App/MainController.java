@@ -84,7 +84,7 @@ public class MainController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = "/Exercise")
-    public Wrapper exerciseForm(
+    public Wrapper exerciseCreate(
             @RequestParam(value="amount", defaultValue="10") String amount,
             @RequestParam(value="from", defaultValue="") String from,
             @RequestParam(value="to", defaultValue="") String to) throws JsonProcessingException {
@@ -100,7 +100,7 @@ public class MainController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/Exercise")
-    public Wrapper exerciseSubmit(@RequestBody String input, @RequestParam("token") String token) throws ParseException {
+    public Wrapper exerciseCheck(@RequestBody String input, @RequestParam("token") String token) throws ParseException {
         //if (token == null) throw new IllegalArgumentException("token is null in exercisecontroller");
 
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
@@ -130,7 +130,7 @@ public class MainController {
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = "/GetUserResults")
-    public Wrapper saveList(@RequestParam("token") String token) throws ParseException {
+    public Wrapper userResults(@RequestParam("token") String token) throws ParseException {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
         return new GetResults(user).userResults();
     }
@@ -181,7 +181,7 @@ public class MainController {
      * @param user
      * @param br
      * @param response
-     * @return
+     * @return "succes"
      **/
     @CrossOrigin
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
