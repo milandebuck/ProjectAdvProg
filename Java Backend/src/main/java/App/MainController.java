@@ -184,7 +184,6 @@ public class MainController {
             return br.toString();
         }
 
-        System.out.println(user.getUsername());
         userDetailsService.save(user);
 
         return "success";
