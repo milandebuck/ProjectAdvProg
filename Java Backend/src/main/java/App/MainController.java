@@ -180,19 +180,21 @@ public class MainController {
      * Register user
      * @param user
      * @param br
-     * @param response
      * @return "succes"
      **/
     @CrossOrigin
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String createUser(@Valid User user, BindingResult br, HttpServletResponse response) {
+    public Wrapper createUser(@Valid User user, BindingResult br) throws ParseException {
         userValidator.validate(user, br);
         if (br.hasErrors()) {
-            return br.toString();
+            //TODO errors still needs tweaking
+            return new Wrapper(false, "Form contains errors!", br.toString());
         }
 
         userDetailsService.save(user);
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return "success";
+        return new Wrapper(true, "Registration success!", token);
     }
 }
