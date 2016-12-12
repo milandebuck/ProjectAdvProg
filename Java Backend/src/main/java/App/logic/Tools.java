@@ -59,12 +59,13 @@ public class Tools {
      * @param exercise new list of entries
      * @return ObjectId of list or null
      */
-    public static ObjectId exerciseIsList(List<ObjectId> lists, List<Entry> exercise) {
+    public static ObjectId exerciseIsList(List<String> lists, List<Entry> exercise) {
         MongoOperations mongoOperations = getMongoOperations();
 
         //Go over every list.
-        for (ObjectId list : lists) {
-            List<ObjectId> entryIds = mongoOperations.findById(list, WordList.class, "entries").getEntryList();
+        for (String stringList : lists) {
+            ObjectId list = new ObjectId(stringList);
+            List<String> entryIds = mongoOperations.findById(list, WordList.class, "entries").getEntryList();
 
             //if lists have the same size
             if (entryIds.size() == exercise.size()) {

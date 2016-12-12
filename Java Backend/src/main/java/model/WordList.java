@@ -49,13 +49,18 @@ public class WordList {
         this.entryList = entryList;
     }
 
-    public ObjectId getId() { return id; }
+    public String getId() { return id.toHexString(); }
     public void setId(ObjectId id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
 
-    public List<ObjectId> getEntryList() { return entryList; }
+    public List<String> getEntryList() {
+        List<String> stringIds = new ArrayList<>();
+
+        for (ObjectId objId : this.entryList) stringIds.add(objId.toHexString());
+        return stringIds;
+    }
     public void setEntryList(List<ObjectId> entryList) { this.entryList = entryList; }
 
 }

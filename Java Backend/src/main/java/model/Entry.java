@@ -64,7 +64,7 @@ public class Entry {
     }
 
 
-    public ObjectId getId() { return id; }
+    public String getId() { return id.toHexString(); }
 
     public String ToString() {
         return this.id + ": word = " + word + ", translation = " + translation;

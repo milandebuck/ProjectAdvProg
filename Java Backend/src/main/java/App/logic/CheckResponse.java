@@ -100,7 +100,7 @@ public class CheckResponse {
      * @param max maximum score
      */
     public void saveToDB(int score, int max) {
-        List<ObjectId> lists = new ArrayList<ObjectId>();
+        List<String> lists = new ArrayList<>();
 
         Query getUser = new Query();
         getUser.addCriteria(Criteria.where("username").is(username));
@@ -122,15 +122,15 @@ public class CheckResponse {
             List<ObjectId> ids = new ArrayList<ObjectId>();
 
             for (Entry entry : dbEntries) {
-                ids.add(entry.getId());
+                ids.add(new ObjectId(entry.getId()));
             }
 
             WordList list = new WordList(ids);
 
             mongoOperations.save(list, "entries");
 
-            user.addToWordLists(list.getId());
-            user.addResult(new Result(score, max, list.getId(), languages));
+            user.addToWordLists(new ObjectId(list.getId()));
+            user.addResult(new Result(score, max, new ObjectId(list.getId()), languages));
             mongoOperations.save(user, "users");
         }
     }

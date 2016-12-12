@@ -72,7 +72,7 @@ public class SaveWordList {
                 }
 
                 Entry dbEntry = mongoOperations.findOne(checkEntry, Entry.class, "entries");
-                newList.add(dbEntry.getId());
+                newList.add(new ObjectId(dbEntry.getId()));
             }
 
             WordList wl;
@@ -89,7 +89,7 @@ public class SaveWordList {
             mongoOperations.save(wl, "entries");
 
             //save changes to user
-            user.addToWordLists(wl.getId());
+            user.addToWordLists(new ObjectId(wl.getId()));
             mongoOperations.save(user, "users");
 
             result.setSucces(true);

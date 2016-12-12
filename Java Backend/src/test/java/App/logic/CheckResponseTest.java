@@ -56,7 +56,7 @@ public class CheckResponseTest extends TestCase {
         User user = mongoOperations.findOne(getUser, User.class, "users");
 
         //Clean database
-        List<ObjectId> list = user.getWordLists();
+        List<String> list = user.getWordLists();
         List<Result> results = user.getResults();
         int lastList = list.size() - 1;
         int lastResult = results.size() - 1;
@@ -64,25 +64,10 @@ public class CheckResponseTest extends TestCase {
         WordList wl = mongoOperations.findById(list.get(lastList), WordList.class, "entries");
         mongoOperations.remove(wl);
 
-        user.removeFromWordLists(list.get(lastList));
+        user.removeFromWordLists(new ObjectId(list.get(lastList)));
         user.removeResult(results.get(lastResult));
         mongoOperations.save(user, "users");
     }
-
-    /**
-     * Check if API rejects faulty input.
-     */
-    /*@Test
-    public void testRejectFaultyInput() {
-        setup();
-
-        wrapper1.setData(entries1);
-        wrapper1.setSucces(false);
-
-        CheckResponse cr1 = new CheckResponse("UnitTestUser", new JSONObject(wrapper1).toString());
-
-        assertEquals("No valid input", cr1.getResult().getMsg());
-    }*/
 
     /**
      * Test if score was correctly calculated.
@@ -140,13 +125,13 @@ public class CheckResponseTest extends TestCase {
         Result lastResult = results.get(results.size() - 1);
 
         //Get wordlists
-        List<ObjectId> wordListIds = user.getWordLists();
-        ObjectId lastListId = wordListIds.get(wordListIds.size() - 1);
+        List<String> wordListIds = user.getWordLists();
+        ObjectId lastListId = new ObjectId(wordListIds.get(wordListIds.size() - 1));
 
         //Check all values
         assertEquals(lastResult.getMax(), 4);
         assertEquals(lastResult.getScore(), 2);
-        assertEquals(lastResult.getList(), lastListId);
+        assertEquals(lastResult.getList(), lastListId.toHexString());
 
         WordList wl = mongoOperations.findById(lastListId, WordList.class, "entries");
 

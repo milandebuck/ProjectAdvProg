@@ -5,6 +5,7 @@ import model.Entry;
 import model.User;
 import model.WordList;
 import model.Wrapper;
+import org.bson.types.ObjectId;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -95,7 +96,7 @@ public class SaveWordListTest extends TestCase{
         User user = mongoOperations.findOne(getUser, User.class, "users");
 
         //remove list from user
-        user.removeFromWordLists(wordLists.get(0).getId());
+        user.removeFromWordLists(new ObjectId(wordLists.get(0).getId()));
         mongoOperations.save(user, "users");
 
         //delete list
@@ -127,7 +128,7 @@ public class SaveWordListTest extends TestCase{
         assertTrue(user.getWordLists().contains(list.getId()));
 
         //remove list from user
-        user.removeFromWordLists(list.getId());
+        user.removeFromWordLists(new ObjectId(list.getId()));
         mongoOperations.save(user, "users");
 
         //delete list

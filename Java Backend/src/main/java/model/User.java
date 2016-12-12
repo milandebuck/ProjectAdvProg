@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -96,7 +97,11 @@ public class User {
         this.password = password;
     }
 
-    public List<ObjectId> getWordLists() { return wordLists; }
+    public List<String> getWordLists() {
+        List<String> stringIds = new ArrayList<>();
+        for (ObjectId wl : wordLists) stringIds.add(wl.toHexString());
+        return stringIds;
+    }
 
     public void setWordLists(List<ObjectId> wordLists) { this.wordLists = wordLists; }
 

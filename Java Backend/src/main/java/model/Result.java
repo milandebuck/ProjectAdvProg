@@ -45,7 +45,7 @@ public class Result {
     public int getMax() { return max; }
     public void setMax(int max) { this.max = max; }
 
-    public ObjectId getList() { return list; }
+    public String getList() { return list.toHexString(); }
     public void setList(ObjectId list) { this.list = list; }
 
 
