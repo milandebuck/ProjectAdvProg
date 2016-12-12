@@ -44,7 +44,7 @@ public class GetResults {
 
             List<JSONObject> response = new ArrayList<>();
 
-            HashMap<String, ArrayList<Result>> data = new HashMap<>();
+            ConcurrentLinkedQueue<HashMap<String,Object>> data = new ConcurrentLinkedQueue<>();
 
             ConcurrentLinkedQueue<String[]> keys = new ConcurrentLinkedQueue<>();
 
@@ -67,14 +67,16 @@ public class GetResults {
 
             //insert by correct key
             for (String[] key : keys) {
+                HashMap<String, Object> object = new HashMap<>();
                 ArrayList<Result> value = new ArrayList<Result>();
 
                 for (Result result : userResults) {
                     if ((result.getLanguages()[0].equals(key[0])) && (result.getLanguages()[1].equals(key[1])))
                         value.add(result);
                 }
-
-                data.put(key[0] + " to " + key[1], value);
+                object.put("translations", key[0] + " to " + key[1]);
+                object.put("tests", value);
+                data.add(object);
             }
 
             out.setData(data);
