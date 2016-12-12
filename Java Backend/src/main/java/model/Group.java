@@ -25,8 +25,8 @@ public class Group {
 
     }
 
-    public Group(String naam, ObjectId teacher, List<ObjectId> students, List<ObjectId> tests) {
-        this.name = naam;
+    public Group(String name, ObjectId teacher, List<ObjectId> students, List<ObjectId> tests) {
+        this.name = name;
         this.teacher = teacher;
         this.students = students;
         this.tests = tests;
