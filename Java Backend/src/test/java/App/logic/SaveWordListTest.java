@@ -4,7 +4,6 @@ import junit.framework.TestCase;
 import model.Entry;
 import model.User;
 import model.WordList;
-import model.Wrapper;
 import org.bson.types.ObjectId;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -62,11 +61,7 @@ public class SaveWordListTest extends TestCase{
         data.put("name", listname);
         data.put("list", testList);
 
-        Wrapper wrapper = new Wrapper();
-        wrapper.setData(data);
-        wrapper.setSucces(true);
-
-        saveWordList = new SaveWordList("UnitTestUser", new JSONObject(wrapper).toString());
+        saveWordList = new SaveWordList("UnitTestUser", new JSONObject(data).toString());
     }
 
     /**

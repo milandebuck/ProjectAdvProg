@@ -35,20 +35,13 @@ public class SaveWordList {
         result = new Wrapper();
 
         try {
-            Wrapper input = new Wrapper();
 
-            //Json to Wrapper
-            ObjectMapper mapper = new ObjectMapper();
-            input = mapper.readValue(object, Wrapper.class);
-
-            //Check if valid
-            if (!input.getSucces()) {
-                throw new Exception("No valid input");
-            }
+            ObjectMapper objectMapper = new ObjectMapper();
+            HashMap<String, String> input = objectMapper.readValue(object, HashMap.class);
 
             //Get get names
-            String name = ((HashMap<String,String>)input.getData()).get("name");
-            String inputMap = JSONObject.valueToString(((HashMap<String,String>)input.getData()).get("list"));
+            String name = input.get("name");
+            String inputMap = JSONObject.valueToString(input.get("list"));
 
             entries = Tools.jsonToArrayList(inputMap);
             List<ObjectId> newList = new ArrayList<ObjectId>();
