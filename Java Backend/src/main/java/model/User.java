@@ -24,15 +24,23 @@ public class User {
     private boolean teacher;
     private List<ObjectId> wordLists;
     private List<Result> results;
-    private List<Group> groups;
+    private List<ObjectId> groups;
 
 
-    public List<Group> getGroups() {
+    public List<ObjectId> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<Group> groups) {
+    public void setGroups(List<ObjectId> groups) {
         this.groups = groups;
+    }
+
+    public void addGroup(ObjectId groupId) {
+        this.groups.add(groupId);
+    }
+
+    public void removeGroup(ObjectId groupId) {
+        this.groups.remove(groupId);
     }
 
 

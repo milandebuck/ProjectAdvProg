@@ -10,6 +10,7 @@ import App.registration.ValidationError;
 import App.repository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Entry;
+import model.ListUsers;
 import model.User;
 import model.Wrapper;
 import org.bson.types.ObjectId;
@@ -187,14 +188,13 @@ public class MainController {
      * Register user
      * @param user
      * @param br
-     * @return "succes"
+     * @return Wrapper
      **/
     @CrossOrigin
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public Wrapper createUser(@Valid User user, BindingResult br) throws ParseException {
         userValidator.validate(user, br);
         if (br.hasErrors()) {
-            //TODO errors still needs tweaking
 
             List<ValidationError> errors = new ArrayList<ValidationError>();
             List<ObjectError> errorsInForm = br.getAllErrors();
@@ -205,7 +205,6 @@ public class MainController {
                 int index = errorCodes[0].lastIndexOf('.');
                 errors.add(new ValidationError(errorCodes[0].substring(index + 1), error.getDefaultMessage()));
             });
-
 
             return new Wrapper(false, "Form contains errors!", errors);
         }
@@ -219,10 +218,18 @@ public class MainController {
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/CreateGroup")
-    public Wrapper createGroup(@RequestBody String input, @RequestParam("token") String token) {
+    public Wrapper createGroup(@RequestBody ListUsers users, @RequestParam("groupName") String groupName, @RequestParam("token") String token) {
 
 
         return new Wrapper(true, "Successfully created group", new Object());
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/DeleteGroup")
+    public Wrapper deleteGroup(@RequestParam("groupId") String input, @RequestParam("token") String token) {
+
+
+        return new Wrapper(true, "Successfully deleted group", new Object());
     }
 
     @CrossOrigin
