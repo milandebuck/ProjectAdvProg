@@ -26,7 +26,6 @@ public class User {
     private List<Result> results;
     private List<ObjectId> groups;
 
-
     public List<ObjectId> getGroups() {
         return groups;
     }
@@ -42,7 +41,6 @@ public class User {
     public void removeGroup(ObjectId groupId) {
         this.groups.remove(groupId);
     }
-
 
     /**
      * Empty constructor for User object.

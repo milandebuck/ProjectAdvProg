@@ -152,6 +152,7 @@ public class MainController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(){
         //UsernamePasswordAuthenticationToken sf = new UsernamePasswordAuthenticationToken("name", "password");
+
         return "Login page";
     }
 
@@ -186,36 +187,41 @@ public class MainController {
 
     /**
      * Register user
-     * @param user
-     * @param br
      * @return Wrapper
      **/
     @CrossOrigin
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public Wrapper createUser(@Valid User user, BindingResult br) throws ParseException {
-        userValidator.validate(user, br);
-        if (br.hasErrors()) {
+    public Wrapper createUser(@RequestBody JwtAuthenticationRequest user) throws ParseException {
+//        userValidator.validate(user, br);
+//        if (br.hasErrors()) {
+//
+//            List<ValidationError> errors = new ArrayList();
+//            List<ObjectError> errorsInForm = br.getAllErrors();
+//
+//
+//            errorsInForm.forEach(error->{
+//                String [] errorCodes = error.getCodes();
+//                int index = errorCodes[0].lastIndexOf('.');
+//                errors.add(new ValidationError(errorCodes[0].substring(index + 1), error.getDefaultMessage()));
+//            });
+//
+//            return new Wrapper(false, "Form contains errors!", errors);
+//        }
 
-            List<ValidationError> errors = new ArrayList<ValidationError>();
-            List<ObjectError> errorsInForm = br.getAllErrors();
-
-
-            errorsInForm.forEach(error->{
-                String [] errorCodes = error.getCodes();
-                int index = errorCodes[0].lastIndexOf('.');
-                errors.add(new ValidationError(errorCodes[0].substring(index + 1), error.getDefaultMessage()));
-            });
-
-            return new Wrapper(false, "Form contains errors!", errors);
-        }
-
-        userDetailsService.save(user);
+        userDetailsService.save(new User(user.getUsername(), user.getPassword()));
         final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return new Wrapper(true, "Registration success!", token);
     }
 
+    /**
+     * Creates group of users for teacher
+     * @param token authentication
+     * @param users list of users to put in group
+     * @return list of test results
+     * @throws ParseException
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/CreateGroup")
     public Wrapper createGroup(@RequestBody ListUsers users, @RequestParam("groupName") String groupName, @RequestParam("token") String token) {
@@ -224,14 +230,28 @@ public class MainController {
         return new Wrapper(true, "Successfully created group", new Object());
     }
 
+    /**
+     * Creates group of users for teacher
+     * @param token authentication
+     * @param groupId id to delete group
+     * @return Wrapper
+     * @throws ParseException
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/DeleteGroup")
-    public Wrapper deleteGroup(@RequestParam("groupId") String input, @RequestParam("token") String token) {
+    public Wrapper deleteGroup(@RequestParam("groupId") String groupId, @RequestParam("token") String token) {
 
 
         return new Wrapper(true, "Successfully deleted group", new Object());
     }
 
+    /**
+     * Creates group of users for teacher
+     * @param token authentication
+     * @param idList id to delete wordlist
+     * @return Wrapper
+     * @throws ParseException
+     */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "/DeleteList")
     public Wrapper deleteList(@RequestParam("idList") String idList, @RequestParam("token") String token) throws ParseException {
