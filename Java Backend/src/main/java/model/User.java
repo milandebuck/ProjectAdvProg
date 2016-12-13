@@ -24,6 +24,17 @@ public class User {
     private boolean teacher;
     private List<ObjectId> wordLists;
     private List<Result> results;
+    private List<Group> groups;
+
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
 
     /**
      * Empty constructor for User object.

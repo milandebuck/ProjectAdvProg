@@ -6,6 +6,7 @@ import App.authentication.JwtTokenUtil;
 import App.authentication.UserService;
 import App.logic.*;
 import App.registration.UserValidator;
+import App.registration.ValidationError;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Entry;
 import model.User;
@@ -21,6 +22,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -188,7 +190,19 @@ public class MainController {
         userValidator.validate(user, br);
         if (br.hasErrors()) {
             //TODO errors still needs tweaking
-            return new Wrapper(false, "Form contains errors!", br.toString());
+
+            List<ValidationError> errors = new ArrayList<ValidationError>();
+            List<ObjectError> errorsInForm = br.getAllErrors();
+
+
+            errorsInForm.forEach(error->{
+                String [] errorCodes = error.getCodes();
+                int index = errorCodes[0].lastIndexOf('.');
+                errors.add(new ValidationError(errorCodes[0].substring(index + 1), error.getDefaultMessage()));
+            });
+
+
+            return new Wrapper(false, "Form contains errors!", errors);
         }
 
         userDetailsService.save(user);
@@ -196,5 +210,15 @@ public class MainController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return new Wrapper(true, "Registration success!", token);
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/Exercise")
+    public Wrapper createGroup(@RequestBody String input, @RequestParam("token") String token) throws ParseException {
+        //if (token == null) throw new IllegalArgumentException("token is null in exercisecontroller");
+
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+
+        return new Wrapper(true, "Successfully created group", new Object());
     }
 }
