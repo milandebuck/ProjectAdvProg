@@ -212,13 +212,5 @@ public class MainController {
         return new Wrapper(true, "Registration success!", token);
     }
 
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "/Exercise")
-    public Wrapper createGroup(@RequestBody String input, @RequestParam("token") String token) throws ParseException {
-        //if (token == null) throw new IllegalArgumentException("token is null in exercisecontroller");
 
-        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-
-        return new Wrapper(true, "Successfully created group", new Object());
-    }
 }
