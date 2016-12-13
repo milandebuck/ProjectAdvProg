@@ -232,6 +232,7 @@ public class MainController {
            String username = jwtTokenUtil.getUsernameFromToken(token);
            model.User user = userRepo.findByUsername(username);
            user.removeFromWordLists(new ObjectId(idList));
+           userRepo.save(user);
        }
        catch(Exception e) {
            return new Wrapper(true, "Error: " + e.toString(), new Object());
