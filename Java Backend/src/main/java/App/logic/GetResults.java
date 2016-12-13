@@ -55,13 +55,13 @@ public class GetResults {
                 if (keys.size() == 0) {
                     keys.add(languages);
                 } else {
+                    int i = 0;
                     for (String[] key : keys) {
-                        int i = 0;
 
                         if ((languages[0].equals(key[0])) && languages[1].equals(key[1])) i++;
 
-                        if (i == 0) keys.add(languages);
                     }
+                    if (i == 0) keys.add(languages);
                 }
             }
 
