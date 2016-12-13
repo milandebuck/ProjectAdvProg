@@ -90,7 +90,7 @@ public class CheckResponse {
         } catch (Exception e) {
             //Give message on failure
             result.setSucces(false);
-            result.setMsg(e.getMessage());
+            result.setMsg(e.toString());
         }
     }
 
