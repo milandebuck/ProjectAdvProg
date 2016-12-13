@@ -7,10 +7,12 @@ import App.authentication.UserService;
 import App.logic.*;
 import App.registration.UserValidator;
 import App.registration.ValidationError;
+import App.repository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Entry;
 import model.User;
 import model.Wrapper;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.expression.ParseException;
@@ -47,6 +49,9 @@ public class MainController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private UserRepository userRepo;
 
     /**
      * Returns message for diagnostics purposes.
@@ -212,5 +217,25 @@ public class MainController {
         return new Wrapper(true, "Registration success!", token);
     }
 
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/CreateGroup")
+    public Wrapper createGroup(@RequestBody String input, @RequestParam("token") String token) {
 
+
+        return new Wrapper(true, "Successfully created group", new Object());
+    }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST, value = "/DeleteList")
+    public Wrapper deleteList(@RequestParam("idList") String idList, @RequestParam("token") String token) throws ParseException {
+       try {
+           String username = jwtTokenUtil.getUsernameFromToken(token);
+           model.User user = userRepo.findByUsername(username);
+           user.removeFromWordLists(new ObjectId(idList));
+       }
+       catch(Exception e) {
+           return new Wrapper(true, "Error: " + e.toString(), new Object());
+       }
+        return new Wrapper(true, "List is successfully deleted!", new Object());
+    }
 }
