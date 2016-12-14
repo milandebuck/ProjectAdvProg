@@ -184,7 +184,7 @@ public class MainController {
      **/
     @CrossOrigin
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public Wrapper createUser(@RequestBody JwtAuthenticationRequest user) throws ParseException {
+    public Wrapper createUser(@RequestBody JwtAuthenticationRequest user)  {
 //        userValidator.validate(user, br);
 //        if (br.hasErrors()) {
 //
