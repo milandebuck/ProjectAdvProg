@@ -47,7 +47,7 @@ public class CheckResponse {
         try {
 
             //Get get entries
-            entries = Tools.jsonToArrayList(object);
+            entries = new Converter<Entry>().jsonToArrayList(object, Entry.class);
             List<ObjectId> newList = new ArrayList<ObjectId>();
 
 

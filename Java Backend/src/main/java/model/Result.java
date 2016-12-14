@@ -48,7 +48,7 @@ public class Result {
     public String getList() { return list.toHexString(); }
     public void setList(ObjectId list) { this.list = list; }
 
-
+    public Date getDate() { return this.date; }
     public void resetDate() { date = new Date(); }
 
     public String[] getLanguages() { return languages; }

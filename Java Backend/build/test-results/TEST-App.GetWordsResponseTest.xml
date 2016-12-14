@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="App.GetWordsResponseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-11-26T13:11:53" hostname="Domien-PC" time="0.001">
-  <properties/>
-  <testcase name="testAnswerChecker" classname="App.GetWordsResponseTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

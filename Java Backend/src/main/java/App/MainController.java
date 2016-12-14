@@ -6,11 +6,9 @@ import App.authentication.JwtTokenUtil;
 import App.authentication.UserService;
 import App.logic.*;
 import App.registration.UserValidator;
-import App.registration.ValidationError;
 import App.repository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import model.Entry;
-import model.ListUsers;
 import model.User;
 import model.Wrapper;
 import org.bson.types.ObjectId;
@@ -24,12 +22,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -143,7 +137,6 @@ public class MainController {
         return new GetResults(user).userResults();
     }
 
-
     /**
      * Shows the login page
      * @return "Login page"
@@ -213,21 +206,6 @@ public class MainController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return new Wrapper(true, "Registration success!", token);
-    }
-
-    /**
-     * Creates group of users for teacher
-     * @param token authentication
-     * @param users list of users to put in group
-     * @return list of test results
-     * @throws ParseException
-     */
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "/CreateGroup")
-    public Wrapper createGroup(@RequestBody ListUsers users, @RequestParam("groupName") String groupName, @RequestParam("token") String token) {
-
-
-        return new Wrapper(true, "Successfully created group", new Object());
     }
 
     /**

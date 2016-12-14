@@ -1,6 +1,8 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonTypeId;
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +16,9 @@ import java.util.List;
 @Document(collection = "users")
 public class User {
 
-    private String id;
+    @Id
+    @JsonTypeId
+    private ObjectId id;
     @NotNull
     private String username;
     @NotNull
@@ -91,10 +95,10 @@ public class User {
     }
 
     public String getId() {
-        return id;
+        return id.toHexString();
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

@@ -25,4 +25,11 @@ public class ObjectReturnController {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
         return new GetObject(user).getList(input);
     }
+
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.GET, value = "/SearchUser")
+    public Wrapper searchUser(@RequestParam("name") String name, @RequestParam("token") String token) {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+        return new GetObject(user).getUser(name);
+    }
 }

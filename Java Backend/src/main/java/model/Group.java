@@ -32,6 +32,13 @@ public class Group {
         this.tests = tests;
     }
 
+    public Group(String name, ObjectId teacher) {
+        this.name = name;
+        this.teacher = teacher;
+        this.students = new ArrayList<>();
+        this.tests = new ArrayList<>();
+    }
+
     public String getId() { return id.toHexString(); }
     public void  setId(ObjectId id) { this.id = id; }
 

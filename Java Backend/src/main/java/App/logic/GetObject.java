@@ -38,7 +38,8 @@ public class GetObject {
                 WordList wl = mongoOperations.findById(id, WordList.class, "entries");
 
                 HashMap<String, String> object = new HashMap<>();
-                object.put(wl.getName(), wl.getId());
+                object.put("name", wl.getName());
+                object.put("id", wl.getId());
                 listNames.add(object);
             }
 
@@ -76,6 +77,36 @@ public class GetObject {
             wrapper.setSucces(false);
             wrapper.setMsg(e.toString());
         }
+        return wrapper;
+    }
+
+    public Wrapper getUser(String name) {
+        Wrapper wrapper = new Wrapper();
+
+        try {
+            Query searchUser = new Query();
+            searchUser.addCriteria(Criteria.where("username").regex(name, "i"));
+
+            List<User> result = mongoOperations.find(searchUser, User.class, "users");
+
+            List<HashMap<String, String>> out = new ArrayList<>();
+
+            for ( User user : result) {
+                HashMap<String, String> userData = new HashMap<>();
+                userData.put("username", user.getUsername());
+                userData.put("id", user.getId());
+
+                out.add(userData);
+            }
+
+            wrapper.setData(out);
+            wrapper.setSucces(true);
+
+        } catch (Exception e) {
+            wrapper.setSucces(false);
+            wrapper.setMsg(e.toString());
+        }
+
         return wrapper;
     }
 }

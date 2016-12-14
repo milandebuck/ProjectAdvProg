@@ -43,7 +43,7 @@ public class SaveWordList {
             String name = input.get("name");
             String inputMap = JSONObject.valueToString(input.get("list"));
 
-            entries = Tools.jsonToArrayList(inputMap);
+            entries = new Converter<Entry>().jsonToArrayList(inputMap, Entry.class);
             List<ObjectId> newList = new ArrayList<ObjectId>();
 
             Query checkUser = new Query();

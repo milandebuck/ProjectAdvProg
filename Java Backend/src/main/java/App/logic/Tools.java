@@ -1,16 +1,14 @@
 package App.logic;
 
 import App.configuration.MongoConfig;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Entry;
+import model.User;
 import model.WordList;
 import org.bson.types.ObjectId;
-import org.json.JSONObject;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,29 +26,16 @@ public class Tools {
         return (MongoOperations)ctx.getBean("mongoTemplate");
     }
 
-    /**
-     * Converts JSON String to a list of entries.
-     * @param json user's request
-     * @return list of entries
-     * @throws Exception when parsing fails
-     */
-    public static List<Entry> jsonToArrayList(String json) throws Exception {
+    public static void TeacherCheck(User user) throws Exception {
+        if (!user.isTeacher()) throw new Exception("You are not permitted.");
+    }
 
-        List<Object> entries = new ArrayList<Object>();
-        List<Entry> out = new ArrayList<Entry>();
+    public static List<ObjectId> stringRangeToObjectIdRange(List<String> input) throws Exception {
+        ArrayList<ObjectId> ids = new ArrayList<ObjectId>();
 
-        //Get input
-        ObjectMapper mapper = new ObjectMapper();
-        entries = mapper.readValue(json, ArrayList.class);
+        for (String in : input) ids.add(new ObjectId(in));
 
-        //Add entries in list
-        for (Object value : entries) {
-            Entry entry = mapper.readValue(new JSONObject((HashMap<String,String>)value).toString(), Entry.class);
-            out.add(entry);
-        }
-
-        //return result
-        return out;
+        return ids;
     }
 
     /**
