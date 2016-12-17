@@ -7,6 +7,8 @@ import model.WordList;
 import org.bson.types.ObjectId;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +28,39 @@ public class Tools {
         return (MongoOperations)ctx.getBean("mongoTemplate");
     }
 
-    public static void TeacherCheck(User user) throws Exception {
+    /**
+     * Checks if user is teacher.
+     * @param user given User object
+     * @throws Exception when the person is not a user an exception is thrown
+     */
+    public static void teacherCheck(User user) throws Exception {
         if (!user.isTeacher()) throw new Exception("You are not permitted.");
+    }
+
+    /**
+     * Reverses an entry.
+     * @param entry Entry object, to be reversed.
+     * @return reversed version of Entry object.
+     */
+    public static Entry reverseEntry(Entry entry) {
+        return new Entry(entry.getTranslation(), entry.getWord(), new String[] {entry.getLanguages()[1], entry.getLanguages()[0]});
+    }
+
+    /**
+     * Check if the word exists in the database.
+     * @param entry user's entry
+     * @return database's entry
+     */
+    public static Entry checkIfInDB(Entry entry, boolean full) {
+        Query getWord = new Query();
+
+        if (full) {
+            getWord.addCriteria(Criteria.where("word").is(entry.getWord()).and("languages").is(entry.getLanguages()).and("translation").is(entry.getTranslation()));
+        }
+        else {
+            getWord.addCriteria(Criteria.where("word").is(entry.getWord()).and("languages").is(entry.getLanguages()));
+        }
+        return getMongoOperations().findOne(getWord, Entry.class, "entries");
     }
 
     public static List<ObjectId> stringRangeToObjectIdRange(List<String> input) throws Exception {

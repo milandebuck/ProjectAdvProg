@@ -30,6 +30,7 @@ public class CheckResponse {
     private List<Entry> dbEntries;
     private String username;
     private String[] languages;
+    private boolean reversed;
 
     /**
      * Constructor, check if users answers are correct and gives back score.
@@ -43,6 +44,7 @@ public class CheckResponse {
         this.answer = new HashMap<String, Object>();
         this.faulty = new ArrayList<Entry>();
         this.dbEntries = new ArrayList<Entry>();
+        this.reversed = false;
 
         try {
 
@@ -61,12 +63,21 @@ public class CheckResponse {
                     if ((!languages[0].equals(entry.getLanguages()[0])) && (!languages[1].equals(entry.getLanguages()[1]))) throw new Exception("Languages don't match");
                 }
 
-                Query getWord = new Query();
-                getWord.addCriteria(Criteria.where("word").is(entry.getWord()).and("languages").is(entry.getLanguages()));
+                //Check straight
+                Entry dbEntry = Tools.checkIfInDB(entry, false);
 
-                Entry dbEntry = mongoOperations.findOne(getWord, Entry.class, "entries");
+                //Check reversed
+                if (dbEntry == null) {
+                    dbEntry = Tools.checkIfInDB(Tools.reverseEntry(entry), false);
+                    if (dbEntry != null) reversed = true;
+                }
+
+                //Send message when entry doesn't exist.
+                if (dbEntry == null) throw new Exception("Contains word that doesn't exist in database.");
+
                 dbEntries.add(dbEntry);
 
+                if (reversed) dbEntry = Tools.reverseEntry(dbEntry);
                 if (dbEntry.getTranslation().equals(entry.getTranslation())) {
                     score++;
                 }
@@ -125,7 +136,7 @@ public class CheckResponse {
                 ids.add(new ObjectId(entry.getId()));
             }
 
-            WordList list = new WordList(ids);
+            WordList list = new WordList(ids, languages);
 
             mongoOperations.save(list, "entries");
 

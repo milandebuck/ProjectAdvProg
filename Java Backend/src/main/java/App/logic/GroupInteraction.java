@@ -29,7 +29,7 @@ public class GroupInteraction {
         Wrapper out = new Wrapper();
 
         try {
-            Tools.TeacherCheck(user);
+            Tools.teacherCheck(user);
 
             //Map to hashmap
             ObjectMapper mapper = new ObjectMapper();
@@ -56,7 +56,7 @@ public class GroupInteraction {
         Wrapper out = new Wrapper();
 
         try {
-            Tools.TeacherCheck(user);
+            Tools.teacherCheck(user);
 
             WordList test = mongoOperations.findById(testId, WordList.class, "entries");
             Group group = mongoOperations.findById(groupId, Group.class, "users");
@@ -87,7 +87,7 @@ public class GroupInteraction {
         Wrapper out = new Wrapper();
 
         try {
-            Tools.TeacherCheck(user);
+            Tools.teacherCheck(user);
 
             WordList test = mongoOperations.findById(testId, WordList.class, "entries");
             Group group = mongoOperations.findById(groupId, Group.class, "users");
@@ -126,7 +126,7 @@ public class GroupInteraction {
         Wrapper out = new Wrapper();
 
         try {
-            Tools.TeacherCheck(user);
+            Tools.teacherCheck(user);
 
             Group group = mongoOperations.findById(groupId, Group.class, "users");
 

@@ -55,6 +55,7 @@ public class GetObject {
 
     public Wrapper getList(String input) {
         Wrapper wrapper = new Wrapper();
+        boolean reversed = false;
 
         try {
             ObjectId listId = new ObjectId(input);
@@ -62,8 +63,15 @@ public class GetObject {
 
             List<Entry> entries = new ArrayList<>();
 
+            String[] entryLanguages = mongoOperations.findById(entries.get(0), Entry.class, "entries").getLanguages();
+
+            if ((entryLanguages[0].equals(list.getLanguages()[1])) && (entryLanguages[1].equals(list.getLanguages()[0]))) reversed = true;
+
             for (String entryId : list.getEntryList()) {
                 Entry entry = mongoOperations.findById(new ObjectId(entryId), Entry.class, "entries");
+
+                if (reversed) entry = Tools.reverseEntry(entry);
+
                 entries.add(entry);
             }
 

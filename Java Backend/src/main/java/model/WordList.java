@@ -21,6 +21,7 @@ public class WordList {
     @JsonTypeId
     private ObjectId id;
     private String name;
+    private String[] languages;
     private List<ObjectId> entryList;
 
     /**
@@ -34,8 +35,9 @@ public class WordList {
      * Constructor of WordList object, with standard name.
      * @param entryList list of entries for test
      */
-    public WordList(List<ObjectId> entryList) {
+    public WordList(List<ObjectId> entryList, String[] languages) {
         this.name = new SimpleDateFormat("EEEE d MMMM yyyy - HH:mm").format(new Date());
+        this.languages =languages;
         this.entryList = entryList;
     }
 
@@ -44,8 +46,9 @@ public class WordList {
      * @param name name for test
      * @param entryList list of entries for test
      */
-    public WordList(String name, List<ObjectId> entryList) {
+    public WordList(String name, List<ObjectId> entryList, String[] languages) {
         this.name = name;
+        this.languages = languages;
         this.entryList = entryList;
     }
 
@@ -54,6 +57,9 @@ public class WordList {
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    public String[] getLanguages() { return this.languages; }
+    public void setLanguages(String[] languages) { this.languages = languages; }
 
     public List<String> getEntryList() {
         List<String> stringIds = new ArrayList<>();

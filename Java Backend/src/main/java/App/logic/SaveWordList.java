@@ -24,6 +24,7 @@ public class SaveWordList {
     private MongoOperations mongoOperations = Tools.getMongoOperations();
     private Wrapper result;
     private List<Entry> entries;
+    private String[] languages;
 
     /**
      * Object saves list of entries (test) to database.
@@ -52,19 +53,49 @@ public class SaveWordList {
 
             for (Entry entry : entries) {
 
+                if (languages == null) {
+                    languages = entry.getLanguages();
+                }
+                else {
+                    if ((!languages[0].equals(entry.getLanguages()[0])) && (!languages[1].equals(entry.getLanguages()[1]))) throw new Exception("Languages don't match");
+                }
+
                 Query checkEntry = new Query();
                 checkEntry.addCriteria(Criteria.where("word").is(entry.getWord()).and("translation").is(entry.getTranslation()).and("languages").is(entry.getLanguages()));
 
-                if (mongoOperations.count(checkEntry, "entries") == 0) {
-                    if (user.isTeacher()) {
-                        mongoOperations.save(entry, "entries");
-                    }
-                    else {
-                        throw new Exception("This user is not allowed to perform this action.");
-                    }
+                //in DB?
+                Entry dbEntry = Tools.checkIfInDB(entry, true);
+
+                //reverse in DB?
+                if (dbEntry == null) {
+                    dbEntry = Tools.checkIfInDB(Tools.reverseEntry(entry), true);
                 }
 
-                Entry dbEntry = mongoOperations.findOne(checkEntry, Entry.class, "entries");
+                //new entry?
+                if (dbEntry == null) {
+                    Tools.teacherCheck(user);
+
+                    //Check straight.
+                    Query check = new Query();
+                    check.addCriteria(Criteria.where("languages").is(entry.getLanguages()));
+                    long count = mongoOperations.count(check, Entry.class, "entries");
+
+                    //Check reversed
+                    if (count <= 0) {
+                        check = new Query();
+                        entry = Tools.reverseEntry(entry);
+                        check.addCriteria(Criteria.where("languages").is(entry.getLanguages()));
+                        count = mongoOperations.count(check, Entry.class, "entries");
+                    }
+
+                    //If language combination doesn't exist throw exception.
+                    if (count <= 0) throw new Exception("language combination does not exist.");
+
+                    //save entry
+                    mongoOperations.save(entry, "entries");
+                    dbEntry = entry;
+                }
+
                 newList.add(new ObjectId(dbEntry.getId()));
             }
 
@@ -72,13 +103,13 @@ public class SaveWordList {
 
             //if no name is specified use default.
             if (name.equals(null)) {
-                wl = new WordList(newList);
+                wl = new WordList(newList, languages);
             }
             else {
-                wl = new WordList(name, newList);
+                wl = new WordList(name, newList, languages);
             }
 
-            //save wordlist in entries.
+            //save wordList in entries.
             mongoOperations.save(wl, "entries");
 
             //save changes to user

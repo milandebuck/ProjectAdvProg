@@ -22,6 +22,7 @@ public class GetWordsResponse {
     private int amount = 10;
     private List<Entry> words;
     private Wrapper listOut;
+    private boolean reversed;
 
     /**
      * Empty constructor
@@ -38,6 +39,7 @@ public class GetWordsResponse {
         this.languages = languages;
         this.words = new ArrayList<>();
         this.listOut = new Wrapper();
+        this.reversed = false;
 
         try {
             try {
@@ -46,37 +48,69 @@ public class GetWordsResponse {
                 listOut().setMsg(e.getMessage());
             }
 
+            //Check straight
             Query queryLanguages = new Query();
             queryLanguages.addCriteria(Criteria.where("languages").is(languages));
             long querySize = mongoOperations.count(queryLanguages, Entry.class, "entries");
 
+            //Check reverse
+            if (querySize <= 0 && languages.length == 2) {
+                String[] reLanguages = new String[]{languages[1], languages[0]};
+                Query queryReLanguages = new Query();
+                queryReLanguages.addCriteria(Criteria.where("languages").is(reLanguages));
+                querySize = mongoOperations.count(queryReLanguages, Entry.class, "entries");
+
+                //Set reversed flag and change query
+                if (querySize > 0) {
+                    reversed = true;
+                    queryLanguages = queryReLanguages;
+                }
+            }
+
+            //If no languages are provided use languages from random query.
+            if (querySize <= 0) {
+                Random random = new Random();
+
+                //random Entry
+                int j = random.nextInt((int)mongoOperations.count(new Query(), Entry.class, "entries"));
+                Entry doc = (Entry) (mongoOperations.find(new Query().skip(j).limit(1), Entry.class, "entries").toArray()[0]);
+
+                //random reverse
+                reversed = random.nextBoolean();
+
+                //Set languages
+                languages = doc.getLanguages();
+
+                //Set Query
+                queryLanguages = new Query();
+                queryLanguages.addCriteria(Criteria.where("languages").is(languages));
+
+                //Set QuerySize
+                querySize = mongoOperations.count(queryLanguages, Entry.class, "entries");
+            }
+
+            //Create test
             for (int i = 0; i < this.amount; i++) {
                 Random rnd = new Random();
 
-                //If languages not specified, use all.
-                if (querySize <= 0) {
+                int j = rnd.nextInt((int)querySize);
+                Entry doc = (Entry) (mongoOperations.find(queryLanguages.skip(j).limit(1), Entry.class, "entries").toArray()[0]);
 
-                    int j = rnd.nextInt((int)mongoOperations.count(new Query(), Entry.class, "entries"));
-                    Entry doc = (Entry) (mongoOperations.find(new Query().skip(j).limit(1), Entry.class, "entries").toArray()[0]);
+                //reversing
+                if (reversed) doc = Tools.reverseEntry(doc);
 
-                    words.add(doc);
-                } else {
-
-                    int j = rnd.nextInt((int)querySize);
-                    Entry doc = (Entry) (mongoOperations.find(queryLanguages.skip(j).limit(1), Entry.class, "entries").toArray()[0]);
-
-                    words.add(doc);
-                }
-
-                //put in wrapper
-                listOut().setData(words);
-                listOut().setSucces(true);
+                words.add(doc);
             }
+
+            //put in wrapper
+            listOut().setData(words);
+            listOut().setSucces(true);
+
         } catch (Exception e) {
 
             //Give message of failure.
             listOut.setSucces(false);
-            listOut.setMsg(e.getMessage());
+            listOut.setMsg(e.toString());
         }
 
     }
