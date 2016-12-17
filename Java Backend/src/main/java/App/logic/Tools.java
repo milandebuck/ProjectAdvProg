@@ -59,7 +59,12 @@ public class Tools {
         }
         else {
             getWord.addCriteria(Criteria.where("word").is(entry.getWord()).and("languages").is(entry.getLanguages()));
+            long check = getMongoOperations().count(getWord, Entry.class, "entries");
+
+            if (check <= 0) getWord = new Query(Criteria.where("translation").is(entry.getTranslation()).and("languages").is(entry.getLanguages()));
         }
+
+        Entry test = getMongoOperations().findOne(getWord, Entry.class, "entries");
         return getMongoOperations().findOne(getWord, Entry.class, "entries");
     }
 
