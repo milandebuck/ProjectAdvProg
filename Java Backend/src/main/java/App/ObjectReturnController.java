@@ -15,10 +15,23 @@ import org.springframework.web.bind.annotation.*;
 public class ObjectReturnController {
 
     /**
-     * Gives back if user is teacher or not. [GET]
-     * Available on "/IsTeacher"
+     * Gives back open tests from user. [GET]
+     * Available on "/OpenTests".
      * @param token token for authentication
-     * @return confirmation ex: {teacher : true}
+     * @return open tests ex [{"id" : "XXX", "name" : "XXX"}, {...}]
+     */
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.GET, value = "/OpenTests")
+    public Wrapper unsolvedTests(@RequestParam("token") String token) {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+        return new GetObject(user).openTests();
+    }
+
+    /**
+     * Gives back if user is teacher or not. [GET]
+     * Available on "/IsTeacher".
+     * @param token token for authentication
+     * @return confirmation ex: {"teacher" : true}
      */
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = "/IsTeacher")

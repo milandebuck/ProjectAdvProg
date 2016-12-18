@@ -1,9 +1,6 @@
 package App.logic;
 
-import model.Entry;
-import model.User;
-import model.WordList;
-import model.Wrapper;
+import model.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -25,6 +22,36 @@ public class GetObject {
         Query getUser = new Query();
         getUser.addCriteria(Criteria.where("username").is(username));
         user = mongoOperations.findOne(getUser, User.class, "users");
+    }
+
+    public Wrapper openTests() {
+        Wrapper wrapper = new Wrapper();
+        try {
+            List<String> tests = user.getWordLists();
+            List<Result> results = user.getResults();
+            List<String> resultsTests = new ArrayList<>();
+            List<String> unsolvedTests = new ArrayList<>();
+            List<HashMap<String, String>> out = new ArrayList<>();
+
+            for (Result result : results) resultsTests.add(result.getList());
+
+            for (String test : tests) if (!resultsTests.contains(test)) unsolvedTests.add(test);
+
+            for (String unsolvedTest : unsolvedTests) {
+                String name = mongoOperations.findById(unsolvedTest, WordList.class, "entries").getName();
+                HashMap<String, String> test = new HashMap<>();
+                test.put("name", name);
+                test.put("id", unsolvedTest);
+                out.add(test);
+            }
+
+            wrapper.setData(out);
+            wrapper.setSucces(true);
+        } catch (Exception e) {
+            wrapper.setSucces(false);
+            wrapper.setMsg(e.toString());
+        }
+        return wrapper;
     }
 
     public Wrapper isTeacher() {
