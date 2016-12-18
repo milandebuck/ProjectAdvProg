@@ -24,6 +24,31 @@ public class GetObject {
         user = mongoOperations.findOne(getUser, User.class, "users");
     }
 
+    public  Wrapper getGroups() {
+        Wrapper wrapper = new Wrapper();
+        try {
+            List<HashMap<String, String>> out = new ArrayList<>();
+            List<ObjectId> groupIds = user.getGroups();
+
+
+            for (ObjectId groupId : groupIds) {
+                HashMap<String, String> group = new HashMap<>();
+                String name = mongoOperations.findById(groupId, Group.class, "users").getName();
+
+                group.put("name", name);
+                group.put("id", groupId.toHexString());
+
+                out.add(group);
+            }
+            wrapper.setData(out);
+            wrapper.setSucces(true);
+        } catch (Exception e) {
+            wrapper.setSucces(false);
+            wrapper.setMsg(e.toString());
+        }
+        return wrapper;
+    }
+
     public Wrapper openTests() {
         Wrapper wrapper = new Wrapper();
         try {

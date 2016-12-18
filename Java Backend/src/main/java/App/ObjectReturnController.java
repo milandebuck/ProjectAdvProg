@@ -15,6 +15,19 @@ import org.springframework.web.bind.annotation.*;
 public class ObjectReturnController {
 
     /**
+     * Gives back groups that user is part of. [GET]
+     * Available on "/GetGroups".
+     * @param token token for authentication
+     * @return groups that user is part of ex: [{"name" : "XXXX", "id" : "XXX"}, {...}]
+     */
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.GET, value = "/GetGroups")
+    public Wrapper getGroups(@RequestParam("token") String token) {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+        return new GetObject(user).getGroups();
+    }
+
+    /**
      * Gives back open tests from user. [GET]
      * Available on "/OpenTests".
      * @param token token for authentication

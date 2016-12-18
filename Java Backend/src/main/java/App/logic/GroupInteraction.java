@@ -138,7 +138,13 @@ public class GroupInteraction {
 
             List<ObjectId> studentIds = Tools.stringRangeToObjectIdRange(studentList);
 
-            for (ObjectId studentId : studentIds) group.addStudent(studentId);
+            for (ObjectId studentId : studentIds) {
+                group.addStudent(studentId);
+
+                User student = mongoOperations.findById(studentId, User.class, "users");
+                student.addGroup(new ObjectId(groupId));
+            }
+
 
             mongoOperations.save(group);
 

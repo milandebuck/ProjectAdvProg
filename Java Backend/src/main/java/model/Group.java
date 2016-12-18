@@ -42,8 +42,8 @@ public class Group {
     public String getId() { return id.toHexString(); }
     public void  setId(ObjectId id) { this.id = id; }
 
-    public String getNaam() { return this.name; }
-    public void setNaam(String name) { this.name = name; }
+    public String getName() { return this.name; }
+    public void setName(String name) { this.name = name; }
 
     public String getTeacher() { return this.teacher.toHexString(); }
     public void setTeacher(ObjectId teacher) { this.teacher = teacher; }
