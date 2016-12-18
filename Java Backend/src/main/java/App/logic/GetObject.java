@@ -27,6 +27,20 @@ public class GetObject {
         user = mongoOperations.findOne(getUser, User.class, "users");
     }
 
+    public Wrapper isTeacher() {
+        Wrapper wrapper = new Wrapper();
+        HashMap<String, Object> out = new HashMap<>();
+        try {
+            out.put("teacher", user.isTeacher());
+            wrapper.setData(out);
+            wrapper.setSucces(true);
+        } catch (Exception e) {
+            wrapper.setSucces(false);
+            wrapper.setMsg(e.toString());
+        }
+        return wrapper;
+    }
+
     public Wrapper listNames() {
         Wrapper wrapper = new Wrapper();
         try {
