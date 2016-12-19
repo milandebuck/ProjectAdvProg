@@ -157,4 +157,32 @@ public class GroupInteraction {
         }
         return out;
     }
+
+    public Wrapper GetStudents(String groupId) {
+        Wrapper out = new Wrapper();
+
+        try {
+            Group group = mongoOperations.findById(groupId, Group.class, "users");
+            List<String> studentIds = group.getStudents();
+            List<HashMap<String,String>> data = new ArrayList<>();
+
+            for (String id : studentIds) {
+                String name = mongoOperations.findById(id, User.class, "users").getUsername();
+
+                HashMap<String,String> student = new HashMap<>();
+                student.put("name", name);
+                student.put("id", id);
+
+                data.add(student);
+            }
+
+            out.setData(data);
+            out.setSucces(true);
+        } catch (Exception e) {
+            out.setSucces(false);
+            out.setMsg(e.toString());
+        }
+
+        return out;
+    }
 }

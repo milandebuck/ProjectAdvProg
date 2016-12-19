@@ -16,6 +16,20 @@ import org.springframework.web.bind.annotation.*;
 public class GroupController {
 
     /**
+     * Gives back all users in a group. [GET]
+     * Available on "/Group/GetStudents".
+     * @param groupid if from goup
+     * @param token token for authentication
+     * @return list of users ex [{"name" : "XXX", "id" : "XXX"}, {...}]
+     */
+    @CrossOrigin
+    @RequestMapping(value = "/GetStudents", method = RequestMethod.GET)
+    public Wrapper publishTest(@RequestParam("groupid") String groupid, @RequestParam("token") String token) {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+        return new GroupInteraction(user).GetStudents(groupid);
+    }
+
+    /**
      * Creates a group, only available for teachers. [POST]
      * Available on "/Group/SaveGroup".
      * @param input name of the group ex: {"name" : "XXX"}
