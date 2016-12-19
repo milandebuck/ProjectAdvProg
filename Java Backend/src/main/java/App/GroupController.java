@@ -26,7 +26,7 @@ public class GroupController {
     @RequestMapping(value = "/GetStudents", method = RequestMethod.GET)
     public Wrapper getStudents(@RequestParam("groupid") String groupid, @RequestParam("token") String token) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-        return new GroupInteraction(user).GetStudents(groupid);
+        return new GroupInteraction(user).getStudents(groupid);
     }
 
     /**
@@ -40,7 +40,7 @@ public class GroupController {
     @RequestMapping(value = "/SaveGroup", method = RequestMethod.POST)
     public Wrapper createGroup(@RequestBody String input, @RequestParam("token") String token) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-        return new GroupInteraction(user).CreateGroup(input);
+        return new GroupInteraction(user).createGroup(input);
     }
 
     /**
@@ -55,7 +55,7 @@ public class GroupController {
     @RequestMapping(value = "/PublishTest", method = RequestMethod.GET)
     public Wrapper publishTest(@RequestParam("groupid") String groupid, @RequestParam("testid") String testid, @RequestParam("token") String token) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-        return new GroupInteraction(user).PublishTest(testid, groupid);
+        return new GroupInteraction(user).publishTest(testid, groupid);
     }
 
     /**
@@ -70,7 +70,7 @@ public class GroupController {
     @RequestMapping(value = "/GetResults", method = RequestMethod.GET)
     public Wrapper testResults(@RequestParam("groupid") String groupid, @RequestParam("testid") String testid, @RequestParam("token") String token) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-        return new GroupInteraction(user).TestResults(testid, groupid);
+        return new GroupInteraction(user).testResults(testid, groupid);
     }
 
 
@@ -86,7 +86,7 @@ public class GroupController {
     @RequestMapping(value = "/AddStudents", method = RequestMethod.POST)
     public Wrapper addStudents(@RequestBody String input, @RequestParam("groupid") String groupid, @RequestParam("token") String token) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-        return new GroupInteraction(user).AddStudents(input, groupid);
+        return new GroupInteraction(user).addStudents(input, groupid);
     }
 
 }

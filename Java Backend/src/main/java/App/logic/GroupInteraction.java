@@ -25,7 +25,7 @@ public class GroupInteraction {
         user = mongoOperations.findOne(getUser, User.class, "users");
     }
 
-    public Wrapper CreateGroup(String input) {
+    public Wrapper createGroup(String input) {
         Wrapper out = new Wrapper();
 
         try {
@@ -55,7 +55,7 @@ public class GroupInteraction {
         return out;
     }
 
-    public Wrapper PublishTest(String testId, String groupId) {
+    public Wrapper publishTest(String testId, String groupId) {
         Wrapper out = new Wrapper();
 
         try {
@@ -86,7 +86,7 @@ public class GroupInteraction {
         return out;
     }
 
-    public Wrapper TestResults(String testId, String groupId) {
+    public Wrapper testResults(String testId, String groupId) {
         Wrapper out = new Wrapper();
 
         try {
@@ -125,7 +125,7 @@ public class GroupInteraction {
         return out;
     }
 
-    public Wrapper AddStudents(String students, String groupId) {
+    public Wrapper addStudents(String students, String groupId) {
         Wrapper out = new Wrapper();
 
         try {
@@ -161,7 +161,7 @@ public class GroupInteraction {
         return out;
     }
 
-    public Wrapper GetStudents(String groupId) {
+    public Wrapper getStudents(String groupId) {
         Wrapper out = new Wrapper();
 
         try {
