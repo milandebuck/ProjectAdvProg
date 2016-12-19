@@ -108,4 +108,25 @@ public class GetObjectTest extends TestCase {
         user.removeResult(testResult);
         mongoOperations.save(user);
     }
+
+    @Test
+    public void testIsTeacher() {
+        setup();
+
+        //Should return false for teacher.
+        user.setTeacher(false);
+        mongoOperations.save(user);
+
+        Wrapper<HashMap<String, Boolean>> result = new GetObject(user.getUsername()).isTeacher();
+        HashMap<String, Boolean> noteacher = result.getData();
+        Assert.assertTrue(noteacher.get("teacher") == false);
+
+        //Should return true for teacher.
+        user.setTeacher(true);
+        mongoOperations.save(user);
+
+        Wrapper<HashMap<String, Boolean>> result2 = new GetObject(user.getUsername()).isTeacher();
+        HashMap<String, Boolean> teacher = result2.getData();
+        Assert.assertTrue(teacher.get("teacher") == true);
+    }
 }

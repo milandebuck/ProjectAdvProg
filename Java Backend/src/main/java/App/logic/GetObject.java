@@ -82,8 +82,8 @@ public class GetObject {
     }
 
     public Wrapper isTeacher() {
-        Wrapper wrapper = new Wrapper();
-        HashMap<String, Object> out = new HashMap<>();
+        Wrapper<HashMap<String, Boolean>> wrapper = new Wrapper();
+        HashMap<String, Boolean> out = new HashMap<>();
         try {
             out.put("teacher", user.isTeacher());
             wrapper.setData(out);
