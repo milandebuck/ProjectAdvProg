@@ -96,7 +96,7 @@ public class GetObject {
     }
 
     public Wrapper listNames() {
-        Wrapper wrapper = new Wrapper();
+        Wrapper<List<HashMap<String, String>>> wrapper = new Wrapper();
         try {
             List<String> userListIds = user.getWordLists();
             List<HashMap<String, String>> listNames = new ArrayList<HashMap<String, String>>();

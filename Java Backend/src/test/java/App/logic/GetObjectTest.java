@@ -69,7 +69,7 @@ public class GetObjectTest extends TestCase {
     }
 
     @Test
-    public void testOpenTests() {
+    public void testOpenTestsAndListNames() {
         setup();
         List<WordList> wordLists = new ArrayList<>();
 
@@ -81,22 +81,34 @@ public class GetObjectTest extends TestCase {
             wordLists.add(wordList);
         }
 
+        //Make one test solved.
         Result testResult = new Result(0, 0, new ObjectId(wordLists.get(2).getId()), new String[]{"English", "Dutch"});
         user.addResult(testResult);
         mongoOperations.save(user, "users");
 
-        Wrapper<List<HashMap<String,String>>> result = new GetObject(user.getUsername()).openTests();
+        //Get open tests
+        Wrapper<List<HashMap<String, String>>> resultOpen = new GetObject(user.getUsername()).openTests();
+        //Get all tests
+        Wrapper<List<HashMap<String, String>>> resultAll = new GetObject(user.getUsername()).listNames();
 
         //Check if successful
-        Assert.assertTrue(result.getSucces());
+        Assert.assertTrue(resultOpen.getSucces());
+        Assert.assertTrue(resultAll.getSucces());
 
         //Get answers
-        List<HashMap<String, String>> responseTests = result.getData();
+        List<HashMap<String, String>> responseOpenTests = resultOpen.getData();
+        List<HashMap<String, String>> responseAllTests = resultAll.getData();
 
         //check if all tests are in there.
-        for (HashMap<String,String> responseTest : responseTests) {
-            List<String> names = new ArrayList<String>(Arrays.asList("0", "1", "3", "4"));
-            Assert.assertTrue(names.contains(responseTest.get("name")));
+        Assert.assertTrue(responseOpenTests.size() == 4);
+        Assert.assertTrue(responseAllTests.size() == 5);
+        for (HashMap<String,String> responseTest : responseOpenTests) {
+            List<String> namesOpen = new ArrayList<String>(Arrays.asList("0", "1", "3", "4"));
+            Assert.assertTrue(namesOpen.contains(responseTest.get("name")));
+        }
+        for (HashMap<String,String> responseTest: responseAllTests) {
+            List<String> namesAll = new ArrayList<String>(Arrays.asList("0", "1", "2", "3", "4"));
+            Assert.assertTrue(namesAll.contains(responseTest.get("name")));
         }
 
         //clean up db.
@@ -129,4 +141,5 @@ public class GetObjectTest extends TestCase {
         HashMap<String, Boolean> teacher = result2.getData();
         Assert.assertTrue(teacher.get("teacher") == true);
     }
+
 }
