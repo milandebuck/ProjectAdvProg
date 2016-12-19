@@ -24,7 +24,7 @@ public class GroupController {
      */
     @CrossOrigin
     @RequestMapping(value = "/GetStudents", method = RequestMethod.GET)
-    public Wrapper publishTest(@RequestParam("groupid") String groupid, @RequestParam("token") String token) {
+    public Wrapper getStudents(@RequestParam("groupid") String groupid, @RequestParam("token") String token) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
         return new GroupInteraction(user).GetStudents(groupid);
     }
