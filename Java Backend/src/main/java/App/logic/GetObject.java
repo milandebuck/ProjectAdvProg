@@ -30,15 +30,17 @@ public class GetObject {
             List<HashMap<String, String>> out = new ArrayList<>();
             List<ObjectId> groupIds = user.getGroups();
 
+            if (groupIds.size() != 0) {
 
-            for (ObjectId groupId : groupIds) {
-                HashMap<String, String> group = new HashMap<>();
-                String name = mongoOperations.findById(groupId, Group.class, "users").getName();
+                for (ObjectId groupId : groupIds) {
+                    HashMap<String, String> group = new HashMap<>();
+                    String name = mongoOperations.findById(groupId, Group.class, "users").getName();
 
-                group.put("name", name);
-                group.put("id", groupId.toHexString());
+                    group.put("name", name);
+                    group.put("id", groupId.toHexString());
 
-                out.add(group);
+                    out.add(group);
+                }
             }
             wrapper.setData(out);
             wrapper.setSucces(true);

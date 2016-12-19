@@ -37,10 +37,11 @@ public class GroupInteraction {
 
             //create new group
             Group group = new Group((String)groupMap.get("name"), new ObjectId(user.getId()));
+            user.addGroup(new ObjectId(group.getId()));
 
             //save group
             mongoOperations.save(group, "users");
-
+            mongoOperations.save(user, "users");
             out.setData("saved");
             out.setSucces(true);
 
