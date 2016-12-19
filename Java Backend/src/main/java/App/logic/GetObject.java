@@ -25,7 +25,7 @@ public class GetObject {
     }
 
     public  Wrapper getGroups() {
-        Wrapper wrapper = new Wrapper();
+        Wrapper<List<HashMap<String, String>>> wrapper = new Wrapper();
         try {
             List<HashMap<String, String>> out = new ArrayList<>();
             List<ObjectId> groupIds = user.getGroups();
