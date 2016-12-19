@@ -1,9 +1,7 @@
 package App.logic;
 
 import junit.framework.TestCase;
-import model.Group;
-import model.User;
-import model.Wrapper;
+import model.*;
 import org.bson.types.ObjectId;
 import org.junit.Assert;
 import org.junit.Test;
@@ -68,5 +66,46 @@ public class GetObjectTest extends TestCase {
         for (Group group : groups) {
             mongoOperations.remove(group, "users");
         }
+    }
+
+    @Test
+    public void testOpenTests() {
+        setup();
+        List<WordList> wordLists = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            WordList wordList = new WordList("" + i, new ArrayList<ObjectId>(), new String[]{"English", "Dutch"});
+            mongoOperations.save(wordList, "entries");
+            user.addToWordLists(new ObjectId(wordList.getId()));
+            mongoOperations.save(user, "users");
+            wordLists.add(wordList);
+        }
+
+        Result testResult = new Result(0, 0, new ObjectId(wordLists.get(2).getId()), new String[]{"English", "Dutch"});
+        user.addResult(testResult);
+        mongoOperations.save(user, "users");
+
+        Wrapper<List<HashMap<String,String>>> result = new GetObject(user.getUsername()).openTests();
+
+        //Check if successful
+        Assert.assertTrue(result.getSucces());
+
+        //Get answers
+        List<HashMap<String, String>> responseTests = result.getData();
+
+        //check if all tests are in there.
+        for (HashMap<String,String> responseTest : responseTests) {
+            List<String> names = new ArrayList<String>(Arrays.asList("0", "1", "3", "4"));
+            Assert.assertTrue(names.contains(responseTest.get("name")));
+        }
+
+        //clean up db.
+        for (WordList wordList : wordLists) {
+            user.removeFromWordLists(new ObjectId(wordList.getId()));
+            mongoOperations.remove(wordList, "entries");
+        }
+
+        user.removeResult(testResult);
+        mongoOperations.save(user);
     }
 }

@@ -52,7 +52,7 @@ public class GetObject {
     }
 
     public Wrapper openTests() {
-        Wrapper wrapper = new Wrapper();
+        Wrapper<List<HashMap<String,String>>> wrapper = new Wrapper();
         try {
             List<String> tests = user.getWordLists();
             List<Result> results = user.getResults();
