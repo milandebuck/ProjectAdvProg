@@ -157,7 +157,7 @@ public class GetObject {
     }
 
     public Wrapper getUser(String name) {
-        Wrapper wrapper = new Wrapper();
+        Wrapper<List<HashMap<String,String>>> wrapper = new Wrapper();
 
         try {
             Query searchUser = new Query();

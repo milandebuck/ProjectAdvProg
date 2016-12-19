@@ -184,4 +184,25 @@ public class GetObjectTest extends TestCase {
         mongoOperations.remove(wordList, "entries");
     }
 
+    @Test
+    public void testGetUser() {
+        setup();
+
+        //queries that will be tested
+        List<String> namesToTest = new ArrayList<>(Arrays.asList("unittestuser", "unit", "test", "user"));
+
+        for (String name : namesToTest) {
+            Wrapper<List<HashMap<String,String>>> result = new GetObject(user.getUsername()).getUser(name);
+            List<HashMap<String,String>> searchResults = result.getData();
+            boolean found = false;
+
+            //Check if user is found.
+            for (HashMap<String,String> searchResult : searchResults) {
+                if (searchResult.get("username").equals(user.getUsername())) found = true;
+            }
+
+            Assert.assertTrue(found);
+        }
+
+    }
 }
