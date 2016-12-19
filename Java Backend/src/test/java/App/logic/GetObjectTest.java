@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {App.configuration.MongoConfig.class, App.configuration.WebConfig.class, App.Application.class, App.logic.Tools.class})
+@ContextConfiguration(classes = {App.configuration.MongoConfig.class, App.configuration.WebConfig.class, App.Application.class, App.logic.Tools.class, App.logic.Converter.class})
 @WebAppConfiguration
 public class GetObjectTest extends TestCase {
     private MongoOperations mongoOperations;
@@ -140,6 +140,48 @@ public class GetObjectTest extends TestCase {
         Wrapper<HashMap<String, Boolean>> result2 = new GetObject(user.getUsername()).isTeacher();
         HashMap<String, Boolean> teacher = result2.getData();
         Assert.assertTrue(teacher.get("teacher") == true);
+    }
+
+    @Test
+    public void testGetList() {
+        setup();
+
+        List<Entry> dbEntries = mongoOperations.find(new Query().limit(5), Entry.class, "entries");
+        List<ObjectId> dbEntriesId = new ArrayList<>();
+        //get the ids
+        for (Entry entry : dbEntries) dbEntriesId.add(new ObjectId(entry.getId()));
+
+        WordList wordList = new WordList("testList", dbEntriesId,new String[] {"English", "Dutch"});
+
+        mongoOperations.save(wordList, "entries");
+
+        //add list to user.
+        user.addToWordLists(new ObjectId(wordList.getId()));
+        mongoOperations.save(user, "users");
+
+        Wrapper<HashMap<String, Object>> result = new GetObject(user.getUsername()).getList(wordList.getId());
+
+        //testing
+        Assert.assertTrue(result.getSucces());
+        Assert.assertTrue(result.getData().get("name").equals("testList"));
+
+        List<Entry> entries = new ArrayList<>();
+        try {
+            entries = (ArrayList<Entry>)result.getData().get("list");
+        } catch (Exception e) {
+            fail("Json to array failed.");
+        }
+
+        //check if size is the same
+        assertTrue(entries.size() == dbEntries.size());
+
+        //check if IDs match
+        for (Entry entry : entries) assertTrue(dbEntriesId.contains(new ObjectId(entry.getId())));
+
+        //clean db
+        user.removeFromWordLists(new ObjectId(wordList.getId()));
+        mongoOperations.save(user, "users");
+        mongoOperations.remove(wordList, "entries");
     }
 
 }

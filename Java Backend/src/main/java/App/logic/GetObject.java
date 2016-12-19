@@ -129,11 +129,11 @@ public class GetObject {
             ObjectId listId = new ObjectId(input);
             WordList list = mongoOperations.findById(listId, WordList.class, "entries");
 
-            List<Entry> entries = new ArrayList<>();
-
-            String[] entryLanguages = mongoOperations.findById(entries.get(0), Entry.class, "entries").getLanguages();
+            String[] entryLanguages = mongoOperations.findById(list.getEntryList().get(0), Entry.class, "entries").getLanguages();
 
             if ((entryLanguages[0].equals(list.getLanguages()[1])) && (entryLanguages[1].equals(list.getLanguages()[0]))) reversed = true;
+
+            List<Entry> entries = new ArrayList<>();
 
             for (String entryId : list.getEntryList()) {
                 Entry entry = mongoOperations.findById(new ObjectId(entryId), Entry.class, "entries");
