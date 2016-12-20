@@ -18,7 +18,7 @@ $ java -jar build/libs/app.jar
 ```
 #### Documentation
 
-[JavaDoc](https://teammartini.tk)
+[JavaDoc](http://teammartini.tk)
 
 #### Angular frontend
 
