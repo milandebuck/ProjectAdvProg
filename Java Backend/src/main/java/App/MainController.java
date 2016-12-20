@@ -28,6 +28,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Controller for all major routes.
+ */
 @CrossOrigin
 @RestController
 public class MainController {
@@ -209,21 +212,6 @@ public class MainController {
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return new Wrapper(true, "Registration success!", token);
-    }
-
-    /**
-     * Creates group of users for teacher
-     * @param token authentication
-     * @param groupId id to delete group
-     * @return Wrapper
-     * @throws ParseException
-     */
-    @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST, value = "/DeleteGroup")
-    public Wrapper deleteGroup(@RequestParam("groupId") String groupId, @RequestParam("token") String token) {
-
-
-        return new Wrapper(true, "Successfully deleted group", new Object());
     }
 
     /**

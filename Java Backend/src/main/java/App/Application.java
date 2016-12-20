@@ -4,6 +4,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Starts application
+ */
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -20,7 +23,6 @@ public class Application implements CommandLineRunner {
      * @param args
      * @throws Exception
      */
-    //This code is just to test atm
     @Override
     public void run(String... args) throws Exception {
 
