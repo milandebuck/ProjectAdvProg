@@ -16,6 +16,9 @@ $ cd Java Backend/
 $ gradlew build
 $ java -jar build/libs/app.jar
 ```
+#### Documentation
+
+[JavaDoc](https://teammartini.tk)
 
 #### Angular frontend
 
