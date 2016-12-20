@@ -53,6 +53,9 @@ public class User {
         this.username = "";
         this.password = "";
         this.teacher = false;
+        this.wordLists = new ArrayList<ObjectId>();
+        this.results = new ArrayList<Result>();
+        this.groups = new ArrayList<ObjectId>();
     }
 
     /**
@@ -64,6 +67,9 @@ public class User {
         this.username = username;
         this.password = password;
         this.teacher = false;
+        this.wordLists = new ArrayList<ObjectId>();
+        this.results = new ArrayList<Result>();
+        this.groups = new ArrayList<ObjectId>();
     }
 
     /**
@@ -76,6 +82,9 @@ public class User {
         this.username = username;
         this.password = password;
         this.teacher = teacher;
+        this.wordLists = new ArrayList<ObjectId>();
+        this.results = new ArrayList<Result>();
+        this.groups = new ArrayList<ObjectId>();
     }
 
     public boolean isTeacher() {
