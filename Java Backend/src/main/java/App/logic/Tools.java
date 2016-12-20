@@ -68,6 +68,12 @@ public class Tools {
         return getMongoOperations().findOne(getWord, Entry.class, "entries");
     }
 
+    /**
+     * Converts a list of strings to a list of objectids.
+     * @param input list of strings
+     * @return list of objectids
+     * @throws Exception conversion error
+     */
     public static List<ObjectId> stringRangeToObjectIdRange(List<String> input) throws Exception {
         ArrayList<ObjectId> ids = new ArrayList<ObjectId>();
 

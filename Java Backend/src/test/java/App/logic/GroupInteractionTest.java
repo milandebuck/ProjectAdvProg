@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Tests for GroupInteraction class.
  * Created by Robbe De Geyndt on 19/12/2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,6 +38,9 @@ public class GroupInteractionTest {
         user2 = mongoOperations.findOne(getUser2, User.class, "users");
     }
 
+    /**
+     * Test if group can be created correctly.
+     */
     @Test
     public void testCreateGroup() {
         setup();
@@ -68,6 +72,9 @@ public class GroupInteractionTest {
         mongoOperations.remove(group, "users");
     }
 
+    /**
+     * Tests if all interactions with a group can be completed successfully.
+     */
     @Test
     public void testGroupInteractions() {
         setup();
@@ -109,6 +116,17 @@ public class GroupInteractionTest {
 
         //Test in user2?
         Assert.assertTrue(user2.getWordLists().get(0).equals(wordList.getId()));
+
+        //--Try getting test back --
+        Wrapper gettestResponse = new GroupInteraction(user.getUsername()).getTests(group.getId());
+
+        String wordListName = (String)((ArrayList<HashMap<String, String>>)gettestResponse.getData()).get(0).get("name");
+        String wordlistId = (String)((ArrayList<HashMap<String, String>>)gettestResponse.getData()).get(0).get("id");
+
+        //check on id
+        Assert.assertEquals(wordList.getId(), wordlistId);
+        //check on name
+        Assert.assertEquals(wordList.getName(), wordListName);
 
         //--Try getting list of students--
         Wrapper getStudentsResponse = new GroupInteraction(user.getUsername()).getStudents(group.getId());

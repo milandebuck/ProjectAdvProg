@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
+ * Tests for GetResults class.
  * Created by Robbe De Geyndt on 19/12/2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,6 +31,9 @@ public class GetResultsTest {
     private User user;
     private List<Result> results;
 
+    /**
+     * Setup for test, creating lists.
+     */
     private void setup() {
         mongoOperations = Tools.getMongoOperations();
         Query getUser = new Query();
@@ -50,11 +54,17 @@ public class GetResultsTest {
         results.add(result5);
     }
 
+    /**
+     * Cleaning up the database after testing.
+     */
     private void cleanDB() {
         user.setResults(new ArrayList<Result>());
         mongoOperations.save(user,"users");
     }
 
+    /**
+     * Tests if user scores are returned correctly filtered in languages.
+     */
     @Test
     public void testUserResults() {
 

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Methods that interact with the group object.
  * Created by Robbe De Geyndt on 14/12/2016.
  */
 public class GroupInteraction {
@@ -19,12 +20,21 @@ public class GroupInteraction {
     private MongoOperations mongoOperations = Tools.getMongoOperations();
     private User user;
 
+    /**
+     * Constructor uses username of logged in user.
+     * @param username logged in user
+     */
     public GroupInteraction(String username) {
         Query getUser = new Query();
         getUser.addCriteria(Criteria.where("username").is(username));
         user = mongoOperations.findOne(getUser, User.class, "users");
     }
 
+    /**
+     * Allows a teacher to create a group.
+     * @param input name of the group
+     * @return confirmation of success or failure
+     */
     public Wrapper createGroup(String input) {
         Wrapper out = new Wrapper();
 
@@ -55,6 +65,12 @@ public class GroupInteraction {
         return out;
     }
 
+    /**
+     * Allows teacher to publish a created test to the students of a certain group.
+     * @param testId id of test
+     * @param groupId id of group
+     * @return confirmation of success or failure
+     */
     public Wrapper publishTest(String testId, String groupId) {
         Wrapper out = new Wrapper();
 
@@ -86,6 +102,12 @@ public class GroupInteraction {
         return out;
     }
 
+    /**
+     * Allows teacher to get scores of all students in a certain group on a certain test.
+     * @param testId id of test
+     * @param groupId id of group
+     * @return list of students with their scores.
+     */
     public Wrapper testResults(String testId, String groupId) {
         Wrapper out = new Wrapper();
 
@@ -125,6 +147,12 @@ public class GroupInteraction {
         return out;
     }
 
+    /**
+     * Allows a teacher to add users to a group.
+     * @param students list of students
+     * @param groupId id of group
+     * @return confirmation of success or failure
+     */
     public Wrapper addStudents(String students, String groupId) {
         Wrapper out = new Wrapper();
 
@@ -162,6 +190,11 @@ public class GroupInteraction {
         return out;
     }
 
+    /**
+     * Returns all users that are a member from a certain group.
+     * @param groupId id of group
+     * @return list of student usezrnames and their IDs
+     */
     public Wrapper getStudents(String groupId) {
         Wrapper out = new Wrapper();
 
@@ -192,6 +225,11 @@ public class GroupInteraction {
         return out;
     }
 
+    /**
+     * Allows users to get a list of all tests that have been published in a certain group.
+     * @param groupId id of group
+     * @return list of tests with their names and IDs
+     */
     public Wrapper getTests(String groupId) {
         Wrapper out = new Wrapper();
 

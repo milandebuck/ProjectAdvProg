@@ -96,7 +96,7 @@ public class GetObject {
 
     /**
      * Returns boolean true when the logged in user is a teacher.
-     * @return boolean
+     * @return answer with boolean
      */
     public Wrapper isTeacher() {
         Wrapper<HashMap<String, Boolean>> wrapper = new Wrapper();
@@ -112,6 +112,10 @@ public class GetObject {
         return wrapper;
     }
 
+    /**
+     * Returns list of tests from user.
+     * @return list of names of tests an their IDs
+     */
     public Wrapper listNames() {
         Wrapper<List<HashMap<String, String>>> wrapper = new Wrapper();
         try {
@@ -138,6 +142,11 @@ public class GetObject {
         return wrapper;
     }
 
+    /**
+     * Returns test based of ID.
+     * @param input id of test
+     * @return name of test and the entries
+     */
     public Wrapper getList(String input) {
         Wrapper wrapper = new Wrapper();
         boolean reversed = false;
@@ -173,6 +182,11 @@ public class GetObject {
         return wrapper;
     }
 
+    /**
+     * Searches users based on string.
+     * @param name string that is used for searching
+     * @return list of usernames that contain the specified String, and the userIDs
+     */
     public Wrapper getUser(String name) {
         Wrapper<List<HashMap<String,String>>> wrapper = new Wrapper();
 

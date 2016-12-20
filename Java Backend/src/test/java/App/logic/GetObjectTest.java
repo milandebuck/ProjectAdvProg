@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Tests for GetObject class.
  * Created by Robbe De Geyndt on 19/12/2016.
  */
 
@@ -29,6 +30,9 @@ public class GetObjectTest extends TestCase {
     private MongoOperations mongoOperations;
     private User user;
 
+    /**
+     * Initial setup.
+     */
     private void setup() {
         mongoOperations = Tools.getMongoOperations();
         Query getUser = new Query();
@@ -36,6 +40,9 @@ public class GetObjectTest extends TestCase {
         user = mongoOperations.findOne(getUser, User.class, "users");
     }
 
+    /**
+     * Tests if the user's groups are returned correctly.
+     */
     @Test
     public void testGetGroups() {
         setup();
@@ -68,6 +75,9 @@ public class GetObjectTest extends TestCase {
         }
     }
 
+    /**
+     * Test if user's tests and open tests are returned correctly.
+     */
     @Test
     public void testOpenTestsAndListNames() {
         setup();
@@ -121,6 +131,9 @@ public class GetObjectTest extends TestCase {
         mongoOperations.save(user);
     }
 
+    /**
+     * Test if method correctly indicates if a user is a teacher or not.
+     */
     @Test
     public void testIsTeacher() {
         setup();
@@ -142,6 +155,9 @@ public class GetObjectTest extends TestCase {
         Assert.assertTrue(teacher.get("teacher") == true);
     }
 
+    /**
+     * Tests if a user created list is returned correctly.
+     */
     @Test
     public void testGetList() {
         setup();
@@ -184,6 +200,9 @@ public class GetObjectTest extends TestCase {
         mongoOperations.remove(wordList, "entries");
     }
 
+    /**
+     * Test if user can be found based on partial username.
+     */
     @Test
     public void testGetUser() {
         setup();
