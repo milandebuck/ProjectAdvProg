@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Class used for getting access to database.
  * Created by Robbe De Geyndt on 12/12/2016.
  */
 public class GetObject {
@@ -18,12 +19,20 @@ public class GetObject {
     private MongoOperations mongoOperations = Tools.getMongoOperations();
     private User user;
 
+    /**
+     * Constructor.
+     * @param username username of logged in user
+     */
     public GetObject(String username) {
         Query getUser = new Query();
         getUser.addCriteria(Criteria.where("username").is(username));
         user = mongoOperations.findOne(getUser, User.class, "users");
     }
 
+    /**
+     * Gives back groups that logged in user is part of.
+     * @return list with the names of the groups and their IDs
+     */
     public  Wrapper getGroups() {
         Wrapper<List<HashMap<String, String>>> wrapper = new Wrapper();
         try {
@@ -51,6 +60,10 @@ public class GetObject {
         return wrapper;
     }
 
+    /**
+     * Gives back list of tests that have no result objects attached to them.
+     * @return list of test names and their IDs
+     */
     public Wrapper openTests() {
         Wrapper<List<HashMap<String,String>>> wrapper = new Wrapper();
         try {
@@ -81,6 +94,10 @@ public class GetObject {
         return wrapper;
     }
 
+    /**
+     * Returns boolean true when the logged in user is a teacher.
+     * @return boolean
+     */
     public Wrapper isTeacher() {
         Wrapper<HashMap<String, Boolean>> wrapper = new Wrapper();
         HashMap<String, Boolean> out = new HashMap<>();

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class GroupController {
 
     /**
-     * Gives back all users in a group. [GET]
+     * Gives back all tests in a group. [GET]
      * Available on "/Group/GetTests".
      * @param groupid if from group
      * @param token token for authentication
