@@ -146,6 +146,7 @@ public class GroupInteraction {
 
                 User student = mongoOperations.findById(studentId, User.class, "users");
                 student.addGroup(new ObjectId(groupId));
+                mongoOperations.save(student);
             }
 
 
