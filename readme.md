@@ -19,12 +19,14 @@ $ java -jar build/libs/app.jar
 
 #### Angular frontend
 
+[Frontend git](https://github.com/milandebuck/ProjAdvProg-Frontend.git)
+
 make sure you have `npm` installed
 
 ```sh
 $ cd AngularFrontend/
 $ npm install
-$ npm run start
+$ npm run dev
 ```
 
 ### Collaborators
