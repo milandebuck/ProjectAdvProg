@@ -170,14 +170,46 @@ public class GroupInteraction {
             List<String> studentIds = group.getStudents();
             List<HashMap<String,String>> data = new ArrayList<>();
 
-            for (String id : studentIds) {
-                String name = mongoOperations.findById(id, User.class, "users").getUsername();
+            if (studentIds.size() != 0) {
+                for (String id : studentIds) {
+                    String name = mongoOperations.findById(id, User.class, "users").getUsername();
 
-                HashMap<String,String> student = new HashMap<>();
-                student.put("name", name);
-                student.put("id", id);
+                    HashMap<String, String> student = new HashMap<>();
+                    student.put("name", name);
+                    student.put("id", id);
 
-                data.add(student);
+                    data.add(student);
+                }
+            }
+
+            out.setData(data);
+            out.setSucces(true);
+        } catch (Exception e) {
+            out.setSucces(false);
+            out.setMsg(e.toString());
+        }
+
+        return out;
+    }
+
+    public Wrapper getTests(String groupId) {
+        Wrapper out = new Wrapper();
+
+        try {
+            Group group = mongoOperations.findById(groupId, Group.class, "users");
+            List<String> testIds = group.getTests();
+            List<HashMap<String,String>> data = new ArrayList<>();
+
+            if (testIds.size() != 0) {
+                for (String id : testIds) {
+                    String name = mongoOperations.findById(id, WordList.class, "entries").getName();
+
+                    HashMap<String, String> test = new HashMap<>();
+                    test.put("name", name);
+                    test.put("id", id);
+
+                    data.add(test);
+                }
             }
 
             out.setData(data);

@@ -17,8 +17,22 @@ public class GroupController {
 
     /**
      * Gives back all users in a group. [GET]
+     * Available on "/Group/GetTests".
+     * @param groupid if from group
+     * @param token token for authentication
+     * @return list of users ex [{"name" : "XXX", "id" : "XXX"}, {...}]
+     */
+    @CrossOrigin
+    @RequestMapping(value = "/GetTests", method = RequestMethod.GET)
+    public Wrapper getTests(@RequestParam("groupid") String groupid, @RequestParam("token") String token) {
+        String user = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+        return new GroupInteraction(user).getTests(groupid);
+    }
+
+    /**
+     * Gives back all users in a group. [GET]
      * Available on "/Group/GetStudents".
-     * @param groupid if from goup
+     * @param groupid if from group
      * @param token token for authentication
      * @return list of users ex [{"name" : "XXX", "id" : "XXX"}, {...}]
      */
