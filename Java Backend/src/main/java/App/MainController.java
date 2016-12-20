@@ -159,7 +159,7 @@ public class MainController {
      *   @throws AuthenticationException
      **/
     @CrossOrigin
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/Login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException {
         // Perform the security
         final Authentication authentication = authenticationManager.authenticate(
@@ -183,8 +183,8 @@ public class MainController {
      * @return Wrapper
      **/
     @CrossOrigin
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public Wrapper createUser(@RequestBody JwtAuthenticationRequest user)  {
+    @RequestMapping(value = "/Registration", method = RequestMethod.POST)
+    public Wrapper createUser(@RequestBody User user)  {
 //        userValidator.validate(user, br);
 //        if (br.hasErrors()) {
 //
@@ -200,6 +200,9 @@ public class MainController {
 //
 //            return new Wrapper(false, "Form contains errors!", errors);
 //        }
+
+        User userInDB = userRepo.findByUsername(user.getUsername());
+        if (userInDB != null) return new Wrapper(false, "Username already exists", new Object());
 
         userDetailsService.save(new User(user.getUsername(), user.getPassword()));
         final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
