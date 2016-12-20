@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
+ * Object for converting multiple types of objects.
  * Created by Robbe De Geyndt on 14/12/2016.
  */
 public class Converter<T> {
